@@ -5,14 +5,17 @@
   "private": true,
   "scripts": {
     "front": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
-    "back": "node server",
+    "back": "nodemon server",
     "dual": "concurrently --kill-others \"node server\" \"cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
+  "type": "module",
   "dependencies": {
-    "vue": "^2.0.1",
     "body-parser": "^1.4.3",
-    "express": "^4.4.5"
+    "express": "^4.4.5",
+    "sqlite": "^3.0.6",
+    "sqlite3": "^5.0.2",
+    "vue": "^2.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
@@ -22,6 +25,7 @@
     "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",
+    "nodemon": "^2.0.7",
     "vue-loader": "^9.7.0",
     "vue-resource": "^1.0.3",
     "vue-router": "^2.0.1",
