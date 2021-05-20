@@ -1,0 +1,16 @@
+{
+  "name": "vue-apptuan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "@vue/cli": "^4.5.13"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "vue-cli-service serve"
+  },
+  "author": "",
+  "license": "ISC"
+}
