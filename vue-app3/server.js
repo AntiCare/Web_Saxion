@@ -1,16 +1,41 @@
-var express = require('express');
-var bodyParser = require('body-parser');
+import express from 'express';
+import bodyParser from 'body-parser';
 var app = express();
-var data = require('./db/db')
+// import data from './db/db-k'
+
+import sqlite3 from "sqlite3";
+sqlite3.verbose();
+import { open } from "sqlite";
+ // this is a top-level await 
+ 
+// let  abb= (async () => {
+    // open the database
+    const db = await open({
+      filename: "/database.db",
+      driver: sqlite3.Database,
+    });
+    // await db.exec("CREATE TABLE tbl (col TEXT)");
+    // await db.exec('INSERT INTO tbl VALUES ("test")');
+    // let result =  db.get("SELECT col FROM tbl WHERE col = ?", "test");
+    // console.log(result)
+// })()
+
+async function  abc() {
+     let result = await db.get("SELECT col FROM tbl WHERE col = ?", "test");
+    console.log(result);
+    return result
+}
+
+console.log(abc())
+// abc()
 
 app.set('port', (process.env.PORT || 3000));
 
-app.use('/', express.static(__dirname));
+// app.use('/', express.static(__dirname));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-
-
+ 
 
 // Additional middleware which will set headers that we need on each request.
 app.use(function(req, res, next) {
@@ -23,6 +48,31 @@ app.use(function(req, res, next) {
     // Disable caching so we'll always get the latest comments.
     res.setHeader('Cache-Control', 'no-cache');
     next();
+});
+
+ 
+app.get("/", function(req, res, next) {
+    res.json({ 'status': 'api server is running' })
+});
+
+
+// dummy test for sql lite
+app.get("/api/enterdummy", async function (req, res, next) {
+
+   let result =  await db.exec('INSERT INTO tbl VALUES ("sssssx")');
+    // console.log(result);
+    // return result
+    
+    res.json({"status":"entered data in tbl"});
+});
+
+// dummy test for sql lite
+app.get("/api/showdummy", async function(req, res, next) {
+   let result = await db.all("SELECT * FROM tbl");
+    // console.log(result);
+    // return result
+    
+    res.json(result);
 });
 
 app.get('/api/products', function(req, res, next) {
