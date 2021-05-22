@@ -11,7 +11,7 @@ import { open } from "sqlite";
 // let  abb= (async () => {
     // open the database
     const db = await open({
-      filename: "/database.db",
+      filename: "./mydb.sql",
       driver: sqlite3.Database,
     });
     // await db.exec("CREATE TABLE tbl (col TEXT)");
