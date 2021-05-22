@@ -1,5 +1,5 @@
 <template>
-  <div class="question-box-container">
+  <div class="question-box-container" v-show="playingGame === true">
     <b-overlay
       :show="loading"
       rounded
@@ -7,7 +7,6 @@
       spinner-small
       spinner-variant="primary"
       class="d-inline-block"
-      @hidden="onHidden"
     >
       <b-jumbotron>
         <template slot="lead">
@@ -40,14 +39,6 @@
           href="#"
           >next</b-button
         >
-
-        <b-list-group v-show="index === 9 && answered === true">
-          <b-alert variant="success" show> {{ gameResult() }}</b-alert>
-
-          <b-button @click="start" variant="danger" href="#"
-            >Play Again</b-button
-          >
-        </b-list-group>
       </b-jumbotron>
     </b-overlay>
   </div>
@@ -64,6 +55,7 @@ export default {
     start: Function,
     correctAnswersCount: Number,
     index: Number,
+    playingGame: Boolean,
   },
   data() {
     return {
@@ -72,13 +64,7 @@ export default {
       shuffledAnswers: {},
       answered: false,
       correctIndex: null,
-      gameResult() {
-        if (this.correctAnswersCount > 5) {
-          return "you won 😁";
-        } else {
-          return "you lost 🤨";
-        }
-      },
+   
       loading: true,
     };
   },
