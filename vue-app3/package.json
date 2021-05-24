@@ -6,7 +6,7 @@
   "scripts": {
     "front": "cross-env NODE_ENV=development webpack serve --open --inline --hot",
     "back": "nodemon server",
-    "dual": "concurrently --kill-others \"node server\" \"cross-env NODE_ENV=development webpack serve --open --inline --hot",
+    "dual": "concurrently --kill-others \"node server\" \"cross-env NODE_ENV=development webpack serve --open --inline --hot\"",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "serve": "webpack serve --mode=development"
   },
