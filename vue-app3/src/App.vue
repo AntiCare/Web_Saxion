@@ -1,8 +1,9 @@
 <template>
     <div class="container">
+        boo
         <div id="page">
             <transition name="fade">
-                <router-view></router-view>
+                <router-view>boo</router-view>
             </transition>
         </div>
     </div>
@@ -19,11 +20,11 @@
 
 <script>
 
-    export default{
-        data(){
-            return{
+    // export default{
+    //     data(){
+    //         return{
 
-            }
-        }
-    }
+    //         }
+    //     }
+    // }
 </script>
