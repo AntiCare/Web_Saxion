@@ -6,8 +6,10 @@ var app = express();
 import sqlite3 from "sqlite3";
 sqlite3.verbose();
 import { open } from "sqlite";
- // this is a top-level await 
- 
+ // this is a top-level await
+
+// db sql test
+
 // let  abb= (async () => {
     // open the database
     const db = await open({
@@ -35,7 +37,7 @@ app.set('port', (process.env.PORT || 3000));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
- 
+
 
 // Additional middleware which will set headers that we need on each request.
 app.use(function(req, res, next) {
@@ -50,7 +52,7 @@ app.use(function(req, res, next) {
     next();
 });
 
- 
+
 app.get("/", function(req, res, next) {
     res.json({ 'status': 'api server is running' })
 });
@@ -62,7 +64,7 @@ app.get("/api/enterdummy", async function (req, res, next) {
    let result =  await db.exec('INSERT INTO tbl VALUES ("sssssx")');
     // console.log(result);
     // return result
-    
+
     res.json({"status":"entered data in tbl"});
 });
 
@@ -71,7 +73,7 @@ app.get("/api/showdummy", async function(req, res, next) {
    let result = await db.all("SELECT * FROM tbl");
     // console.log(result);
     // return result
-    
+
     res.json(result);
 });
 
