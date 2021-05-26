@@ -1,13 +1,24 @@
+/* eslint-disable no-console */
+/* eslint-disable no-console */
 <template>
   <div id="app">
-    <Header />
+    <Header 
+      :numCorrect="numCorrect"
+      :numTotal="numTotal"
+    />
       <b-container class="bv-example-row">
       <b-row>
-      <b-col>1 of 3</b-col>
-      
+      <b-col sn="6" offset="3">
+        <QuestionBox 
+          v-if="questions.length"
+          :currentQuestion= "questions[index]"
+          :next="next"
+          :increment="increment"
+        />
+      </b-col>
       </b-row>
       </b-container>
-    <QuestionBox />
+    
   </div>
 </template>
 
@@ -20,6 +31,40 @@ export default {
   components: {
     Header,
     QuestionBox
+  },
+  
+data( ) {
+  return{
+    questions: [],
+    index: 0,
+    numCorrect: 0,
+    numTotal: 0
+  }
+},
+
+methods: {
+  next() {
+      this.index++
+  },
+  increment(isCorrect) {
+    if(isCorrect) {
+      this.numCorrect++
+    }
+    this.numTotal++
+  }
+},
+
+
+mounted: function(){
+    fetch ('https://opentdb.com/api.php?amount=10&category=27&difficulty=hard&type=multiple', {
+      method: 'get'
+    })
+    .then((response) => {
+      return response.json()
+    })
+    .then((jsonData) => {
+      this.questions = jsonData.results
+    })
   }
 }
 </script>
