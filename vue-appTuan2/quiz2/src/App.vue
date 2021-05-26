@@ -1,26 +1,26 @@
 <template>
   <div id="app">
     <Header />
-    
+    <QuestionBox />
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
-// import QuestionBox from './components/QuestionBox.vue'
+import Header from "./components/Header.vue";
+import QuestionBox from './components/QuestionBox.vue'
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    Header
-    // QuestionBox
-  }
-}
+    Header,
+    QuestionBox
+  },
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

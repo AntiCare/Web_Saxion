@@ -1,0 +1,1 @@
+npx watch-http-server -p 80 -c-1

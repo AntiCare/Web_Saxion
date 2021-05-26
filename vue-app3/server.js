@@ -1,16 +1,43 @@
-var fs = require('fs');
-var path = require('path');
-var express = require('express');
-var bodyParser = require('body-parser');
+import express from 'express';
+import bodyParser from 'body-parser';
 var app = express();
+// import data from './db/db-k'
 
-var PRODUCTS_FILE = path.join(__dirname, 'src/assets/js/components/product-data.json');
+import sqlite3 from "sqlite3";
+sqlite3.verbose();
+import { open } from "sqlite";
+ // this is a top-level await
+
+// db sql test
+
+// let  abb= (async () => {
+    // open the database
+    const db = await open({
+      filename: "./mydb.sql",
+      driver: sqlite3.Database,
+    });
+    // await db.exec("CREATE TABLE tbl (col TEXT)");
+    // await db.exec('INSERT INTO tbl VALUES ("test")');
+    // let result =  db.get("SELECT col FROM tbl WHERE col = ?", "test");
+    // console.log(result)
+// })()
+
+async function  abc() {
+     let result = await db.get("SELECT col FROM tbl WHERE col = ?", "test");
+    console.log(result);
+    return result
+}
+
+console.log(abc())
+// abc()
 
 app.set('port', (process.env.PORT || 3000));
 
-app.use('/', express.static(__dirname));
+// app.use('/', express.static(__dirname));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+
 
 // Additional middleware which will set headers that we need on each request.
 app.use(function(req, res, next) {
@@ -25,120 +52,58 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.get('/api/products', function(req, res) {
-    fs.readFile(PRODUCTS_FILE, function(err, data) {
-        if (err) {
-            console.error(err);
-            process.exit(1);
-        }
-        res.json(JSON.parse(data));
-    });
+
+app.get("/", function(req, res, next) {
+    res.json({ 'status': 'api server is running' })
 });
 
 
-app.get('/api/product/:id', function(req, res) {
+// dummy test for sql lite
+app.get("/api/enterdummy", async function (req, res, next) {
 
-    fs.readFile(PRODUCTS_FILE, function(err, data) {
-        if (err) {
-            console.error(err);
-            process.exit(1);
-        }
+   let result =  await db.exec('INSERT INTO tbl VALUES ("sssssx")');
+    // console.log(result);
+    // return result
 
-        var json = JSON.parse(data);
-
-        for(var i = 0; i <= json.length; i++)
-        {
-            if(json[i]['id'] == req.params.id)
-            {
-                res.json(json[i]);
-                break;
-            }
-        }
-    });
+    res.json({"status":"entered data in tbl"});
 });
 
-app.post('/api/product/create', function(req, res) {
+// dummy test for sql lite
+app.get("/api/showdummy", async function(req, res, next) {
+   let result = await db.all("SELECT * FROM tbl");
+    // console.log(result);
+    // return result
 
-    fs.readFile(PRODUCTS_FILE, function(err, data) {
-        if (err) {
-            console.error(err);
-            process.exit(1);
-        }
-        var products = JSON.parse(data);
-
-        var newProduct = {
-            id: Date.now(),
-            name: req.body.name,
-            price: req.body.price,
-        };
-        products.push(newProduct);
-        fs.writeFile(PRODUCTS_FILE, JSON.stringify(products, null, 4), function(err) {
-            if (err) {
-                console.error(err);
-                process.exit(1);
-            }
-            res.json(products);
-        });
-    });
+    res.json(result);
 });
 
-app.patch('/api/product/edit/:id', function(req, res) {
-    fs.readFile(PRODUCTS_FILE, function(err, data) {
-        if (err) {
-            console.error(err);
-            process.exit(1);
-        }
-        var products = JSON.parse(data);
-
-        for(var i = 0; i <= products.length; i++)
-        {
-            if(products[i]['id'] == req.params.id)
-            {
-                var product = products[i];
-                product.name = req.body.name;
-                product.price = req.body.price;
-
-                products.splice(i, 1);
-                products.push(product);
-
-                fs.writeFile(PRODUCTS_FILE, JSON.stringify(products, null, 4), function(err) {
-                    if (err) {
-                        console.error(err);
-                        process.exit(1);
-                    }
-                    res.json(products);
-                });
-                break;
-            }
-        }
-    });
+app.get('/api/products', function(req, res, next) {
+    data.returnAllProducts(res,next);
 });
 
-app.delete('/api/product/delete/:id', function(req, res) {
-    fs.readFile(PRODUCTS_FILE, function(err, data) {
-        if (err) {
-            console.error(err);
-            process.exit(1);
-        }
-        var products = JSON.parse(data);
 
-        for(var i = 0; i <= products.length; i++)
-        {
-            if(products[i]['id'] == req.params.id)
-            {
-                products.splice(i, 1);
+app.get('/api/product/:id', function(req, res, next) {
+    data.returnProduct(res, next,req.params.id);
+});
 
-                fs.writeFile(PRODUCTS_FILE, JSON.stringify(products, null, 4), function(err) {
-                    if (err) {
-                        console.error(err);
-                        process.exit(1);
-                    }
-                    res.json(products);
-                });
-                break;
-            }
-        }
-    });
+app.post('/api/product/create', function(req, res, next) {
+    var newProduct = {
+        name: req.body.name,
+        price: req.body.price,
+    };
+    data.createProduct(res, next, newProduct)
+});
+
+app.patch('/api/product/edit/:id', function(req, res, next) {
+    var updatedProduct = {
+        name: req.body.name,
+        price: req.body.price,
+    };
+    data.updateProduct(res, next, req.params.id, updatedProduct)
+});
+
+app.delete('/api/product/delete/:id', function(req, res, next) {
+    data.deleteProduct(res, next, req.params.id);
 });
 
 

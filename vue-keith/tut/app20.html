@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>we are fked tutorial</title>
+    <style>
+      .active {
+        color: blue;
+      }
+      .inactive {
+        color: pink;
+      }
+      .text-danger {
+        text-decoration: underline;
+        /* color: red; */
+      }
+      .wow {
+        font-size: xx-large;
+      }
+    </style>
+    <script src="./vue.js"></script>
+  </head>
+  <body>
+    <h1>App 20</h1>
+    <a href="https://vuejs.org/v2/guide/class-and-style.html" target="_blank"
+      >https://vuejs.org/v2/guide/class-and-style.html</a
+    >
+
+    <div id="watch-example">
+      <div>normal text</div>
+      <div v-bind:class="[isActive ? activeClass : inactiveClass, errorClass]">
+        class text
+      </div>
+    </div>
+
+    <script>
+      var watchExampleVM = new Vue({
+        el: "#watch-example",
+        data: {
+          isActive: false,
+          activeClass: "active",
+          inactiveClass: "inactive",
+          errorClass: "text-danger",
+        },
+        computed: {},
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>we are fked tutorial</title>
+    <style></style>
+    <script src="./vue.js"></script>
+  </head>
+  <body>
+    <h1>App 13</h1>
+    <a href="https://vuejs.org/v2/guide/computed.html" target="_blank"
+      >https://vuejs.org/v2/guide/computed.html</a
+    >
+   
+      <div id="demo">{{ fullName }}</div>
+     
+
+    <script>
+      var vm = new Vue({
+        el: "#demo",
+        data: {
+          firstName: "Foo",
+          lastName: "Bar",
+        },
+        computed: {
+          fullName: function () {
+            return this.firstName + " " + this.lastName;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
