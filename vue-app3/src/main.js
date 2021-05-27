@@ -8,6 +8,8 @@ Vue.use(VueResource);
 
 import App from './App.vue'
 import home from './assets/js/components/home.vue';
+import Login from "./assets/js/components/Login.vue";
+import Register from "./assets/js/components/Register.vue";
 
 // import AllProducts from './assets/js/components/all-products.vue';
 // import  CreateProduct from './assets/js/components/create-product.vue';
@@ -15,9 +17,22 @@ import home from './assets/js/components/home.vue';
 // import  DeleteProduct from './assets/js/components/delete-product.vue';
 
 const routes = [
+    //login page
+    {
+        path: '/login',
+        name: 'Login',
+        component: Login
+    },
+    //register page
+    {
+        path: '/register',
+        name: 'Register',
+        component:Register
+    },
+    //home page
   {
       name: 'home',
-      path: '/',
+      path: '/home',
       component: home
   },
   // {
