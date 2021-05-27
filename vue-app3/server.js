@@ -69,6 +69,18 @@ app.post('/api/login', function (req,res){
     res.send("200");
 });
 
+//get user register data.
+app.post('/api/register', function (req,res){
+    //get email & password
+    var email = req.param('email');
+    var password = req.param('password');
+    //test
+    console.log(email.toString());
+    console.log(password.toString());
+    //return rep to frontend.
+    res.send("200");
+});
+
 
 // dummy test for sql lite
 app.get("/api/enterdummy", async function (req, res, next) {
