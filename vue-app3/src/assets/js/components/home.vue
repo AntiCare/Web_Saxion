@@ -27,28 +27,28 @@
                   <div class="card-home-content">
                     <div class="card__post">
                       <div class="post-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        Saxion Introduction Days 2021: Saxion Campsite almost open
                       </div>
-                      <a href="#" class="post__btn">Read article</a>
+                      <a href='/news/1' class="post__btn">Read article</a>
                     </div>
                   </div>
                   <div class="card-home-content">
                     <div class="card__post">
                       <div class="post-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        Make up your minor! Find out more about our offer now
                       </div>
-                      <a href="#" class="post__btn">Read article</a>
+                      <a href='/news/2' class="post__btn">Read article</a>
                     </div>
                   </div>
                   <div class="card-home-content">
                     <div class="card__post">
                       <div class="post-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        04-05-2021 Corona-update: Request self-tests from May 5
                       </div>
-                      <a href="#" class="post__btn">Read article</a>
+                      <a href='/news/3' class="post__btn">Read article</a>
                     </div>
                   </div>
-                  <a href="#" class="card__btn">See all news</a>
+                  <a href="/news/list" class="card__btn">See all news</a>
                 </div>
 
                 <div class="card card__subjects">
