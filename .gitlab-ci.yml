@@ -58,10 +58,5 @@ publish_package:
     - echo "$SSH_PRIVATE_KEY" >> ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
     - scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -r vue-app3-front/dist/* studentportal.mywebartist.eu:public_html/
-
-      {
-        npm publish &&
-        echo "Successfully published version ${NPM_PACKAGE_VERSION} of ${NPM_PACKAGE_NAME} to GitLab's NPM registry: ${CI_PROJECT_URL}/-/packages"
-      } || {
-        echo "No new version of ${NPM_PACKAGE_NAME} published. This is most likely because version ${NPM_PACKAGE_VERSION} already exists in GitLab's NPM registry."
-      }
+   
+   
