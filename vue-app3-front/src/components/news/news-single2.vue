@@ -56,7 +56,7 @@
 
 <script>
 export default {
-  name: "news-single2"
+  name: 'news-single2'
 }
 </script>
 
@@ -118,7 +118,6 @@ section p
   font-size:20px;
   line-height:1.5;
 }
-
 
 .backToHome {
   font-size:2em;

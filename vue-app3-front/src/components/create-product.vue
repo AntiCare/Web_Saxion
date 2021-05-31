@@ -30,52 +30,50 @@
 </template>
 
 <script>
-    import Notification from './notifications.vue';
+import Notification from './notifications.vue'
 
-    export default{
-        data(){
-            return{
-                product:{},
-                notifications:[]
-            }
-        },
-
-        methods: {
-            addProduct: function()
-            {
-                // Validation
-                var price = parseFloat(this.product.price);
-                if(isNaN(price))
-                {
-                    this.notifications.push({
-                        type: 'danger',
-                        message: 'Price must be a number'
-                    });
-                    return false;
-                } else {
-                    this.product.price = this.product.price;
-                }
-
-                this.$http.post('http://localhost:3000/api/product/create', this.product, {
-                    headers : {
-                        'Content-Type' : 'application/json'
-                    }
-                }).then((response) => {
-                    this.notifications.push({
-                        type: 'success',
-                        message: 'Product created successfully'
-                    });
-                }, (response) => {
-                    this.notifications.push({
-                        type: 'error',
-                        message: 'Product not created'
-                    });
-                });
-            }
-        },
-
-        components: {
-            'notification' : Notification
-        }
+export default {
+  data () {
+    return {
+      product: {},
+      notifications: []
     }
+  },
+
+  methods: {
+    addProduct: function () {
+      // Validation
+      var price = parseFloat(this.product.price)
+      if (isNaN(price)) {
+        this.notifications.push({
+          type: 'danger',
+          message: 'Price must be a number'
+        })
+        return false
+      } else {
+        // this.product.price = this.product.price
+      }
+
+      this.$http.post('http://localhost:3000/api/product/create', this.product, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then((response) => {
+        this.notifications.push({
+          type: 'success',
+          message: 'Product created successfully'
+        })
+      }, (response) => {
+        this.notifications.push({
+          type: 'error',
+          message: 'Product not created'
+        })
+      })
+    }
+  },
+
+  components: {
+    notification: Notification
+  }
+}
 </script>

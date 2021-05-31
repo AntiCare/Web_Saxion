@@ -19,7 +19,7 @@
             </thead>
 
             <tbody>
-                <tr v-for="product in products">
+                <tr v-for="product in products" v-bind:key="product.id">
                     <td>{{ product.id }}</td>
                     <td>{{ product.name }}</td>
                     <td>{{ product.price }}</td>
@@ -35,51 +35,45 @@
 
 <script>
 
-    export default{
-        data(){
-            return{
-                products: [],
-                originalProducts: [],
-                productSearch: ''
-            }
-        },
-
-        created: function()
-        {
-            this.fetchProductData();
-        },
-
-        methods: {
-            fetchProductData: function()
-            {
-                this.$http.get('http://localhost:3000/api/products').then((response) => {
-                    this.products = response.body;
-                    this.originalProducts = this.products;
-                }, (response) => {
-
-                });
-            },
-
-            searchProducts: function()
-            {
-                if(this.productSearch == '')
-                {
-                    this.products = this.originalProducts;
-                    return;
-                }
-
-                var searchedProducts = [];
-                for(var i = 0; i < this.originalProducts.length; i++)
-                {
-                    var productName = this.originalProducts[i]['name'].toLowerCase();
-                    if(productName.indexOf(this.productSearch.toLowerCase()) >= 0)
-                    {
-                        searchedProducts.push(this.originalProducts[i]);
-                    }
-                }
-
-                this.products = searchedProducts;
-            }
-        }
+export default {
+  data () {
+    return {
+      products: [],
+      originalProducts: [],
+      productSearch: ''
     }
+  },
+
+  created: function () {
+    this.fetchProductData()
+  },
+
+  methods: {
+    fetchProductData: function () {
+      this.$http.get('http://localhost:3000/api/products').then((response) => {
+        this.products = response.body
+        this.originalProducts = this.products
+      }, (response) => {
+
+      })
+    },
+
+    searchProducts: function () {
+      if (this.productSearch === '') {
+        this.products = this.originalProducts
+        return
+      }
+
+      var searchedProducts = []
+      for (var i = 0; i < this.originalProducts.length; i++) {
+        var productName = this.originalProducts[i].name.toLowerCase()
+        if (productName.indexOf(this.productSearch.toLowerCase()) >= 0) {
+          searchedProducts.push(this.originalProducts[i])
+        }
+      }
+
+      this.products = searchedProducts
+    }
+  }
+}
 </script>

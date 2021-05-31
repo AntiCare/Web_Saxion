@@ -13,42 +13,42 @@
 </template>
 
 <script>
-export default{
+export default {
   methods: {
-    //check the format of email & password input.
-    checkLoginFormat:function(){
-      var emailInput = document.forms["mForm"]["email"].value;
-      var a = emailInput.indexOf("@");
-      var b = emailInput.lastIndexOf(".");
-      if (a<1 || b<a+2 || b+2 >= emailInput.length){
-        alert("Email format error! Please enter the correct email.");
-        return false;
+    // check the format of email & password input.
+    checkLoginFormat: function () {
+      var emailInput = document.forms.mForm.email.value
+      var a = emailInput.indexOf('@')
+      var b = emailInput.lastIndexOf('.')
+      if (a < 1 || b < a + 2 || b + 2 >= emailInput.length) {
+        alert('Email format error! Please enter the correct email.')
+        return false
       }
-      //get the data from form.
-      const formData= new FormData(this.$refs['mForm']);
-      const data={};
-      for(let [key,val] of formData.entries()){
-        Object.assign(data,{[key]:val});
+      // get the data from form.
+      const formData = new FormData(this.$refs.mForm)
+      const data = {}
+      for (const [key, val] of formData.entries()) {
+        Object.assign(data, { [key]: val })
       }
 
-      console.log(JSON.stringify(data));
+      console.log(JSON.stringify(data))
       // use fetch to send data.
-      fetch('http://localhost:3000/api/login',{
-        method:'post',
-        headers:{
+      fetch('http://localhost:3000/api/login', {
+        method: 'post',
+        headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          Accept: 'application/json'
         },
-        body:JSON.stringify(data)
-      }).then(res=>res.json())
-          .then(data=>{
-            //get the respond from backend.
-            //if status code:200.
-            //jump to home page
-            console.log(data)
-            window.location.href='/home';
-          })
-    },
+        body: JSON.stringify(data)
+      }).then(res => res.json())
+        .then(data => {
+          // get the respond from backend.
+          // if status code:200.
+          // jump to home page
+          console.log(data)
+          window.location.href = '/home'
+        })
+    }
   }
 }
 </script>
@@ -132,6 +132,5 @@ h2
   font-weight: bold;
   text-decoration: none;
 }
-
 
 </style>

@@ -15,7 +15,6 @@
       </div>
     </a>
 
-
     <a href="/news/2">
       <div class="card">
         <div class="imgBx">
@@ -29,7 +28,6 @@
 
       </div>
     </a>
-
 
     <a href="/news/3">
       <div class="card">
@@ -45,14 +43,12 @@
       </div>
     </a>
 
-
-
   </div>
 </template>
 
 <script>
 export default {
-  name: "news-list"
+  name: 'news-list'
 }
 </script>
 

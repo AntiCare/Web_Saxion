@@ -36,7 +36,6 @@
       More information on (the use of) self-testing can be found at www.zelftestonderwijs.nl.
     </p>
 
-
     <h2>
       All the information about the coronavirus in a clear overview
     </h2>
@@ -50,8 +49,6 @@
       Useful Links
     </p>
 
-
-
     <a href='/home'>
       <div class="backToHome"  >
         <a class="a-details"  >Back</a>
@@ -63,7 +60,7 @@
 
 <script>
 export default {
-  name: "news-single1"
+  name: 'news-single1'
 }
 </script>
 
@@ -125,7 +122,6 @@ section p
   font-size:20px;
   line-height:1.5;
 }
-
 
 .backToHome {
   font-size:2em;
