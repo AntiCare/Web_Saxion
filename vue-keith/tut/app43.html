@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>we are fked tutorial</title>
+    <style></style>
+    <script src="./vue.js"></script>
+  </head>
+  <body>
+    <h1>App 43</h1>
+    <a href="https://vuejs.org/v2/guide/forms.html#Checkbox" target="_blank"
+      >https://vuejs.org/v2/guide/forms.html#Checkbox</a
+    >
+
+    <div id="example-3">
+      <select v-model="selected">
+        <option disabled value="">Please select one</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select>
+      <span>Selected: {{ selected }}</span>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#example-3",
+        data: {
+          selected: "",
+        },
+      });
+    </script>
+  </body>
+</html>

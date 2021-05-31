@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>we are fked tutorial</title>
+    <style></style>
+    <script src="./vue.js"></script>
+  </head>
+  <body>
+    <h1>App 42</h1>
+    <a href="https://vuejs.org/v2/guide/forms.html#Checkbox" target="_blank"
+      >https://vuejs.org/v2/guide/forms.html#Checkbox</a
+    >
+
+    <div id="example-3">
+      <input type="radio" id="one" value="One" v-model="picked" />
+      <label for="one">One</label>
+      <br />
+      <input type="radio" id="two" value="Two" v-model="picked" />
+      <label for="two">Two</label>
+      <br />
+      <span>Picked: {{ picked }}</span>
+    </div>
+
+    <script>
+      new Vue({
+        el: "#example-3",
+        data: {
+          picked: "Two",
+        },
+      });
+    </script>
+  </body>
+</html>
