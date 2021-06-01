@@ -8,6 +8,7 @@ import news1 from '@/components/news/news-single1'
 import news2 from '@/components/news/news-single2'
 import news3 from '@/components/news/news-single3'
 import newsList from '@/components/news/news-list'
+import Assignment from '@/components/Assignment'
 
 Vue.use(VueRouter)
 
@@ -67,6 +68,16 @@ const routes = [
     path: '/news/list',
     component: newsList
   }
+
+  ,
+  // news list
+  {
+    name: 'assignment',
+    path: '/assignment',
+    component: Assignment
+  }
+
+
 ]
 
 const router = new VueRouter({
