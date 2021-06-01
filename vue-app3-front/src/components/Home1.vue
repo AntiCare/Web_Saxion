@@ -50,18 +50,7 @@
               <a href="/news/list" class="card__btn">See all news</a>
             </div>
 
-            <div class="card card__subjects">
-              <div class="card__heading">
-                Subjects
-              </div>
-              <div class="subjects-quartiles">
-                Q1 | Q2 | Q3 | Q4
-              </div>
-              <a href="#" class="subject-item">Compilers and operating systems</a>
-              <a href="#" class="subject-item">Dev Tools</a>
-              <a href="#" class="subject-item">IT and Law</a>
-              <a href="#" class="subject-item">Project networking</a>
-            </div>
+            <SubjectsCard></SubjectsCard>
             <div class="card card__home-page">
               <div class="card__heading">
                 Exam schedule
@@ -142,7 +131,7 @@
                     <img src="https://source.unsplash.com/random/200x150" alt="random photo">
                   </div>
                   <div class="find-item__contact-details">
-                    <div class="find-item__text"><strong>Name:</strong> Dick Heijink </div>
+                    <div class="find-item__text"><strong>Name:</strong> Dick Heijink</div>
                     <div class="find-item__text"><strong>Email:</strong> 470934@student.saxion.nl</div>
                     <div class="find-item__text"><strong>Code:</strong> 470934</div>
                   </div>
@@ -152,7 +141,7 @@
                     <img src="https://source.unsplash.com/random/200x150" alt="random photo">
                   </div>
                   <div class="find-item__contact-details">
-                    <div class="find-item__text"><strong>Name:</strong> Dick Heijink </div>
+                    <div class="find-item__text"><strong>Name:</strong> Dick Heijink</div>
                     <div class="find-item__text"><strong>Email:</strong> 470934@student.saxion.nl</div>
                     <div class="find-item__text"><strong>Code:</strong> 470934</div>
                   </div>
@@ -162,7 +151,7 @@
                     <img src="https://source.unsplash.com/random/200x150" alt="random photo">
                   </div>
                   <div class="find-item__contact-details">
-                    <div class="find-item__text"><strong>Name:</strong> Dick Heijink </div>
+                    <div class="find-item__text"><strong>Name:</strong> Dick Heijink</div>
                     <div class="find-item__text"><strong>Email:</strong> 470934@student.saxion.nl</div>
                     <div class="find-item__text"><strong>Code:</strong> 470934</div>
                   </div>
@@ -172,7 +161,7 @@
                     <img src="https://source.unsplash.com/random/200x150" alt="random photo">
                   </div>
                   <div class="find-item__contact-details">
-                    <div class="find-item__text"><strong>Name:</strong> Dick Heijink </div>
+                    <div class="find-item__text"><strong>Name:</strong> Dick Heijink</div>
                     <div class="find-item__text"><strong>Email:</strong> 470934@student.saxion.nl</div>
                     <div class="find-item__text"><strong>Code:</strong> 470934</div>
                   </div>
@@ -182,7 +171,7 @@
                     <img src="https://source.unsplash.com/random/200x150" alt="random photo">
                   </div>
                   <div class="find-item__contact-details">
-                    <div class="find-item__text"><strong>Name:</strong> Dick Heijink </div>
+                    <div class="find-item__text"><strong>Name:</strong> Dick Heijink</div>
                     <div class="find-item__text"><strong>Email:</strong> 470934@student.saxion.nl</div>
                     <div class="find-item__text"><strong>Code:</strong> 470934</div>
                   </div>
@@ -360,8 +349,12 @@
 </template>
 
 <script>
+import Subjects from './home-page/Subjects-card'
+import SubjectsCard from "@/components/home-page/Subjects-card";
 
-export default {}
+export default {
+  components: {SubjectsCard, Subjects}
+}
 </script>
 
 <style>
@@ -715,10 +708,12 @@ a {
   color: rgb(255, 255, 255) !important;
   font-size: 14px !important;
 }
+
 .v-text-field__slot input::placeholder {
   color: rgb(190, 181, 181) !important;
   font-size: 14px !important;
 }
+
 .v-input__slot fieldset {
   color: rgb(255, 255, 255) !important;
 }
