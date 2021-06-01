@@ -1,365 +1,367 @@
 <template>
-    <div id="home">
+  <div id="home">
 
-      <nav class="menu">
-        <div class="container">
-          <div class="menu__inner">
-            <a href="#" class="menu__logo">LOGO</a>
-            <div class="menu__buttons">
-              <a href="#" class="menu__button menu__button--active">Home</a>
-              <a href="#" class="menu__button">Tab 1</a>
-              <a href="#" class="menu__button">Tab 2</a>
-              <a href="#" class="menu__button">Tab 3</a>
+    <!--    <nav class="menu">-->
+    <!--      <div class="container">-->
+    <!--        <div class="menu__inner">-->
+    <!--          <a href="#" class="menu__logo">LOGO</a>-->
+    <!--          <div class="menu__buttons">-->
+    <!--            <a href="#" class="menu__button menu__button&#45;&#45;active">Home</a>-->
+    <!--            <a href="#" class="menu__button">Tab 1</a>-->
+    <!--            <a href="#" class="menu__button">Tab 2</a>-->
+    <!--            <a href="#" class="menu__button">Tab 3</a>-->
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </nav>-->
+
+    <section class="home-content">
+      <div class="container">
+        <div class="home-content__inner">
+          <div class="home-content__left">
+            <div class="card card__home-page">
+              <div class="card__heading">
+                News
+              </div>
+              <div class="card-home-content">
+                <div class="card__post">
+                  <div class="post-text">
+                    Saxion Introduction Days 2021: Saxion Campsite almost open
+                  </div>
+                  <a href='/news/1' class="post__btn">Read article</a>
+                </div>
+              </div>
+              <div class="card-home-content">
+                <div class="card__post">
+                  <div class="post-text">
+                    Make up your minor! Find out more about our offer now
+                  </div>
+                  <a href='/news/2' class="post__btn">Read article</a>
+                </div>
+              </div>
+              <div class="card-home-content">
+                <div class="card__post">
+                  <div class="post-text">
+                    04-05-2021 Corona-update: Request self-tests from May 5
+                  </div>
+                  <a href='/news/3' class="post__btn">Read article</a>
+                </div>
+              </div>
+              <a href="/news/list" class="card__btn">See all news</a>
+            </div>
+
+            <div class="card card__subjects">
+              <div class="card__heading">
+                Subjects
+              </div>
+              <div class="subjects-quartiles">
+                Q1 | Q2 | Q3 | Q4
+              </div>
+              <a href="#" class="subject-item">Compilers and operating systems</a>
+              <a href="#" class="subject-item">Dev Tools</a>
+              <a href="#" class="subject-item">IT and Law</a>
+              <a href="#" class="subject-item">Project networking</a>
+            </div>
+            <div class="card card__home-page">
+              <div class="card__heading">
+                Exam schedule
+              </div>
+              <div class="exam-card__inner">
+                <div class="exam-item">
+                  <div class="exam__time">21/06/21 08:30</div>
+                  <div class="exam__name">IT AND LAW</div>
+                </div>
+                <div class="exam-item">
+                  <div class="exam__time">21/06/21 08:30</div>
+                  <div class="exam__name">Dev tools</div>
+                </div>
+                <div class="exam-item">
+                  <div class="exam__time">21/06/21 08:30</div>
+                  <div class="exam__name">Concurrency</div>
+                </div>
+                <div class="exam-item">
+                  <div class="exam__time">21/06/21 08:30</div>
+                  <div class="exam__name">web tech</div>
+                </div>
+              </div>
+            </div>
+            <div class="card card__home-page">
+              <div class="card__heading">
+                Email preview
+              </div>
+              <div class="email-card__inner">
+                <div class="email-item">
+                  <div class="email__time">21/06/21 08:30</div>
+                  <div class="email__content">
+                    <div class="exam__sender">Sender</div>
+                    <div class="exam__title">Title</div>
+                  </div>
+                </div>
+                <div class="email-item">
+                  <div class="email__time">21/06/21 08:30</div>
+                  <div class="email__content">
+                    <div class="exam__sender">Sender</div>
+                    <div class="exam__title">Title</div>
+                  </div>
+                </div>
+                <div class="email-item">
+                  <div class="email__time">21/06/21 08:30</div>
+                  <div class="email__content">
+                    <div class="exam__sender">Sender</div>
+                    <div class="exam__title">Title</div>
+                  </div>
+                </div>
+                <div class="email-item">
+                  <div class="email__time">21/06/21 08:30</div>
+                  <div class="email__content">
+                    <div class="exam__sender">Sender</div>
+                    <div class="exam__title">Title</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card card__home-page find__card">
+              <div class="card__heading">
+                Find
+              </div>
+              <div class="find-card__inner">
+                <form action="/" class="find-form">
+                  <v-text-field
+                    label="Teacher name"
+                    placeholder="Dick"
+                    color="rgb(255, 255, 255)"
+                    outlined
+                    filled
+                    light
+                    rounded
+                    dense
+                  ></v-text-field>
+                </form>
+                <div class="find-item">
+                  <div class="find-item__image">
+                    <img src="https://source.unsplash.com/random/200x150" alt="random photo">
+                  </div>
+                  <div class="find-item__contact-details">
+                    <div class="find-item__text"><strong>Name:</strong> Dick Heijink </div>
+                    <div class="find-item__text"><strong>Email:</strong> 470934@student.saxion.nl</div>
+                    <div class="find-item__text"><strong>Code:</strong> 470934</div>
+                  </div>
+                </div>
+                <div class="find-item">
+                  <div class="find-item__image">
+                    <img src="https://source.unsplash.com/random/200x150" alt="random photo">
+                  </div>
+                  <div class="find-item__contact-details">
+                    <div class="find-item__text"><strong>Name:</strong> Dick Heijink </div>
+                    <div class="find-item__text"><strong>Email:</strong> 470934@student.saxion.nl</div>
+                    <div class="find-item__text"><strong>Code:</strong> 470934</div>
+                  </div>
+                </div>
+                <div class="find-item">
+                  <div class="find-item__image">
+                    <img src="https://source.unsplash.com/random/200x150" alt="random photo">
+                  </div>
+                  <div class="find-item__contact-details">
+                    <div class="find-item__text"><strong>Name:</strong> Dick Heijink </div>
+                    <div class="find-item__text"><strong>Email:</strong> 470934@student.saxion.nl</div>
+                    <div class="find-item__text"><strong>Code:</strong> 470934</div>
+                  </div>
+                </div>
+                <div class="find-item">
+                  <div class="find-item__image">
+                    <img src="https://source.unsplash.com/random/200x150" alt="random photo">
+                  </div>
+                  <div class="find-item__contact-details">
+                    <div class="find-item__text"><strong>Name:</strong> Dick Heijink </div>
+                    <div class="find-item__text"><strong>Email:</strong> 470934@student.saxion.nl</div>
+                    <div class="find-item__text"><strong>Code:</strong> 470934</div>
+                  </div>
+                </div>
+                <div class="find-item">
+                  <div class="find-item__image">
+                    <img src="https://source.unsplash.com/random/200x150" alt="random photo">
+                  </div>
+                  <div class="find-item__contact-details">
+                    <div class="find-item__text"><strong>Name:</strong> Dick Heijink </div>
+                    <div class="find-item__text"><strong>Email:</strong> 470934@student.saxion.nl</div>
+                    <div class="find-item__text"><strong>Code:</strong> 470934</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="card card__home-page">
+              <div class="card__heading">
+                Subjects
+              </div>
+              <div class="grades-years">
+                Year 1 | Year 2 | Year 3 | Year 4
+              </div>
+              <div class="progress-bar-section">
+                <div class="progress-bar">
+                  <div class="progress-bar__outer"></div>
+                  <div class="progress-bar__inner"></div>
+                </div>
+                <div class="spider-map-btn">
+                </div>
+              </div>
+              <div class="grades__inner">
+                <div class="grade">
+                  <div class="subject-name">
+                    dev tools
+                  </div>
+                  <div class="grade-result">
+                    10
+                  </div>
+                </div>
+              </div>
+              <div class="grades__inner">
+                <div class="grade">
+                  <div class="subject-name">
+                    dev tools
+                  </div>
+                  <div class="grade-result">
+                    10
+                  </div>
+                </div>
+              </div>
+              <div class="grades__inner">
+                <div class="grade">
+                  <div class="subject-name">
+                    dev tools
+                  </div>
+                  <div class="grade-result">
+                    10
+                  </div>
+                </div>
+              </div>
+              <div class="grades__inner">
+                <div class="grade">
+                  <div class="subject-name">
+                    dev tools
+                  </div>
+                  <div class="grade-result">
+                    10
+                  </div>
+                </div>
+              </div>
+              <div class="grades__inner">
+                <div class="grade">
+                  <div class="subject-name">
+                    dev tools
+                  </div>
+                  <div class="grade-result">
+                    10
+                  </div>
+                </div>
+              </div>
+              <div class="grades__inner">
+                <div class="grade">
+                  <div class="subject-name">
+                    dev tools
+                  </div>
+                  <div class="grade-result">
+                    10
+                  </div>
+                </div>
+              </div>
+              <div class="grades__inner">
+                <div class="grade">
+                  <div class="subject-name">
+                    dev tools
+                  </div>
+                  <div class="grade-result">
+                    10
+                  </div>
+                </div>
+              </div>
+              <div class="grades__inner">
+                <div class="grade">
+                  <div class="subject-name">
+                    dev tools
+                  </div>
+                  <div class="grade-result">
+                    10
+                  </div>
+                </div>
+              </div>
+              <div class="grades__inner">
+                <div class="grade">
+                  <div class="subject-name">
+                    dev tools
+                  </div>
+                  <div class="grade-result">
+                    10
+                  </div>
+                </div>
+              </div>
+
+              <div class="grades__inner">
+                <div class="grade">
+                  <div class="subject-name">
+                    dev tools
+                  </div>
+                  <div class="grade-result">
+                    10
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="home-content__right">
+            <div class="card card__home-page schedule-card">
+              <div class="card__heading">
+                Schedule
+              </div>
+              <div class="schedule__inner">
+                <div class="schedule-item">
+                  <div class="schedule__time">8:30</div>
+                  <div class="schedule__subject">Dev tools</div>
+                </div>
+                <div class="schedule-item">
+                  <div class="schedule__time">8:30</div>
+                  <div class="schedule__subject">Dev tools</div>
+                </div>
+                <div class="schedule-item">
+                  <div class="schedule__time">8:30</div>
+                  <div class="schedule__subject">Dev tools</div>
+                </div>
+                <div class="schedule-item">
+                  <div class="schedule__time">8:30</div>
+                  <div class="schedule__subject">Dev tools</div>
+                </div>
+                <div class="schedule-item">
+                  <div class="schedule__time">8:30</div>
+                  <div class="schedule__subject">Dev tools</div>
+                </div>
+                <div class="schedule-item">
+                  <div class="schedule__time">8:30</div>
+                  <div class="schedule__subject">Dev tools</div>
+                </div>
+                <div class="schedule-item">
+                  <div class="schedule__time">8:30</div>
+                  <div class="schedule__subject">Dev tools</div>
+                </div>
+                <div class="schedule-item">
+                  <div class="schedule__time">8:30</div>
+                  <div class="schedule__subject">Dev tools</div>
+                </div>
+              </div>
+              <a href="#" class="card__btn">See entire schedule</a>
             </div>
           </div>
         </div>
-      </nav>
 
-      <section class="home-content">
-        <div class="container">
-          <div class="home-content__inner">
-            <div class="home-content__left">
-              <div class="home-content__row">
-                <div class="card card__home-page">
-                  <div class="card__heading">
-                    News
-                  </div>
-                  <div class="card-home-content">
-                    <div class="card__post">
-                      <div class="post-text">
-                        Saxion Introduction Days 2021: Saxion Campsite almost open
-                      </div>
-                      <a href='/news/1' class="post__btn">Read article</a>
-                    </div>
-                  </div>
-                  <div class="card-home-content">
-                    <div class="card__post">
-                      <div class="post-text">
-                        Make up your minor! Find out more about our offer now
-                      </div>
-                      <a href='/news/2' class="post__btn">Read article</a>
-                    </div>
-                  </div>
-                  <div class="card-home-content">
-                    <div class="card__post">
-                      <div class="post-text">
-                        04-05-2021 Corona-update: Request self-tests from May 5
-                      </div>
-                      <a href='/news/3' class="post__btn">Read article</a>
-                    </div>
-                  </div>
-                  <a href="/news/list" class="card__btn">See all news</a>
-                </div>
+      </div>
+    </section>
 
-                <div class="card card__subjects">
-                  <div class="card__heading">
-                    Subjects
-                  </div>
-                  <div class="subjects-quartiles">
-                    Q1 | Q2 | Q3 | Q4
-                  </div>
-                  <a href="#" class="subject-item">Compilers and operating systems</a>
-                  <a href="#" class="subject-item">Dev Tools</a>
-                  <a href="#" class="subject-item">IT and Law</a>
-                  <a href="#" class="subject-item">Project networking</a>
-                </div>
-                <div class="card card__home-page">
-                  <div class="card__heading">
-                    Exam schedule
-                  </div>
-                  <div class="exam-card__inner">
-                    <div class="exam-item">
-                      <div class="exam__time">21/06/21 08:30</div>
-                      <div class="exam__name">IT AND LAW</div>
-                    </div>
-                    <div class="exam-item">
-                      <div class="exam__time">21/06/21 08:30</div>
-                      <div class="exam__name">Dev tools</div>
-                    </div>
-                    <div class="exam-item">
-                      <div class="exam__time">21/06/21 08:30</div>
-                      <div class="exam__name">Concurrency</div>
-                    </div>
-                    <div class="exam-item">
-                      <div class="exam__time">21/06/21 08:30</div>
-                      <div class="exam__name">web tech</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="home-content__row">
-                <div class="card card__home-page">
-                  <div class="card__heading">
-                    Email preview
-                  </div>
-                  <div class="email-card__inner">
-                    <div class="email-item">
-                      <div class="email__time">21/06/21 08:30</div>
-                      <div class="email__content">
-                        <div class="exam__sender">Sender</div>
-                        <div class="exam__title">Title</div>
-                      </div>
-                    </div>
-                    <div class="email-item">
-                      <div class="email__time">21/06/21 08:30</div>
-                      <div class="email__content">
-                        <div class="exam__sender">Sender</div>
-                        <div class="exam__title">Title</div>
-                      </div>
-                    </div>
-                    <div class="email-item">
-                      <div class="email__time">21/06/21 08:30</div>
-                      <div class="email__content">
-                        <div class="exam__sender">Sender</div>
-                        <div class="exam__title">Title</div>
-                      </div>
-                    </div>
-                    <div class="email-item">
-                      <div class="email__time">21/06/21 08:30</div>
-                      <div class="email__content">
-                        <div class="exam__sender">Sender</div>
-                        <div class="exam__title">Title</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card card__home-page find__card">
-                  <div class="card__heading">
-                    Find
-                  </div>
-                  <div class="find-card__inner">
-                    <form action="/" class="find-form">
-                      <label for="teacher-name" class="find_label"> teacher name</label>
-                      <input id="teacher-name" type="text">
-                    </form>
-                    <div class="find-item">
-                      <div class="find-item__image">
-                        <img src="https://source.unsplash.com/random/200x150" alt="random photo">
-                      </div>
-                      <div class="find-item__contact-details">
-                        <div class="find-item__text">Name</div>
-                        <div class="find-item__text">Email</div>
-                        <div class="find-item__text">Code</div>
-                      </div>
-                    </div>
-                    <div class="find-item">
-                      <div class="find-item__image">
-                        <img src="https://source.unsplash.com/random/200x150" alt="random photo">
-                      </div>
-                      <div class="find-item__contact-details">
-                        <div class="find-item__text">Name</div>
-                        <div class="find-item__text">Email</div>
-                        <div class="find-item__text">Code</div>
-                      </div>
-                    </div>
-                    <div class="find-item">
-                      <div class="find-item__image">
-                        <img src="https://source.unsplash.com/random/200x150" alt="random photo">
-                      </div>
-                      <div class="find-item__contact-details">
-                        <div class="find-item__text">Name</div>
-                        <div class="find-item__text">Email</div>
-                        <div class="find-item__text">Code</div>
-                      </div>
-                    </div>
-                    <div class="find-item">
-                      <div class="find-item__image">
-                        <img src="https://source.unsplash.com/random/200x150" alt="random photo">
-                      </div>
-                      <div class="find-item__contact-details">
-                        <div class="find-item__text">Name</div>
-                        <div class="find-item__text">Email</div>
-                        <div class="find-item__text">Code</div>
-                      </div>
-                    </div>
-                    <div class="find-item">
-                      <div class="find-item__image">
-                        <img src="https://source.unsplash.com/random/200x150" alt="random photo">
-                      </div>
-                      <div class="find-item__contact-details">
-                        <div class="find-item__text">Name</div>
-                        <div class="find-item__text">Email</div>
-                        <div class="find-item__text">Code</div>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-                <div class="card card__home-page">
-                  <div class="card__heading">
-                    Subjects
-                  </div>
-                  <div class="grades-years">
-                    Year 1 | Year 2 | Year 3 | Year 4
-                  </div>
-                  <div class="progress-bar-section">
-                    <div class="progress-bar">
-                      <div class="progress-bar__outer"></div>
-                      <div class="progress-bar__inner"></div>
-                    </div>
-                    <div class="spider-map-btn">
-                    </div>
-                  </div>
-                  <div class="grades__inner">
-                    <div class="grade">
-                      <div class="subject-name">
-                        dev tools
-                      </div>
-                      <div class="grade-result">
-                        10
-                      </div>
-                    </div>
-                  </div>
-                  <div class="grades__inner">
-                    <div class="grade">
-                      <div class="subject-name">
-                        dev tools
-                      </div>
-                      <div class="grade-result">
-                        10
-                      </div>
-                    </div>
-                  </div>
-                  <div class="grades__inner">
-                    <div class="grade">
-                      <div class="subject-name">
-                        dev tools
-                      </div>
-                      <div class="grade-result">
-                        10
-                      </div>
-                    </div>
-                  </div>
-                  <div class="grades__inner">
-                    <div class="grade">
-                      <div class="subject-name">
-                        dev tools
-                      </div>
-                      <div class="grade-result">
-                        10
-                      </div>
-                    </div>
-                  </div>
-                  <div class="grades__inner">
-                    <div class="grade">
-                      <div class="subject-name">
-                        dev tools
-                      </div>
-                      <div class="grade-result">
-                        10
-                      </div>
-                    </div>
-                  </div>
-                  <div class="grades__inner">
-                    <div class="grade">
-                      <div class="subject-name">
-                        dev tools
-                      </div>
-                      <div class="grade-result">
-                        10
-                      </div>
-                    </div>
-                  </div>
-                  <div class="grades__inner">
-                    <div class="grade">
-                      <div class="subject-name">
-                        dev tools
-                      </div>
-                      <div class="grade-result">
-                        10
-                      </div>
-                    </div>
-                  </div>
-                  <div class="grades__inner">
-                    <div class="grade">
-                      <div class="subject-name">
-                        dev tools
-                      </div>
-                      <div class="grade-result">
-                        10
-                      </div>
-                    </div>
-                  </div>
-                  <div class="grades__inner">
-                    <div class="grade">
-                      <div class="subject-name">
-                        dev tools
-                      </div>
-                      <div class="grade-result">
-                        10
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="grades__inner">
-                    <div class="grade">
-                      <div class="subject-name">
-                        dev tools
-                      </div>
-                      <div class="grade-result">
-                        10
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-            <div class="home-content__right">
-              <div class="card card__home-page schedule-card">
-                <div class="card__heading">
-                  Schedule
-                </div>
-                <div class="schedule__inner">
-                  <div class="schedule-item">
-                    <div class="schedule__time">8:30</div>
-                    <div class="schedule__subject">Dev tools</div>
-                  </div>
-                  <div class="schedule-item">
-                    <div class="schedule__time">8:30</div>
-                    <div class="schedule__subject">Dev tools</div>
-                  </div>
-                  <div class="schedule-item">
-                    <div class="schedule__time">8:30</div>
-                    <div class="schedule__subject">Dev tools</div>
-                  </div>
-                  <div class="schedule-item">
-                    <div class="schedule__time">8:30</div>
-                    <div class="schedule__subject">Dev tools</div>
-                  </div>
-                  <div class="schedule-item">
-                    <div class="schedule__time">8:30</div>
-                    <div class="schedule__subject">Dev tools</div>
-                  </div>
-                  <div class="schedule-item">
-                    <div class="schedule__time">8:30</div>
-                    <div class="schedule__subject">Dev tools</div>
-                  </div>
-                  <div class="schedule-item">
-                    <div class="schedule__time">8:30</div>
-                    <div class="schedule__subject">Dev tools</div>
-                  </div>
-                  <div class="schedule-item">
-                    <div class="schedule__time">8:30</div>
-                    <div class="schedule__subject">Dev tools</div>
-                  </div>
-                </div>
-                <a href="#" class="card__btn">See entire schedule</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-    </div>
+  </div>
 </template>
 
 <script>
 
-export default {
-
-}
+export default {}
 </script>
 
 <style>
@@ -382,13 +384,13 @@ export default {
 
 a {
   text-decoration: none;
-  color: inherit;
+  color: inherit !important;
 }
 
 .container {
   max-width: 1200px;
   width: 100%;
-  padding: 0 .5rem;
+  padding: 0 20px;
   margin: 0 auto;
 }
 
@@ -397,13 +399,14 @@ a {
   align-items: center;
   border-bottom: 1px solid black;
 }
+
 .menu__inner {
   width: 100%;
   display: flex;
-  padding-top: .75rem;
+  padding-top: 20px;
 }
 
-.menu__logo{
+.menu__logo {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -411,13 +414,13 @@ a {
 
 .menu__buttons {
   display: flex;
-  margin: 0 .5rem;
+  margin: 0 15px;
 }
 
 .menu__button {
   display: flex;
   align-items: center;
-  padding: .5rem 1rem;
+  padding: 8px 16px;
   color: white;
   background-color: var(--main-gray);;
   border: 1px solid black;
@@ -433,66 +436,61 @@ a {
 .home-content {
   display: flex;
   align-items: center;
-  padding-top: 1rem;
-
+  padding-top: 20px;
+  background-color: #e8ffea;
+  padding-bottom: 150px;
 }
+
 .home-content__inner {
   display: flex;
-  /*align-items: center;*/
   justify-content: space-between;
 }
+
 .home-content__left {
-  display: flex;
-  /*align-items: center;*/
-  justify-content: space-between;
-  width: 70%;
-  flex-wrap: wrap;
-
-}
-.home-content__row {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-top: 25px;
+  display: grid;
+  grid-template:
+            "a b c"
+            "d e f";
+  grid-column-gap: 15px;
+  row-gap: 15px;
 }
+
 .home-content__right {
+  /*width: 30%;*/
   display: flex;
-  align-items: center;
   justify-content: space-evenly;
-  width: 30%;
-
+  padding-left: 15px;
 }
 
-.card{
-  max-width: 19rem;
-  width: 100%;
-  height: 29rem;
+.card {
+  width: 260px;
+  height: 350px;
   display: flex;
   flex-direction: column;
   border-radius: 4px;
   overflow-x: hidden;
   overflow-y: auto;
-  text-align:justify;
+  text-align: justify;
   text-transform: uppercase;
   background-color: var(--main-dark);
 }
 
-.card__heading{
+.card__heading {
   width: 100%;
-  height: 34px;
-  padding-left: 10px;
-  padding-top: 7px;
-  font-size: 1.4rem;
+  padding: 5px 0 5px 5px;
+  font-size: 18px;
   font-weight: bold;
   color: var(--green);
   background-color: var(--main-lightgray);
 }
+
 .card-home-content {
   padding: 4px;
   color: white;
-  font-size: .95rem;
+  font-size: 20px;
 }
+
 .card__post {
   display: flex;
   flex-direction: column;
@@ -504,17 +502,19 @@ a {
 
 .post-text {
   padding: 2px;
-  font-size: .85rem;
+  font-size: 14px;
 }
-.post__btn, .card__btn{
+
+.post__btn, .card__btn {
   width: 150px;
   padding: 2px;
   margin: 0 auto;
-  color: white;
-  font-size: .85rem;
+  color: white !important;
+  font-size: 14px;
   text-align: center;
   background-color: var(--main-lightgray);
 }
+
 .card__btn {
   margin-top: 10px;
 }
@@ -523,24 +523,27 @@ a {
   color: white;
 
 }
-.subjects-quartiles, .grades-years{
+
+.subjects-quartiles, .grades-years {
   min-height: 22px;
   padding-top: 2px;
   text-align: center;
   color: white;
-  font-size: 0.9rem;
+  font-size: 14px;
 }
+
 .subject-item, .exam-item, .email-item, .schedule-item, .find-item, .grade {
   margin: 0 5px 5px 5px;
   padding: 15px 5px;
-  font-size: .9rem;
+  font-size: 14px;
   background-color: var(--green);
 }
 
 .exam-card__inner, .email-card__inner, .schedule__inner, .find-card__inner {
   margin-top: 5px;
 }
-.exam-item, .schedule-item{
+
+.exam-item, .schedule-item {
   height: 65px;
   position: relative;
   display: flex;
@@ -549,6 +552,7 @@ a {
   justify-content: space-evenly;
   color: white;
 }
+
 .email-item {
   height: 65px;
   position: relative;
@@ -556,48 +560,56 @@ a {
   flex-direction: column;
   color: white;
 }
+
 .exam__time, .email__time, .schedule__time {
   position: absolute;
   width: 100%;
   height: 100%;
   padding: 2px 0 0 5px;
-  font-size: .85rem;
+  font-size: 12px;
 }
+
 .email__time {
   top: 0;
 }
-.email__content{
+
+.email__content {
   margin: 5px;
 }
+
 .schedule-card {
-  height: 100%;
   padding-bottom: 10px;
 }
+
 .find-form {
   position: relative;
-  margin: 5px 0 15px 0;
+  margin: 2px 0 2px 0;
+  color: #ffffff;
+}
 
-}
-.find-form input{
-  background-color: transparent;
-  border: 3px solid black;
-  border-radius: 15px;
-}
+/*.find-form input {*/
+/*  background-color: transparent;*/
+/*  border: 3px solid black;*/
+/*  border-radius: 15px;*/
+/*}*/
+
 .find__card {
   align-items: center;
 }
+
 .find_label {
   position: absolute;
   width: 120px;
   height: 30px;
-  top: 8px;
+  top: 7px;
   left: 26px;
   color: white;
-  font-size: .8rem;
+  font-size: 12px;
 }
-.find-item{
+
+.find-item {
   width: 96%;
-  height: 65px;
+  height: 100%;
   padding-top: 10px;
   position: relative;
   display: flex;
@@ -614,38 +626,46 @@ a {
 .find-item__image {
   max-width: 60px;
 }
+
 .find-item img {
   width: 100%;
 }
-.find-item__contact-details{
+
+.find-item__contact-details {
   margin-left: 10px;
 }
+
 .find-item__text {
-  font-size: .9rem;
+  font-size: 12px;
 }
+
 .grades-years {
-  font-size: .9rem;
+  font-size: 14px;
 }
-.progress-bar-section{
+
+.progress-bar-section {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px 10px;
 }
+
 .progress-bar {
   position: relative;
   width: 100%;
   padding-right: 5px;
   background-color: transparent;
 }
-.progress-bar__outer{
+
+.progress-bar__outer {
   width: 100%;
   height: 20px;
   background-color: white;
   border: 1px solid black;
 }
-.progress-bar__inner{
+
+.progress-bar__inner {
   position: absolute;
   top: 0;
   left: 0;
@@ -655,7 +675,8 @@ a {
   border: 1px solid black;
 
 }
-.spider-map-btn{
+
+.spider-map-btn {
   width: 14px;
   height: 14px;
   border-radius: 100%;
@@ -666,12 +687,79 @@ a {
   display: flex;
   flex-direction: column;
 }
+
 .grade {
   display: flex;
   justify-content: space-between;
   padding: 5px 10px;
   color: white;
-  font-size: .9rem;
+  font-size: 14px;
 }
 
+.v-input__control {
+  max-height: 50px;
+  color: white;
+
+}
+
+.v-input__control input {
+  color: white;
+}
+
+.v-input input {
+  color: white;
+}
+
+.v-text-field__slot input {
+  color: rgb(255, 255, 255) !important;
+  font-size: 14px !important;
+}
+.v-text-field__slot input::placeholder {
+  color: rgb(190, 181, 181) !important;
+  font-size: 14px !important;
+}
+.v-input__slot fieldset {
+  color: rgb(255, 255, 255) !important;
+}
+
+.v-text-field__slot .v-label {
+  color: rgb(255, 255, 255) !important;
+  opacity: 1;
+  font-size: 12px !important;
+  font-weight: bold !important;
+}
+
+/* On screens that are 1116px or less */
+@media screen and (max-width: 1116px) {
+  .home-content__left {
+    grid-template:
+        "a b"
+        "c d"
+        "e f";
+  }
+}
+
+/* On screens that are 884px or less */
+@media screen and (max-width: 884px) {
+  .home-content__left {
+    grid-template: none
+  }
+}
+
+/* On screens that are 570px or less */
+@media screen and (max-width: 570px) {
+  .home-content__inner {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .home-content__left {
+    width: auto;
+  }
+
+  .home-content__right {
+    padding: 0 0 15px 0;
+
+  }
+}
 </style>
