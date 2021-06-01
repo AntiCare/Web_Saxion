@@ -51,29 +51,8 @@
             </div>
 
             <SubjectsCard></SubjectsCard>
-            <div class="card card__home-page">
-              <div class="card__heading">
-                Exam schedule
-              </div>
-              <div class="exam-card__inner">
-                <div class="exam-item">
-                  <div class="exam__time">21/06/21 08:30</div>
-                  <div class="exam__name">IT AND LAW</div>
-                </div>
-                <div class="exam-item">
-                  <div class="exam__time">21/06/21 08:30</div>
-                  <div class="exam__name">Dev tools</div>
-                </div>
-                <div class="exam-item">
-                  <div class="exam__time">21/06/21 08:30</div>
-                  <div class="exam__name">Concurrency</div>
-                </div>
-                <div class="exam-item">
-                  <div class="exam__time">21/06/21 08:30</div>
-                  <div class="exam__name">web tech</div>
-                </div>
-              </div>
-            </div>
+            <ExamPreview></ExamPreview>
+
             <div class="card card__home-page">
               <div class="card__heading">
                 Email preview
@@ -349,11 +328,11 @@
 </template>
 
 <script>
-import Subjects from './home-page/Subjects-card'
-import SubjectsCard from "@/components/home-page/Subjects-card";
+import SubjectsCard from '@/components/home-page/Subjects-card'
+import ExamPreview from '@/components/home-page/Exam-card'
 
 export default {
-  components: {SubjectsCard, Subjects}
+  components: { SubjectsCard, ExamPreview }
 }
 </script>
 
@@ -365,7 +344,6 @@ export default {
   --main-lightgray: #c4c4c4;
   --green: #15A563;
   --main-dark: #434343;
-
 }
 
 * {
