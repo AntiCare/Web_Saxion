@@ -278,46 +278,7 @@
 
           </div>
           <div class="home-content__right">
-            <div class="card card__home-page schedule-card">
-              <div class="card__heading">
-                Schedule
-              </div>
-              <div class="schedule__inner">
-                <div class="schedule-item">
-                  <div class="schedule__time">8:30</div>
-                  <div class="schedule__subject">Dev tools</div>
-                </div>
-                <div class="schedule-item">
-                  <div class="schedule__time">8:30</div>
-                  <div class="schedule__subject">Dev tools</div>
-                </div>
-                <div class="schedule-item">
-                  <div class="schedule__time">8:30</div>
-                  <div class="schedule__subject">Dev tools</div>
-                </div>
-                <div class="schedule-item">
-                  <div class="schedule__time">8:30</div>
-                  <div class="schedule__subject">Dev tools</div>
-                </div>
-                <div class="schedule-item">
-                  <div class="schedule__time">8:30</div>
-                  <div class="schedule__subject">Dev tools</div>
-                </div>
-                <div class="schedule-item">
-                  <div class="schedule__time">8:30</div>
-                  <div class="schedule__subject">Dev tools</div>
-                </div>
-                <div class="schedule-item">
-                  <div class="schedule__time">8:30</div>
-                  <div class="schedule__subject">Dev tools</div>
-                </div>
-                <div class="schedule-item">
-                  <div class="schedule__time">8:30</div>
-                  <div class="schedule__subject">Dev tools</div>
-                </div>
-              </div>
-              <a href="#" class="card__btn">See entire schedule</a>
-            </div>
+            <ScheduleCard></ScheduleCard>
           </div>
         </div>
 
@@ -330,9 +291,10 @@
 <script>
 import SubjectsCard from '@/components/home-page/Subjects-card'
 import ExamPreview from '@/components/home-page/Exam-card'
+import ScheduleCard from '@/components/home-page/Schedule-card'
 
 export default {
-  components: { SubjectsCard, ExamPreview }
+  components: { SubjectsCard, ExamPreview, ScheduleCard }
 }
 </script>
 
