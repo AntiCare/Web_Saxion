@@ -536,6 +536,7 @@ a {
   margin: 0 5px 5px 5px;
   padding: 15px 5px;
   font-size: 14px;
+  font-weight: bold;
   background-color: var(--green);
 }
 
