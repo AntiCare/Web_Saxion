@@ -67,6 +67,13 @@ const routes = [
     path: '/news/list',
     component: newsList
   }
+
+
+
+
+
+
+
 ]
 
 const router = new VueRouter({
