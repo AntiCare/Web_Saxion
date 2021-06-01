@@ -9,6 +9,9 @@ import news2 from '@/components/news/news-single2'
 import news3 from '@/components/news/news-single3'
 import newsList from '@/components/news/news-list'
 import Assignment from '@/components/Assignment'
+import Assignment2 from '@/components/Assignment2'
+
+
 
 Vue.use(VueRouter)
 
@@ -70,11 +73,19 @@ const routes = [
   }
 
   ,
-  // news list
+  // assignment page
   {
     name: 'assignment',
     path: '/assignment',
     component: Assignment
+  }
+
+  ,
+  // assignment page
+  {
+    name: 'assignment2',
+    path: '/assignment2',
+    component: Assignment2
   }
 
 
