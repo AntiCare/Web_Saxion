@@ -8,6 +8,12 @@ import news1 from '@/components/news/news-single1'
 import news2 from '@/components/news/news-single2'
 import news3 from '@/components/news/news-single3'
 import newsList from '@/components/news/news-list'
+import Assignment from '@/components/Assignment'
+import Assignment2 from '@/components/Assignment2'
+import TestComponent from "@/components/TestComponent";
+import Assignment3 from "@/components/Assignment3";
+import Tuan1 from "@/components/Tuan1";
+
 
 Vue.use(VueRouter)
 
@@ -68,10 +74,55 @@ const routes = [
     component: newsList
   }
 
+  ,
+  // assignment page
+  {
+    name: 'assignment',
+    path: '/assignment',
+    component: Assignment
+  }
+
+  ,
+  // assignment page
+  {
+    name: 'assignment2',
+    path: '/assignment2',
+    component: Assignment2
+  },
+
+  // assignment page
+  {
+    name: 'sldjflsdjf',
+    path: '/testcomp',
+    component: TestComponent
+  }
+  ,
+
+  // assignment page
+  {
+    name: 'sldjflsdjfsdf',
+    path: '/tuan1',
+    component: Tuan1
+  }
 
 
 
+  ,
+  // assignment page
+  {
+    name: 'sdf',
+    path: '/testcomp',
+    component: TestComponent
+  }
 
+
+  ,
+  // assignment page
+  {
+    name: 'assignment3',
+    path: '/assignment3',
+    component: Assignment3
+  }
 
 
 ]

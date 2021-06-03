@@ -2,50 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="428d7dfe-25ed-43cb-8ac8-e605af91f2a6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/bin_www.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/www" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mydb.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/.idea/vue-app3-front.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/babel.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/src/assets/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/src/assets/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/src/components/HelloWorld.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/src/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/src/plugins/vuetify.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/src/router/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/src/store/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/src/views/About.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/src/views/Home.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/vue.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vue-app3/src/plugins/vuetify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-app3/.babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-app3/.babel.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-app3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-app3/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-app3/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-app3/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-app3/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-app3/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-app3/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-app3/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-app3/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-app3/vue.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-app3/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-app3/webpack.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue-app3-front/src/components/Assignment3.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../vue-app3-front/src/components/Header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-app3-front/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-app3-front/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-app3-front/src/components/Assignment2.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-app3-front/src/components/Assignment2.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-app3-front/src/components/TestComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-app3-front/src/components/TestComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-app3-front/src/components/Tuan1.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-app3-front/src/components/Tuan12watever.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-app3-front/src/components/home-page/Subjects-card.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-app3-front/src/components/home-page/Subjects-card.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-app3-front/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-app3-front/src/router/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,17 +48,6 @@
     </key>
   </component>
   <component name="RunManager" selected="npm.start">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -119,6 +73,8 @@
       <option name="presentableId" value="Default" />
       <updated>1622410388229</updated>
       <workItem from="1622410389410" duration="2414000" />
+      <workItem from="1622551447433" duration="172000" />
+      <workItem from="1622753774021" duration="303000" />
     </task>
     <servers />
   </component>
@@ -135,6 +91,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

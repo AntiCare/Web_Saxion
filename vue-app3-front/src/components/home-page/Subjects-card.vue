@@ -7,9 +7,9 @@
       Q1 | Q2 | Q3 | Q4
     </div>
     <a href="#" class="subject-item">Compilers and operating systems</a>
-    <a href="#" class="subject-item">Dev Tools</a>
-    <a href="#" class="subject-item">IT and Law</a>
-    <a href="#" class="subject-item">Project networking</a>
+    <a href="assignment3" class="subject-item">Dev Tools</a>
+    <a href="assignment" class="subject-item">IT and Law</a>
+    <a href="assignment2" class="subject-item">Project networking</a>
   </div>
 </template>
 
