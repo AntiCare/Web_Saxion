@@ -12,6 +12,7 @@ import Assignment from '@/components/Assignment'
 import Assignment2 from '@/components/Assignment2'
 import TestComponent from "@/components/TestComponent";
 import Assignment3 from "@/components/Assignment3";
+import Tuan1 from "@/components/Tuan1";
 
 
 Vue.use(VueRouter)
@@ -87,7 +88,23 @@ const routes = [
     name: 'assignment2',
     path: '/assignment2',
     component: Assignment2
+  },
+
+  // assignment page
+  {
+    name: 'sldjflsdjf',
+    path: '/testcomp',
+    component: TestComponent
   }
+  ,
+
+  // assignment page
+  {
+    name: 'sldjflsdjfsdf',
+    path: '/tuan1',
+    component: Tuan1
+  }
+
 
 
   ,
