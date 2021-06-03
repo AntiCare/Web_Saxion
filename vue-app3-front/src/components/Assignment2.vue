@@ -32,12 +32,12 @@
 
       <v-tabs-items v-model="tab">
         <v-tab-item
-          v-for="item in pageItems"
-          :key="item"
+          v-for="week in weeks"
+          :key="week"
         >
           <v-card flat>
             <v-card-text text="text">
-              {{ item }}
+              {{ week }}
             </v-card-text>
           </v-card>
         </v-tab-item>
@@ -425,8 +425,8 @@ export default {
       ],
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
 
-      pageItems: ["week 1 info", "week 2 info", "week 3 info"]
-      ,
+      weeks: ["intro", "instr", "ass"],
+
 
       links: [
         {title: 'Dashboard', icon: 'mdi-view-dashboard'},
