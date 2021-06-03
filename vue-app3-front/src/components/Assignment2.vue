@@ -3,7 +3,7 @@
   <div>
     <v-card
 
-      class="pa-2"
+
     >
       <!--    <v-toolbar-->
       <!--      color="cyan"-->
@@ -32,18 +32,18 @@
 
       <v-tabs-items v-model="tab">
         <v-tab-item
-          v-for="item in items"
+          v-for="item in pageItems"
           :key="item"
         >
           <v-card flat>
             <v-card-text text="text">
-
+              {{ item }}
             </v-card-text>
           </v-card>
         </v-tab-item>
       </v-tabs-items>
 
-      <v-card >
+      <v-card>
         <v-tabs vertical>
           <v-tab>
             <v-icon left>
@@ -96,11 +96,11 @@
           <v-tab-item>
 
             <v-card
-              class="pa-2 ma-2"
+              class="pa-2 mb-4"
               outlined
               elevation="2"
               shaped
-              color="primary"
+              color=""
             >
               <v-card-title>Introduction</v-card-title>
               <v-card-subtitle>welcome wij gaan beginnen</v-card-subtitle>
@@ -142,11 +142,11 @@
             </v-card>
 
             <v-card
-              class="pa-2 ma-2"
+              class="pa-2 mb-4"
               outlined
               elevation="2"
               shaped
-              color="primary"
+              color=""
             >
               <v-card-title>Course Manual</v-card-title>
               <v-card-subtitle>welcome wij gaan beginnen</v-card-subtitle>
@@ -166,11 +166,11 @@
           <v-tab-item>
 
             <v-card
-              class="pa-2 ma-2"
+              class="pa-2 mb-4"
               outlined
               elevation="2"
               shaped
-              color="primary"
+              color=""
             >
               <v-card-title>How to install the Java Development Kit and IntelliJ IDEA Community Edition</v-card-title>
               <v-card-subtitle>Set up system</v-card-subtitle>
@@ -203,11 +203,11 @@
             </v-card>
 
             <v-card
-              class="pa-2 ma-2"
+              class="pa-2 mb-4"
               outlined
               elevation="2"
               shaped
-              color="primary"
+              color=""
             >
               <v-card-title>Sandbox project</v-card-title>
               <v-card-subtitle></v-card-subtitle>
@@ -222,11 +222,11 @@
           <v-tab-item>
 
             <v-card
-              class="pa-2 ma-2"
+              class="pa-2 mb-4"
               outlined
               elevation="2"
               shaped
-              color="primary"
+              color=""
             >
               <v-card-title>Assignment 1</v-card-title>
               <v-card-subtitle>urgent work</v-card-subtitle>
@@ -236,11 +236,11 @@
             </v-card>
 
             <v-card
-              class="pa-2 ma-2"
+              class="pa-2 mb-4"
               outlined
               elevation="2"
               shaped
-              color="primary"
+              color=""
             >
               <v-card-title>Assignment 2</v-card-title>
               <v-card-subtitle>urgent work</v-card-subtitle>
@@ -250,11 +250,11 @@
             </v-card>
 
             <v-card
-              class="pa-2 ma-2"
+              class="pa-2 mb-4"
               outlined
               elevation="2"
               shaped
-              color="primary"
+              color=""
             >
               <v-card-title>Assignment 3</v-card-title>
               <v-card-subtitle>urgent work</v-card-subtitle>
@@ -268,11 +268,11 @@
           <v-tab-item>
 
             <v-card
-              class="pa-2 ma-2"
+              class="pa-2 mb-4"
               outlined
               elevation="2"
               shaped
-              color="primary"
+              color=""
             >
               <v-card-title>Assignment 3</v-card-title>
               <v-card-subtitle>urgent work</v-card-subtitle>
@@ -285,17 +285,18 @@
           <v-tab-item>
 
             <v-card
-              class="pa-2 ma-2"
+              class="pa-2 mb-4"
               outlined
               elevation="2"
               shaped
-              color="primary"
+              color=""
             >
               <v-card-title>Introduction to variables</v-card-title>
               <v-card-subtitle></v-card-subtitle>
               <v-card-text>
                 <div class="player-container">
-                  <vue-core-video-player @play="your_method" src="https://www.youtube.com/watch?v=gtQJXzi3Yns"></vue-core-video-player>
+                  <vue-core-video-player @play="your_method"
+                                         src="https://www.youtube.com/watch?v=gtQJXzi3Yns"></vue-core-video-player>
                 </div>
 
               </v-card-text>
@@ -306,11 +307,11 @@
 
           <v-tab-item>
             <v-card
-              class="pa-2 ma-2"
+              class="pa-2 mb-4"
               outlined
               elevation="2"
               shaped
-              color="primary"
+              color=""
             >
               <v-card-title>Assignment 3</v-card-title>
               <v-card-subtitle>urgent work</v-card-subtitle>
@@ -410,10 +411,11 @@
 <script>
 import VueCoreVideoPlayer from 'vue-core-video-player'
 import Vue from 'vue'
+
 Vue.use(VueCoreVideoPlayer)
 
 export default {
-  data () {
+  data() {
     return {
       skill: 0,
       number: 20,
@@ -423,16 +425,19 @@ export default {
       ],
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
 
+      pageItems: ["week 1 info", "week 2 info", "week 3 info"]
+      ,
+
       links: [
-        { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-        { title: 'Account', icon: 'mdi-account-box' },
-        { title: 'Admin', icon: 'mdi-laptop' }
+        {title: 'Dashboard', icon: 'mdi-view-dashboard'},
+        {title: 'Account', icon: 'mdi-account-box'},
+        {title: 'Admin', icon: 'mdi-laptop'}
       ],
       e1: 1
     }
   },
   watch: {
-    steps (val) {
+    steps(val) {
       if (this.e1 > val) {
         this.e1 = val
       }
@@ -440,7 +445,7 @@ export default {
   },
 
   methods: {
-    backStep (n) {
+    backStep(n) {
       if (n !== 1) {
         this.e1 = n - 1
       }
@@ -448,7 +453,7 @@ export default {
         this.skill = this.skill - 20
       }
     },
-    nextStep (n) {
+    nextStep(n) {
       this.e1 = n + 1
       if (this.skill < 100) {
         this.skill = this.skill + 20

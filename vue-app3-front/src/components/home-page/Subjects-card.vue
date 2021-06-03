@@ -9,7 +9,7 @@
     <a href="#" class="subject-item">Compilers and operating systems</a>
     <a href="#" class="subject-item">Dev Tools</a>
     <a href="#" class="subject-item">IT and Law</a>
-    <a href="#" class="subject-item">Project networking</a>
+    <a href="assignment1" class="subject-item">Project networking</a>
   </div>
 </template>
 
