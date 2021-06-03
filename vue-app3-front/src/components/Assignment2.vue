@@ -10,12 +10,10 @@
       <!--      dark-->
       <!--      flat-->
       <!--    >-->
-
       <!--      <template v-slot:extension>-->
       <v-tabs
         v-model="tab"
         align-with-title
-
         background-color="primary"
         center-active
         dark
@@ -40,12 +38,10 @@
           <v-card flat>
             <v-card-text text="text">
 
-
             </v-card-text>
           </v-card>
         </v-tab-item>
       </v-tabs-items>
-
 
       <v-card >
         <v-tabs vertical>
@@ -90,13 +86,19 @@
             Assignment
           </v-tab>
 
+          <v-tab>
+            <v-icon left>
+              mdi-book-open-blank-variant
+            </v-icon>
+            Quize
+          </v-tab>
+
           <v-tab-item>
 
             <v-card
               class="pa-2 ma-2"
               outlined
               elevation="2"
-              outlined
               shaped
               color="primary"
             >
@@ -139,12 +141,10 @@
 
             </v-card>
 
-
             <v-card
               class="pa-2 ma-2"
               outlined
               elevation="2"
-              outlined
               shaped
               color="primary"
             >
@@ -158,21 +158,17 @@
 
               </v-card-text>
 
-
               <v-card-actions></v-card-actions>
 
             </v-card>
 
-
           </v-tab-item>
           <v-tab-item>
-
 
             <v-card
               class="pa-2 ma-2"
               outlined
               elevation="2"
-              outlined
               shaped
               color="primary"
             >
@@ -206,12 +202,10 @@
 
             </v-card>
 
-
             <v-card
               class="pa-2 ma-2"
               outlined
               elevation="2"
-              outlined
               shaped
               color="primary"
             >
@@ -224,16 +218,13 @@
 
             </v-card>
 
-
           </v-tab-item>
           <v-tab-item>
-
 
             <v-card
               class="pa-2 ma-2"
               outlined
               elevation="2"
-              outlined
               shaped
               color="primary"
             >
@@ -244,12 +235,10 @@
 
             </v-card>
 
-
             <v-card
               class="pa-2 ma-2"
               outlined
               elevation="2"
-              outlined
               shaped
               color="primary"
             >
@@ -260,12 +249,10 @@
 
             </v-card>
 
-
             <v-card
               class="pa-2 ma-2"
               outlined
               elevation="2"
-              outlined
               shaped
               color="primary"
             >
@@ -278,16 +265,12 @@
 
           </v-tab-item>
 
-
-
-
           <v-tab-item>
 
             <v-card
               class="pa-2 ma-2"
               outlined
               elevation="2"
-              outlined
               shaped
               color="primary"
             >
@@ -299,15 +282,12 @@
             </v-card>
           </v-tab-item>
 
-
-
           <v-tab-item>
 
             <v-card
               class="pa-2 ma-2"
               outlined
               elevation="2"
-              outlined
               shaped
               color="primary"
             >
@@ -324,13 +304,11 @@
             </v-card>
           </v-tab-item>
 
-
           <v-tab-item>
             <v-card
               class="pa-2 ma-2"
               outlined
               elevation="2"
-              outlined
               shaped
               color="primary"
             >
@@ -342,40 +320,140 @@
             </v-card>
           </v-tab-item>
 
+          <v-tab-item>
+            <v-progress-linear
+              v-model="skill"
+              color="blue-grey"
+              height="25"
+            >
+              <template v-slot:default="{ value }">
+                <strong>{{ Math.ceil(value) }}%</strong>
+              </template>
+            </v-progress-linear>
+            <!--            progress Bar-->
+            <div>
+              <v-stepper v-model="e1">
+                <v-stepper-header>
+                  <template v-for="n in 5">
+                    <v-stepper-step
+                      :key="`${n}-step`"
+                      :complete="e1 > n"
+                      :step="n"
+                      editable
+                    >
+                      Step {{ n }}
+                    </v-stepper-step>
 
+                    <v-divider
+                      v-if="n !== 5"
+                      :key="n"
+                    ></v-divider>
+                  </template>
+                </v-stepper-header>
+
+                <v-stepper-items>
+                  <v-stepper-content
+                    v-for="n in 7"
+                    :key="`${n}-content`"
+                    :step="n"
+                  >
+                    <v-card
+                      v-if="n !== 7"
+                      class="mb-12"
+                      color="grey lighten-1"
+                      height="200px"
+                    ></v-card>
+
+                    <v-icon
+                      v-if="n === 7"
+                      color="success"
+                      align-center
+                      large="large"
+                    >
+                      mdi-check
+                    </v-icon>
+
+                    <v-btn
+                      color="primary"
+                      @click="nextStep(n)"
+                      v-if="n !== 6 && n!==7"
+                    >
+                      Continue
+                    </v-btn>
+
+                    <v-btn
+                      color="primary"
+                      @click="nextStep(n)"
+                      v-if="n === 6"
+                    >
+                      Finish
+                    </v-btn>
+                    <v-btn text @click="backStep(n)"
+                           v-if="n !== 7">
+                      Back
+                    </v-btn>
+
+                  </v-stepper-content>
+                </v-stepper-items>
+              </v-stepper>
+            </div>
+          </v-tab-item>
 
         </v-tabs>
       </v-card>
 
-
     </v-card>
-
 
   </div>
 </template>
 
-
 <script>
 import VueCoreVideoPlayer from 'vue-core-video-player'
-import Vue from "vue";
+import Vue from 'vue'
 Vue.use(VueCoreVideoPlayer)
 
 export default {
-  data() {
+  data () {
     return {
+      skill: 0,
+      number: 20,
       tab: null,
       items: [
-        'Intro', 'Week 1', 'Week 2', 'Discussion', 'Extra',
+        'Intro', 'Week 1', 'Week 2', 'Discussion', 'Extra'
       ],
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
 
       links: [
-        {title: 'Dashboard', icon: 'mdi-view-dashboard'},
-        {title: 'Account', icon: 'mdi-account-box'},
-        {title: 'Admin', icon: 'mdi-laptop'},
+        { title: 'Dashboard', icon: 'mdi-view-dashboard' },
+        { title: 'Account', icon: 'mdi-account-box' },
+        { title: 'Admin', icon: 'mdi-laptop' }
       ],
-
+      e1: 1
     }
   },
+  watch: {
+    steps (val) {
+      if (this.e1 > val) {
+        this.e1 = val
+      }
+    }
+  },
+
+  methods: {
+    backStep (n) {
+      if (n !== 1) {
+        this.e1 = n - 1
+      }
+      if (this.skill >= 20) {
+        this.skill = this.skill - 20
+      }
+    },
+    nextStep (n) {
+      this.e1 = n + 1
+      if (this.skill < 100) {
+        this.skill = this.skill + 20
+      }
+    }
+  }
 }
 </script>
