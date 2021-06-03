@@ -10,7 +10,8 @@ import news3 from '@/components/news/news-single3'
 import newsList from '@/components/news/news-list'
 import Assignment from '@/components/Assignment'
 import Assignment2 from '@/components/Assignment2'
-
+import TestComponent from "@/components/TestComponent";
+import Tuan1 from "@/components/Tuan1";
 
 
 Vue.use(VueRouter)
@@ -86,7 +87,23 @@ const routes = [
     name: 'assignment2',
     path: '/assignment2',
     component: Assignment2
+  },
+
+  // assignment page
+  {
+    name: 'sldjflsdjf',
+    path: '/testcomp',
+    component: TestComponent
   }
+  ,
+
+  // assignment page
+  {
+    name: 'sldjflsdjfsdf',
+    path: '/tuan1',
+    component: Tuan1
+  }
+
 
 
 ]
