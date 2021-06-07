@@ -10,10 +10,11 @@
       <hr class="my-4">
         <b-list-group>
             <b-list-group-item 
-            v-for="(answer, index) in answers" 
+            v-for="(answer, index) in shuffledAnswers" 
             :key="index"
             @click="selectAnswer(index)"
-            :class="[selectedIndex === index ? 'selected' : '']"
+            :class="[
+            !answered && selectedIndex === index ? 'selected' : '']"
             >
               {{answer}}
             </b-list-group-item>
@@ -23,7 +24,7 @@
       <b-button 
       variant="primary" 
       @click="submitAnswer"
-      :disabled="selectedIndex === null && answered"
+      :disabled="selectedIndex === null || answered"
       >
         Submit
 
@@ -49,7 +50,7 @@ props: {
       selectedIndex: null,
       correctIndex: null,
       shuffledAnswers: [],
-      answered: false
+      
     }
   },
 
@@ -68,6 +69,7 @@ watch: {
     immediate: true,
     handler() {
       this.selectedIndex = null
+      this.answered = false
       this.shuffleAnswers()
     }
   }
@@ -83,11 +85,13 @@ methods: {
       if(this.selectedIndex === this.correctIndex) {
         isCorrect = true
       }
+      this.answered = true
       this.increment(isCorrect)
     },
     shuffleAnswers(){
-      let answers = [...this.currentQuestion.incorrect_answers, this.currentQuestion.correct_answers]
-      this.shuffledAnswers = _.shuffle(answers)
+      
+      this.shuffledAnswers = _.shuffle(this.answers)
+      this.correctIndex = this.shuffledAnswers.indexOf(this.currentQuestion.correct_answer)
     }
 }
 }

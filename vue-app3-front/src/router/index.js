@@ -13,6 +13,8 @@ import Assignment2 from '@/components/Assignment2'
 import TestComponent from "@/components/TestComponent";
 import Assignment3 from "@/components/Assignment3";
 import Tuan1 from "@/components/Tuan1";
+import Searchboxtuan from "@/components/Searchboxtuan";
+import Cardtuan from "@/components/Cardtuan";
 
 
 Vue.use(VueRouter)
@@ -122,7 +124,20 @@ const routes = [
     name: 'assignment3',
     path: '/assignment3',
     component: Assignment3
+  },
+
+  {
+    name: 'searchboxtuan',
+    path: '/searchboxtuan',
+    component: Searchboxtuan
+  },
+
+  {
+    name: 'cardtuan',
+    path: '/cardtuan',
+    component: Cardtuan
   }
+
 
 
 ]
