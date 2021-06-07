@@ -13,8 +13,8 @@ import Assignment2 from '@/components/Assignment2'
 import TestComponent from "@/components/TestComponent";
 import Assignment3 from "@/components/Assignment3";
 import Tuan1 from "@/components/Tuan1";
-import searchboxsefanja from "@/components/searchboxsefanja";
-import cardsefanja from "@/components/cardsefanja";
+import Searchboxkeith from "@/components/Searchboxkeith";
+import Cardkeith from "@/components/Cardkeith";
 
 
 Vue.use(VueRouter)
@@ -126,20 +126,22 @@ const routes = [
     component: Assignment3
   }
 
+
   ,
-  // search box page - sefanja
+  // assignment page
   {
-    name: 'Searchboxsefanja',
-    path: '/searchboxsefanja',
-    component: searchboxsefanja
-  }
-  ,
-  // card page - sefanja
+    name: 'searchboxkeith',
+    path: '/searchboxkeith',
+    component: Searchboxkeith
+  },
+
+
+  //
   {
-    name: 'Cardsefanja',
-    path: '/cardsefanja',
-    component: cardsefanja
-  }
+    name: 'Cardkeith',
+    path: '/cardkeith',
+    component: Cardkeith
+  },
 
 
 ]
