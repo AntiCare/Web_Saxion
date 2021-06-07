@@ -8,7 +8,7 @@
         <div class="schedule__time">8:30</div>
         <div class="schedule__subject">Dev tools</div>
       </div>
-      <div class="schedule-item">
+      <div class="schedule-item">first_name
         <div class="schedule__time">8:30</div>
         <div class="schedule__subject">Dev tools</div>
       </div>
