@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="428d7dfe-25ed-43cb-8ac8-e605af91f2a6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../vue-app3-front/src/components/Spider.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-app3-front/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-app3-front/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-app3-front/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-app3-front/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vue-app3-front/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-app3-front/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-app3-front/src/components/Spider.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-app3-front/src/components/Spider.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

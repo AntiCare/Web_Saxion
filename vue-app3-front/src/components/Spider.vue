@@ -31,12 +31,22 @@ export default {
           },
 
         },
+        fill: {
+          colors: ['gray'],
+        },
         dataLabels: {
           enabled: true,
+          fill: {
+            color: 'red'
+          },
+          style: {
+            fontSize: '15px',
+            colors: ['#039BE5']
+          }
         },
         stroke: {
           show: true,
-          colors: ['#18D980'],
+          colors: ['#40FFA7'],
         },
         markers: {
           enabled: false,
@@ -49,9 +59,8 @@ export default {
         },
         plotOptions: {
           radar: {
-
             polygons: {
-              strokeColors: '#e9e9e9',
+              strokeColors: '',
               fill: {
                 colors: ['#f8f8f8', '#fff'],
               },
@@ -70,6 +79,12 @@ export default {
         xaxis: {
           categories: ['English', 'Dutch', 'Presentation', 'ICT', 'Creative Technology', 'Gespre', 'Onderh.', 'Conflict hank', 'Team Work', 'Kr. D']
           ,
+          labels: {
+            style: {
+              colors: ['#15A563', '#15A563', '#15A563', '#15A563', '#15A563', '#15A563', '#15A563', '#15A563', '#15A563', '#15A563'],
+              fontSize: '15px',
+            }
+          }
         },
         yaxis: {
           min: 0,
