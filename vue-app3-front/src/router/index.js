@@ -17,7 +17,8 @@ import Searchboxtuan from "@/components/Searchboxtuan";
 import Cardtuan from "@/components/Cardtuan";
 import Searchboxkeith from "@/components/Searchboxkeith";
 import Cardkeith from "@/components/Cardkeith";
-
+import searchboxsefanja from "@/components/searchboxsefanja";
+import cardsefanja from "@/components/cardsefanja";
 
 Vue.use(VueRouter)
 
@@ -76,17 +77,13 @@ const routes = [
     name: 'news-list',
     path: '/news/list',
     component: newsList
-  }
-
-  ,
+  },
   // assignment page
   {
     name: 'assignment',
     path: '/assignment',
     component: Assignment
-  }
-
-  ,
+  },
   // assignment page
   {
     name: 'assignment2',
@@ -99,34 +96,59 @@ const routes = [
     name: 'sldjflsdjf',
     path: '/testcomp',
     component: TestComponent
-  }
-  ,
+  },
 
   // assignment page
   {
     name: 'sldjflsdjfsdf',
     path: '/tuan1',
     component: Tuan1
-  }
-
-
-
-  ,
+  },
   // assignment page
   {
     name: 'sdf',
     path: '/testcomp',
     component: TestComponent
-  }
-
-
-  ,
+  },
   // assignment page
   {
     name: 'assignment3',
     path: '/assignment3',
     component: Assignment3
-  }
+  },
+
+  {
+    name: 'searchboxtuan',
+    path: '/searchboxtuan',
+    component: Searchboxtuan
+  },
+
+  {
+    name: 'cardtuan',
+    path: '/cardtuan',
+    component: Cardtuan
+  },
+  {
+    name: 'Searchboxsefanja',
+    path: '/searchboxsefanja',
+    component: searchboxsefanja
+  },
+
+  {
+    name: 'Cardsefanja',
+    path: '/cardsefanja',
+    component: cardsefanja
+  }, {
+    // card page - sefanja
+    name: 'searchboxkeith',
+    path: '/searchboxkeith',
+    component: Searchboxkeith
+  },
+  {
+    name: 'Cardkeith',
+    path: '/cardkeith',
+    component: Cardkeith
+  },
 
 
 ]
