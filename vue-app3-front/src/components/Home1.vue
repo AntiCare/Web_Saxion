@@ -20,9 +20,43 @@
         <div class="home-content__inner">
           <div class="home-content__left">
             <div class="card card__home-page">
-              <div class="card__heading">
+              <v-col class="shrink">
+              <v-btn
+                height="55px"
+                width="220px"
+                class="primary--text"
+                color="#c4c4c4"
+                dark
+                @click="expand2 = !expand2"
+              >
                 News
-              </div>
+                <div class="text-center">
+                  <v-badge
+                    :value="hover"
+                    color="deep-purple accent-4"
+                    content="3"
+                    right
+                    transition="slide-x-reverse-transition"
+                  >
+                    <v-hover v-model="hover">
+                      <v-icon
+                        color="primary"
+                      >
+                        mdi-book-open-blank-variant
+                      </v-icon>
+                    </v-hover>
+                  </v-badge>
+                </div>
+              </v-btn>
+                <v-expand-x-transition>
+                  <v-card
+                    v-show="expand2"
+                    height="100"
+                    width="100"
+                    class="mx-auto secondary"
+                  ></v-card>
+                </v-expand-x-transition>
+              </v-col>
               <div class="card-home-content">
                 <div class="card__post">
                   <div class="post-text">
@@ -294,10 +328,13 @@ import ExamPreview from '@/components/home-page/Exam-card'
 import ScheduleCard from '@/components/home-page/Schedule-card'
 
 export default {
-  components: { SubjectsCard, ExamPreview, ScheduleCard }
+  components: { SubjectsCard, ExamPreview, ScheduleCard },
+  data: () => ({
+    hover: false,
+    expand2: false
+  })
 }
 </script>
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
@@ -355,7 +392,7 @@ a {
   align-items: center;
   padding: 8px 16px;
   color: white;
-  background-color: var(--main-gray);;
+  background-color: var(--main-gray);
   border: 1px solid black;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
