@@ -56,7 +56,7 @@
                     class="mx-auto secondary ma-2"
                   >
                       <div class="text--primary text-lowercase">
-                       Latest News: Saxion Campsite almost open, Introduction Days
+                       Latest News: Saxion Campsite almost open,Introduction Days.
                       </div>
                   </v-card>
                 </v-expand-x-transition>
