@@ -48,13 +48,17 @@
                   </v-badge>
                 </div>
               </v-btn>
-                <v-expand-x-transition>
+                <v-expand-x-transition >
                   <v-card
                     v-show="expand2"
-                    height="100"
-                    width="100"
-                    class="mx-auto secondary"
-                  ></v-card>
+                    height="50"
+                    width="220"
+                    class="mx-auto secondary ma-2"
+                  >
+                      <div class="text--primary text-lowercase">
+                       Latest News: Saxion Campsite almost open, Introduction Days
+                      </div>
+                  </v-card>
                 </v-expand-x-transition>
               </v-col>
               <div class="card-home-content">
