@@ -19,6 +19,7 @@ import Searchboxkeith from "@/components/Searchboxkeith";
 import Cardkeith from "@/components/Cardkeith";
 import searchboxsefanja from "@/components/searchboxsefanja";
 import cardsefanja from "@/components/cardsefanja";
+import Spider from "@/components/Spider";
 
 Vue.use(VueRouter)
 
@@ -149,7 +150,11 @@ const routes = [
     path: '/cardkeith',
     component: Cardkeith
   },
-
+  {
+    name: 'Spider',
+    path: '/spider',
+    component: Spider
+  },
 
 ]
 
