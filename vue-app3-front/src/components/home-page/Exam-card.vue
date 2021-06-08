@@ -34,7 +34,10 @@
         <v-date-picker
           v-model="date1"
           :events="arrayEvents"
-          event-color="green lighten-1"
+          color="primary"
+          header-color="primary"
+          event-color="red"
+          readonly
         ></v-date-picker>
       </div>
     </v-menu>
@@ -65,7 +68,8 @@ export default {
   data: () => ({
     hover: false,
     arrayEvents: null,
-    date1: new Date().toISOString().substr(0, 10)
+    date1: new Date().toISOString().substr(0, 10),
+    date2: new Date().toISOString().substr(0, 10)
   }),
   mounted () {
     this.arrayEvents = [...Array(4)].map(() => {
