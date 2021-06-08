@@ -1,7 +1,16 @@
 <template>
-  <div id="chart">
 
-  </div>
+
+  <v-card
+    class="mx-auto"
+    max-width="500"
+    outlined
+  >
+    <div id="chart"> </div>
+
+  </v-card>
+
+
 </template>
 
 <script>
