@@ -15,6 +15,7 @@ import Assignment3 from "@/components/Assignment3";
 import Tuan1 from "@/components/Tuan1";
 import Spider from "@/components/Spider";
 
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -103,14 +104,20 @@ const routes = [
     name: 'sldjflsdjfsdf',
     path: '/tuan1',
     component: Tuan1
-  },
+  }
+
+
+
+  ,
   // assignment page
   {
     name: 'sdf',
     path: '/testcomp',
     component: TestComponent
-  },
+  }
 
+
+  ,
   // assignment page
   {
     name: 'assignment3',
@@ -118,13 +125,13 @@ const routes = [
     component: Assignment3
   }
   ,
-
   // assignment page
   {
-    name: 'spider',
+    name: 'Spider',
     path: '/spider',
     component: Spider
   }
+
 
 ]
 

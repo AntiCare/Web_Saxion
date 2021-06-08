@@ -2,10 +2,21 @@
 
 
   <v-card
-    class="mx-auto"
+    class="mx-auto my-4"
     max-width="500"
+    height="70%"
     outlined
+    shaped
   >
+    <v-card-title>
+      <v-icon
+        left
+      >
+        mdi-finance
+      </v-icon>
+      <span class="text-h6 font-weight-light">Vaardigheden Paspoort</span>
+    </v-card-title>
+    <v-card-subtitle>Naga Baker 418136</v-card-subtitle>
     <div id="chart"> </div>
 
   </v-card>
@@ -25,6 +36,9 @@ export default {
       var options = {
         chart: {
           type: 'radar',
+          width: '140%',
+          offsetX: -100,
+          offsetY: -45,
           animations: {
             enabled: true,
             easing: 'easeinout',
@@ -38,7 +52,9 @@ export default {
               speed: 350
             }
           },
-
+          toolbar: {
+            show: false
+          },
         },
         fill: {
           colors: ['gray'],
@@ -78,7 +94,6 @@ export default {
 
         },
         title: {
-          text: 'Vaardighedenpaspoort',
           subtitle: '487130'
         },
         series: [{
@@ -86,7 +101,7 @@ export default {
           data: [8, 5, 3, 4, 10, 4, 5, 6, 9, 5],
         }],
         xaxis: {
-          categories: ['English', 'Dutch', 'Presentation', 'ICT', 'Creative Technology', 'Gespre', 'Onderh.', 'Conflict hank', 'Team Work', 'Kr. D']
+          categories: ['English', 'Dutch', 'Presentation', 'ICT', 'Creative Technology', 'Communication', 'Onderhandelen', 'Conflict hank', 'Team Work', 'Kr. D']
           ,
           labels: {
             style: {
