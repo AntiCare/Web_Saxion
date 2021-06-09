@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-
 const sqlite3 = require("sqlite3");
 sqlite3.verbose();
 const {open} = require("sqlite");
@@ -15,9 +14,24 @@ let abb = (async () => {
         driver: sqlite3.Database,
     });
 // await db.exec("CREATE TABLE tbl (col TEXT)");
+
+// await db.exec("CREATE TABLE IF NOT EXISTS exam_schedule (\n" +
+//     "\tid INT,\n" +
+//     "\texam_name VARCHAR(50),\n" +
+//     "\texam_time TIMESTAMP\n" +
+//     ");\n" +
+//     "insert into EXAM_SCHEDULE (id, exam_name, exam_time) values (1, 'dev tools', '1623266926');\n" +
+//     "insert into EXAM_SCHEDULE (id, exam_name, exam_time) values (2, 'dev tools 2', '1623266926');\n" +
+//     "insert into EXAM_SCHEDULE (id, exam_name, exam_time) values (3, 'dev tools 3', '1623266926');\n" +
+//     "insert into EXAM_SCHEDULE (id, exam_name, exam_time) values (4, 'dev tools44', '1623266926');\n" +
+//     "insert into EXAM_SCHEDULE (id, exam_name, exam_time) values (5, 'dev tools 5', '1623266926');\n"
+// )
+
 // await db.exec('INSERT INTO tbl VALUES ("test")');
 // let result =  db.get("SELECT col FROM tbl WHERE col = ?", "test");
 // console.log(result)
+let result =  await db.all("SELECT * FROM exam_schedule");
+console.log(result)
 })()
 
 
@@ -25,7 +39,6 @@ let abb = (async () => {
 router.get('/', function (req, res, next) {
     res.send({message: 'Student portal backend server'});
 });
-
 
 router.get('/test', function (req, res, next) {
     res.send({message: 'Student portal backend server'});
@@ -75,6 +88,16 @@ router.get("/api/showdummy", async function (req, res, next) {
     // return result
 
     res.json(result);
+});
+
+// Show exam schedule data
+router.get("/api/exam-schedule", async function (req, res, next) {
+    try {
+        let result = await db.all("SELECT * FROM exam_schedule");
+        res.json(result);
+    } catch (e) {
+        res.json(e);
+    }
 });
 
 router.get('/api/products', function (req, res, next) {
