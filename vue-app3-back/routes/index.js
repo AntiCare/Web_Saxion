@@ -49,11 +49,15 @@ let abb = (async () => {
         "\texam_name VARCHAR(50),\n" +
         "\texam_result INT\n" +
         ");\n" +
-        "insert into EXAM_SCORE (id, exam_name, exam_result) values (1, 'dev tools', 5);\n" +
-        "insert into EXAM_SCORE (id, exam_name, exam_result) values (2, 'dev tools 2', 6);\n" +
-        "insert into EXAM_SCORE (id, exam_name, exam_result) values (3, 'dev tools 3', 7);\n" +
-        "insert into EXAM_SCORE (id, exam_name, exam_result) values (4, 'dev tools44', 8);\n" +
-        "insert into EXAM_SCORE (id, exam_name, exam_result) values (5, 'dev tools 5', 9);\n"
+        "insert into EXAM_SCORE (id, exam_name, exam_result) values (1, 'Dev tools', 9);\n" +
+        "insert into EXAM_SCORE (id, exam_name, exam_result) values (5, 'Hello World', 10);\n"+
+        "insert into EXAM_SCORE (id, exam_name, exam_result) values (2, 'Web applications', 8);\n" +
+        "insert into EXAM_SCORE (id, exam_name, exam_result) values (3, 'C++', 10);\n" +
+        "insert into EXAM_SCORE (id, exam_name, exam_result) values (4, 'Complexity and Algorithms', 8);\n" +
+        "insert into EXAM_SCORE (id, exam_name, exam_result) values (5, 'Concurrency', 9);\n" +
+        "insert into EXAM_SCORE (id, exam_name, exam_result) values (5, 'Web Technology', 10);\n" +
+        "insert into EXAM_SCORE (id, exam_name, exam_result) values (5, 'Curiosity', 9);\n"+
+        "insert into EXAM_SCORE (id, exam_name, exam_result) values (5, 'Organisation and IT', 9);\n"
     )
 
     //subject
