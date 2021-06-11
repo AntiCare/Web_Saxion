@@ -13,8 +13,8 @@ let abb = (async () => {
         filename: "./mydb.sql",
         driver: sqlite3.Database,
     });
-// await db.exec("CREATE TABLE tbl (col TEXT)");
 
+   //exam schedule
     await db.exec("DROP TABLE IF EXISTS exam_schedule; CREATE TABLE IF NOT EXISTS exam_schedule (\n" +
         "\tid INT,\n" +
         "\texam_name VARCHAR(50),\n" +
@@ -26,7 +26,7 @@ let abb = (async () => {
         "insert into EXAM_SCHEDULE (id, exam_name, exam_time) values (4, 'dev tools44', '1623266926');\n" +
         "insert into EXAM_SCHEDULE (id, exam_name, exam_time) values (5, 'dev tools 5', '1623266926');\n"
     )
-
+    //exam preview
     await db.exec("DROP TABLE IF EXISTS email_preview; CREATE TABLE email_preview (\n" +
         "\t id INT,\n" +
         "\t teacher_name VARCHAR(50),\n" +
@@ -37,6 +37,7 @@ let abb = (async () => {
         "insert into email_preview (id, teacher_name, teacher_email, teacher_abbreviation) values (2, 'Floor Weijman', 'f.r.weijman@saxion.nl', 'frw');\n" +
         "insert into email_preview (id, teacher_name, teacher_email, teacher_abbreviation) values (3, 'Rogier Hommelsn', 'r.m.hommels@saxion.nl', 'rmh');\n"
     )
+    //exam score
     await db.exec("DROP TABLE IF EXISTS exam_score; CREATE TABLE IF NOT EXISTS exam_score (\n" +
         "\tid INT,\n" +
         "\texam_name VARCHAR(50),\n" +
@@ -48,7 +49,7 @@ let abb = (async () => {
         "insert into EXAM_SCORE (id, exam_name, exam_result) values (4, 'dev tools44', 8);\n" +
         "insert into EXAM_SCORE (id, exam_name, exam_result) values (5, 'dev tools 5', 9);\n"
     )
-
+    //subject
     await db.exec("DROP TABLE IF EXISTS subject; CREATE TABLE IF NOT EXISTS subject (\n" +
         "\tid INT,\n" +
         "\tsubject_name VARCHAR(50)\n" +
@@ -57,6 +58,16 @@ let abb = (async () => {
         "insert into Subject (id, subject_name) values (2, 'IT and Law');\n" +
         "insert into Subject (id, subject_name) values (3, 'Compliers and Operating system');\n" +
         "insert into Subject (id, subject_name) values (4, 'Development tools');\n"
+    )
+
+     //news
+    await db.exec("DROP TABLE IF EXISTS news; CREATE TABLE IF NOT EXISTS news (\n" +
+        "\tid INT,\n" +
+        "\tnews_title VARCHAR(50)\n" +
+        ");\n" +
+        "insert into NEWS (id, news_title) values (1, 'SAXION INTRODUCTION DAYS 2021: SAXION CAMPSITE ALMOST OPEN');\n" +
+        "insert into NEWS (id, news_title) values (2, 'MAKE UP YOUR MINOR! FIND OUT MORE ABOUT OUR OFFER NOW');\n" +
+        "insert into NEWS (id, news_title) values (3, 'CORONA-UPDATE: REQUEST SELF-TESTS FROM MAY 5');\n"
     )
 
 // await db.exec('INSERT INTO tbl VALUES ("test")');
@@ -164,6 +175,18 @@ router.get("/api/subjects", async function (req, res, next) {
     try {
         setTimeout(async function () {
             let result = await db.all("SELECT * FROM subject");
+            res.json(result);
+        }, 500);
+    } catch (e) {
+        res.json(e);
+    }
+});
+
+//show news data
+router.get("/api/news", async function (req, res, next) {
+    try {
+        setTimeout(async function () {
+            let result = await db.all("SELECT * FROM news");
             res.json(result);
         }, 500);
     } catch (e) {
