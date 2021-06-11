@@ -61,29 +61,8 @@
                   </v-card>
                 </v-expand-x-transition>
               </v-col>
-              <div class="card-home-content">
-                <div class="card__post">
-                  <div class="post-text">
-                    Saxion Introduction Days 2021: Saxion Campsite almost open
-                  </div>
-                  <a href='/news/1' class="post__btn">Read article</a>
-                </div>
-              </div>
-              <div class="card-home-content">
-                <div class="card__post">
-                  <div class="post-text">
-                    Make up your minor! Find out more about our offer now
-                  </div>
-                  <a href='/news/2' class="post__btn">Read article</a>
-                </div>
-              </div>
-              <div class="card-home-content">
-                <div class="card__post">
-                  <div class="post-text">
-                    04-05-2021 Corona-update: Request self-tests from May 5
-                  </div>
-                  <a href='/news/3' class="post__btn">Read article</a>
-                </div>
+              <div class="news" id="news">
+
               </div>
               <a href="/news/list" class="card__btn">See all news</a>
             </div>
@@ -241,10 +220,42 @@ export default {
     expand2: false
   }),
 
-  mounted() {
+  mounted () {
+    this.getNews()
     this.getGrades()
   },
   methods: {
+    getNews: function () {
+      fetch('http://localhost:3000/api/news', {
+        method: 'GET'
+      }).then(res => res.json())
+        .then(data => {
+          // get the respond from backend.
+          console.log(data)
+          if (data !== null) {
+            // console.log(data.length)
+            var newsBox = document.getElementById('news')
+            for (let i = 0; i < data.length; i++) {
+              var content = document.createElement('div')
+              var card = document.createElement('div')
+              var title = document.createElement('div')
+              var button = document.createElement('a')
+
+              content.className = 'card-home-content'
+              card.className = 'card__post'
+              title.className = 'post-text'
+              button.className = 'post__btn'
+              button.href = '/news/' + (i + 1)
+              button.innerHTML = 'Read article'
+              title.innerHTML = data[i].news_title.toString()
+              card.appendChild(title)
+              card.appendChild(button)
+              content.appendChild(card)
+              newsBox.appendChild(content)
+            }
+          }
+        })
+    },
     // get the grades.
     getGrades: function () {
       // use fetch to get data.
@@ -254,29 +265,28 @@ export default {
         .then(data => {
           // get the respond from backend.
           console.log(data)
-          if (data!==null){
+          if (data !== null) {
             // console.log(data.length)
-            var box = document.getElementById('gradeBox');
+            var box = document.getElementById('gradeBox')
             for (let i = 0; i < data.length; i++) {
               var gradeInner = document.createElement('div')
-              var grade = document.createElement('div');
-              var subjectName = document.createElement('div');
-              var gradeResult = document.createElement('div');
+              var grade = document.createElement('div')
+              var subjectName = document.createElement('div')
+              var gradeResult = document.createElement('div')
 
-              gradeInner.className='grades__inner';
-              grade.className='grade';
-              subjectName.className='subject-name';
-              gradeResult.className='grade-result';
+              gradeInner.className = 'grades__inner'
+              grade.className = 'grade'
+              subjectName.className = 'subject-name'
+              gradeResult.className = 'grade-result'
 
-              subjectName.innerHTML=data[i].exam_name.toString();
-              gradeResult.innerHTML=data[i].exam_result.toString();
+              subjectName.innerHTML = data[i].exam_name.toString()
+              gradeResult.innerHTML = data[i].exam_result.toString()
 
-              grade.appendChild(subjectName);
-              grade.appendChild(gradeResult);
-              gradeInner.appendChild(grade);
-              box.appendChild(gradeInner);
+              grade.appendChild(subjectName)
+              grade.appendChild(gradeResult)
+              gradeInner.appendChild(grade)
+              box.appendChild(gradeInner)
             }
-
           }
         })
     }
