@@ -21,23 +21,26 @@ let abb = (async () => {
         "\texam_name VARCHAR(50),\n" +
         "\texam_time TIMESTAMP\n" +
         ");\n" +
-        "insert into EXAM_SCHEDULE (id, exam_name, exam_time) values (1, 'dev tools', '1623266926');\n" +
-        "insert into EXAM_SCHEDULE (id, exam_name, exam_time) values (2, 'dev tools 2', '1623266926');\n" +
-        "insert into EXAM_SCHEDULE (id, exam_name, exam_time) values (3, 'dev tools 3', '1623266926');\n" +
-        "insert into EXAM_SCHEDULE (id, exam_name, exam_time) values (4, 'dev tools44', '1623266926');\n" +
+        "insert into EXAM_SCHEDULE (id, exam_name, exam_time) values (1, 'Hello world', '1623266926');\n" +
+        "insert into EXAM_SCHEDULE (id, exam_name, exam_time) values (2, 'HBO-ICT project', '1623266926');\n" +
+        "insert into EXAM_SCHEDULE (id, exam_name, exam_time) values (3, 'Web development', '1623266926');\n" +
+        "insert into EXAM_SCHEDULE (id, exam_name, exam_time) values (4, 'Dev tools', '1623266926');\n" +
         "insert into EXAM_SCHEDULE (id, exam_name, exam_time) values (5, 'dev tools 5', '1623266926');\n"
     )
 
-    //exam preview
-    await db.exec("DROP TABLE IF EXISTS email_preview; CREATE TABLE email_preview (\n" +
-        "\t id INT,\n" +
-        "\t teacher_name VARCHAR(50),\n" +
-        "\t teacher_email VARCHAR(50),\n" +
-        "\t teacher_abbreviation VARCHAR(50)\n" +
+
+    //email preview
+    await db.exec("DROP TABLE IF EXISTS email_preview; CREATE TABLE IF NOT EXISTS email_preview (\n" +
+        "\tid INT,\n" +
+        "\tsender_name VARCHAR(50),\n" +
+        "\ttitle VARCHAR(50),\n" +
+        "email_time TIMESTAMP\n" +
         ");\n" +
-        "insert into email_preview (id, teacher_name, teacher_email, teacher_abbreviation) values (1, 'Dick Heijink', 'j.d.heijink@saxion.nl', 'jdh');\n" +
-        "insert into email_preview (id, teacher_name, teacher_email, teacher_abbreviation) values (2, 'Floor Weijman', 'f.r.weijman@saxion.nl', 'frw');\n" +
-        "insert into email_preview (id, teacher_name, teacher_email, teacher_abbreviation) values (3, 'Rogier Hommelsn', 'r.m.hommels@saxion.nl', 'rmh');\n"
+        "insert into email_preview (id, sender_name, title, email_time) values (1, 'Dick Heijink','Project passed' , '1623266926');\n" +
+        "insert into email_preview (id, sender_name, title, email_time) values (2, 'Dick Heijink', 'Submition received' ,'1623266926');\n" +
+        "insert into email_preview (id, sender_name, title, email_time) values (3, 'Floor Weijma', 'Good job team!' , '1623266926');\n" +
+        "insert into email_preview (id, sender_name, title, email_time) values (3, 'Dick Heijink', 'Submition received' , '1623266926');\n" +
+        "insert into email_preview (id, sender_name, title, email_time) values (3, 'Dick Heijink', 'Submition received' , '1623266926');\n"
     )
 
     //exam score
@@ -90,14 +93,23 @@ let abb = (async () => {
     )
 
 
-// await db.exec('INSERT INTO tbl VALUES ("test")');
-// let result =  db.get("SELECT col FROM tbl WHERE col = ?", "test");
-// console.log(result)
-//     let result = await db.all("SELECT * FROM email_preview");
+    // teachers
+    await db.exec("DROP TABLE IF EXISTS find_teacher; CREATE TABLE find_teacher (\n" +
+        "\t id INT,\n" +
+        "\t teacher_name VARCHAR(50),\n" +
+        "\t teacher_email VARCHAR(50),\n" +
+        "\t teacher_abbreviation VARCHAR(50)\n" +
+        ");\n" +
+        "insert into find_teacher (id, teacher_name, teacher_email, teacher_abbreviation) values (1, 'Dick Heijink', 'j.d.heijink@saxion.nl', 'jdh');\n" +
+        "insert into find_teacher (id, teacher_name, teacher_email, teacher_abbreviation) values (2, 'Floor Weijman', 'f.r.weijman@saxion.nl', 'frw');\n" +
+        "insert into find_teacher (id, teacher_name, teacher_email, teacher_abbreviation) values (3, 'Rogier Hommelsn', 'r.m.hommels@saxion.nl', 'rmh');\n"
+    )
+
     console.log( await db.all("SELECT * FROM email_preview"))
     console.log( await db.all("SELECT * FROM subject"))
     console.log( await db.all("SELECT * FROM exam_score"))
     console.log( await db.all("SELECT * FROM exam_schedule"))
+    console.log( await db.all("SELECT * FROM find_teacher"))
 })()
 
 
@@ -169,7 +181,19 @@ router.get("/api/exam-schedule", async function (req, res, next) {
 });
 
 // Show exam schedule data
-router.get("/api/email_preview", async function (req, res, next) {
+router.get("/api/find-teacher", async function (req, res, next) {
+    try {
+        setTimeout(async function () {
+            let result = await db.all("SELECT * FROM find_teacher");
+            res.json(result);
+        }, 500);
+    } catch (e) {
+        res.json(e);
+    }
+});
+
+// Show email preview data
+router.get("/api/email-preview", async function (req, res, next) {
     try {
         setTimeout(async function () {
             let result = await db.all("SELECT * FROM email_preview");
