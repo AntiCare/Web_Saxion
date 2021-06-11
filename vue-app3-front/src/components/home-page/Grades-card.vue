@@ -11,8 +11,22 @@
         <div class="progress-bar__outer"></div>
         <div class="progress-bar__inner"></div>
       </div>
-      <div class="spider-map-btn">
-      </div>
+        <div class="text-center">
+          <v-menu transition="fab-transition">
+            <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  to="/spider"
+                  icon
+                  color="primary"
+                  v-bind="attrs"
+                  v-on="on"
+                >
+                  <v-icon>mdi-star</v-icon>
+                </v-btn>
+            </template>
+
+          </v-menu>
+        </div>
     </div>
     <div id="gradeBox">
 
@@ -23,23 +37,24 @@
 </template>
 
 <script>
+
 export default {
-  name: "Grades",
+  name: 'Grades',
   mounted () {
     this.getGrades()
   },
   methods: {
     // get the grades.
     getGrades: function () {
-      // use fetch to get data.
+    // use fetch to get data.
       fetch('http://localhost:3000/api/exam-score', {
         method: 'GET'
       }).then(res => res.json())
         .then(data => {
-          // get the respond from backend.
+        // get the respond from backend.
           console.log(data)
           if (data !== null) {
-            // console.log(data.length)
+          // console.log(data.length)
             var box = document.getElementById('gradeBox')
             for (let i = 0; i < data.length; i++) {
               var gradeInner = document.createElement('div')
