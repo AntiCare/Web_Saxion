@@ -39,6 +39,17 @@ let abb = (async () => {
 //     "insert into EXAM_SCORE (id, exam_name, exam_result) values (5, 'dev tools 5', 9);\n"
 // )
 
+
+//     await db.exec("CREATE TABLE IF NOT EXISTS subject (\n" +
+//     "\tid INT,\n" +
+//     "\tsubject_name VARCHAR(50)\n" +
+//     ");\n" +
+//     "insert into Subject (id, subject_name) values (1, 'Introduction to programming');\n" +
+//     "insert into Subject (id, subject_name) values (2, 'IT and Law');\n" +
+//     "insert into Subject (id, subject_name) values (3, 'Compliers and Operating system');\n" +
+//     "insert into Subject (id, subject_name) values (4, 'Development tools');\n"
+// )
+
 // await db.exec('INSERT INTO tbl VALUES ("test")');
 // let result =  db.get("SELECT col FROM tbl WHERE col = ?", "test");
 // console.log(result)
@@ -120,6 +131,18 @@ router.get("/api/exam-score", async function (req, res, next) {
     try {
         let result = await db.all("SELECT * FROM exam_score");
         res.json(result);
+    } catch (e) {
+        res.json(e);
+    }
+});
+
+// Show subject data
+router.get("/api/subjects", async function (req, res, next) {
+    try {
+        setTimeout(async function () {
+            let result = await db.all("SELECT * FROM subject");
+            res.json(result);
+        }, 500);
     } catch (e) {
         res.json(e);
     }
