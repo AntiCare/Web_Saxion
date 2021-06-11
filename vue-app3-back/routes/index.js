@@ -83,6 +83,7 @@ router.post('/api/register', function (req, res) {
 });
 
 
+
 // dummy test for sql lite
 router.get("/api/enterdummy", async function (req, res, next) {
 
@@ -117,6 +118,7 @@ router.get("/api/exam-score", async function (req, res, next) {
     try {
         let result = await db.all("SELECT * FROM exam_score");
         res.json(result);
+        res.json(result).send ;
     } catch (e) {
         res.json(e);
     }

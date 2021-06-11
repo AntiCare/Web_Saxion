@@ -211,109 +211,12 @@
                 <div class="spider-map-btn">
                 </div>
               </div>
-              <div class="grades__inner">
-                <div class="grade">
-                  <div class="subject-name">
-                    dev tools
-                  </div>
-                  <div class="grade-result">
-                    10
-                  </div>
-                </div>
-              </div>
-              <div class="grades__inner">
-                <div class="grade">
-                  <div class="subject-name">
-                    dev tools
-                  </div>
-                  <div class="grade-result">
-                    10
-                  </div>
-                </div>
-              </div>
-              <div class="grades__inner">
-                <div class="grade">
-                  <div class="subject-name">
-                    dev tools
-                  </div>
-                  <div class="grade-result">
-                    10
-                  </div>
-                </div>
-              </div>
-              <div class="grades__inner">
-                <div class="grade">
-                  <div class="subject-name">
-                    dev tools
-                  </div>
-                  <div class="grade-result">
-                    10
-                  </div>
-                </div>
-              </div>
-              <div class="grades__inner">
-                <div class="grade">
-                  <div class="subject-name">
-                    dev tools
-                  </div>
-                  <div class="grade-result">
-                    10
-                  </div>
-                </div>
-              </div>
-              <div class="grades__inner">
-                <div class="grade">
-                  <div class="subject-name">
-                    dev tools
-                  </div>
-                  <div class="grade-result">
-                    10
-                  </div>
-                </div>
-              </div>
-              <div class="grades__inner">
-                <div class="grade">
-                  <div class="subject-name">
-                    dev tools
-                  </div>
-                  <div class="grade-result">
-                    10
-                  </div>
-                </div>
-              </div>
-              <div class="grades__inner">
-                <div class="grade">
-                  <div class="subject-name">
-                    dev tools
-                  </div>
-                  <div class="grade-result">
-                    10
-                  </div>
-                </div>
-              </div>
-              <div class="grades__inner">
-                <div class="grade">
-                  <div class="subject-name">
-                    dev tools
-                  </div>
-                  <div class="grade-result">
-                    10
-                  </div>
-                </div>
-              </div>
+              <div id="gradeBox">
 
-              <div class="grades__inner">
-                <div class="grade">
-                  <div class="subject-name">
-                    dev tools
-                  </div>
-                  <div class="grade-result">
-                    10
-                  </div>
-                </div>
+              </div>
+              <div class = "loginBox" id="loginBox">
               </div>
             </div>
-
           </div>
           <div class="home-content__right">
             <ScheduleCard></ScheduleCard>
@@ -336,7 +239,48 @@ export default {
   data: () => ({
     hover: false,
     expand2: false
-  })
+  }),
+
+  mounted() {
+    this.getGrades()
+  },
+  methods: {
+    // get the grades.
+    getGrades: function () {
+      // use fetch to get data.
+      fetch('http://localhost:3000/api/exam-score', {
+        method: 'GET'
+      }).then(res => res.json())
+        .then(data => {
+          // get the respond from backend.
+          console.log(data)
+          if (data!==null){
+            // console.log(data.length)
+            var box = document.getElementById('gradeBox');
+            for (let i = 0; i < data.length; i++) {
+              var gradeInner = document.createElement('div')
+              var grade = document.createElement('div');
+              var subjectName = document.createElement('div');
+              var gradeResult = document.createElement('div');
+
+              gradeInner.className='grades__inner';
+              grade.className='grade';
+              subjectName.className='subject-name';
+              gradeResult.className='grade-result';
+
+              subjectName.innerHTML=data[i].exam_name.toString();
+              gradeResult.innerHTML=data[i].exam_result.toString();
+
+              grade.appendChild(subjectName);
+              grade.appendChild(gradeResult);
+              gradeInner.appendChild(grade);
+              box.appendChild(gradeInner);
+            }
+
+          }
+        })
+    }
+  }
 }
 </script>
 <style>
