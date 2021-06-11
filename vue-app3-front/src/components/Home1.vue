@@ -69,112 +69,9 @@
 
             <SubjectsCard></SubjectsCard>
             <ExamPreview></ExamPreview>
+            <EmailPreview></EmailPreview>
+            <FindCard></FindCard>
 
-            <div class="card card__home-page">
-              <div class="card__heading">
-                Email preview
-              </div>
-              <div class="email-card__inner">
-                <div class="email-item">
-                  <div class="email__time">21/06/21 08:30</div>
-                  <div class="email__content">
-                    <div class="exam__sender">Sender</div>
-                    <div class="exam__title">Title</div>
-                  </div>
-                </div>
-                <div class="email-item">
-                  <div class="email__time">21/06/21 08:30</div>
-                  <div class="email__content">
-                    <div class="exam__sender">Sender</div>
-                    <div class="exam__title">Title</div>
-                  </div>
-                </div>
-                <div class="email-item">
-                  <div class="email__time">21/06/21 08:30</div>
-                  <div class="email__content">
-                    <div class="exam__sender">Sender</div>
-                    <div class="exam__title">Title</div>
-                  </div>
-                </div>
-                <div class="email-item">
-                  <div class="email__time">21/06/21 08:30</div>
-                  <div class="email__content">
-                    <div class="exam__sender">Sender</div>
-                    <div class="exam__title">Title</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card card__home-page find__card">
-              <div class="card__heading">
-                Find
-              </div>
-              <div class="find-card__inner">
-                <form action="/" class="find-form">
-                  <v-text-field
-                    label="Teacher name"
-                    placeholder="Dick"
-                    color="rgb(255, 255, 255)"
-                    outlined
-                    filled
-                    light
-                    rounded
-                    dense
-                  ></v-text-field>
-                </form>
-                <div class="find-item">
-                  <div class="find-item__image">
-                    <img src="https://source.unsplash.com/random/200x150" alt="random photo">
-                  </div>
-                  <div class="find-item__contact-details">
-                    <div class="find-item__text"><strong>Name:</strong> Dick Heijink</div>
-                    <div class="find-item__text"><strong>Email:</strong> 470934@student.saxion.nl</div>
-                    <div class="find-item__text"><strong>Code:</strong> 470934</div>
-                  </div>
-                </div>
-                <div class="find-item">
-                  <div class="find-item__image">
-                    <img src="https://source.unsplash.com/random/200x150" alt="random photo">
-                  </div>
-                  <div class="find-item__contact-details">
-                    <div class="find-item__text"><strong>Name:</strong> Dick Heijink</div>
-                    <div class="find-item__text"><strong>Email:</strong> 470934@student.saxion.nl</div>
-                    <div class="find-item__text"><strong>Code:</strong> 470934</div>
-                  </div>
-                </div>
-                <div class="find-item">
-                  <div class="find-item__image">
-                    <img src="https://source.unsplash.com/random/200x150" alt="random photo">
-                  </div>
-                  <div class="find-item__contact-details">
-                    <div class="find-item__text"><strong>Name:</strong> Dick Heijink</div>
-                    <div class="find-item__text"><strong>Email:</strong> 470934@student.saxion.nl</div>
-                    <div class="find-item__text"><strong>Code:</strong> 470934</div>
-                  </div>
-                </div>
-                <div class="find-item">
-                  <div class="find-item__image">
-                    <img src="https://source.unsplash.com/random/200x150" alt="random photo">
-                  </div>
-                  <div class="find-item__contact-details">
-                    <div class="find-item__text"><strong>Name:</strong> Dick Heijink</div>
-                    <div class="find-item__text"><strong>Email:</strong> 470934@student.saxion.nl</div>
-                    <div class="find-item__text"><strong>Code:</strong> 470934</div>
-                  </div>
-                </div>
-                <div class="find-item">
-                  <div class="find-item__image">
-                    <img src="https://source.unsplash.com/random/200x150" alt="random photo">
-                  </div>
-                  <div class="find-item__contact-details">
-                    <div class="find-item__text"><strong>Name:</strong> Dick Heijink</div>
-                    <div class="find-item__text"><strong>Email:</strong> 470934@student.saxion.nl</div>
-                    <div class="find-item__text"><strong>Code:</strong> 470934</div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
             <div class="card card__home-page">
               <div class="card__heading">
                 Subjects
@@ -212,9 +109,11 @@
 import SubjectsCard from '@/components/home-page/Subjects-card'
 import ExamPreview from '@/components/home-page/Exam-card'
 import ScheduleCard from '@/components/home-page/Schedule-card'
+import EmailPreview from "@/components/home-page/Email-preview-card";
+import FindCard from "@/components/home-page/Find-card";
 
 export default {
-  components: { SubjectsCard, ExamPreview, ScheduleCard },
+  components: {FindCard, EmailPreview, SubjectsCard, ExamPreview, ScheduleCard },
   data: () => ({
     hover: false,
     expand2: false
@@ -470,6 +369,7 @@ a {
 
 .exam-card__inner, .email-card__inner, .schedule__inner, .find-card__inner {
   margin-top: 5px;
+  color: white;
 }
 
 .exam-item, .schedule-item {
