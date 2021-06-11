@@ -74,6 +74,21 @@ let abb = (async () => {
         "insert into NEWS (id, news_title) values (3, 'CORONA-UPDATE: REQUEST SELF-TESTS FROM MAY 5');\n"
     )
 
+    //schedule
+    await db.exec("DROP TABLE IF EXISTS schedule; CREATE TABLE IF NOT EXISTS schedule (\n" +
+        "\tid INT,\n" +
+        "\tH INT,\n" +
+        "\tM INT,\n" +
+        "\tcourse_name VARCHAR(50)\n" +
+        ");\n" +
+        "insert into SCHEDULE (id,  H , M , course_name) values (1, 8, 30 , 'Introduction to programming');\n" +
+        "insert into SCHEDULE (id,  H , M ,course_name) values (2, 10, 15, 'Compliers and Operating system');\n" +
+        "insert into SCHEDULE (id,  H , M ,course_name) values (3, 11, 45,'concurrency');\n"+
+        "insert into SCHEDULE (id,  H , M ,course_name) values (3, 14, 30, 'IT and Law');\n"+
+        "insert into SCHEDULE (id,  H , M ,course_name) values (3, 17, 10, 'Development tools');\n"+
+        "insert into SCHEDULE (id,  H , M ,course_name) values (3, 19, 30, 'international work');\n"
+    )
+
 
 // await db.exec('INSERT INTO tbl VALUES ("test")');
 // let result =  db.get("SELECT col FROM tbl WHERE col = ?", "test");
@@ -192,6 +207,18 @@ router.get("/api/news", async function (req, res, next) {
     try {
         setTimeout(async function () {
             let result = await db.all("SELECT * FROM news");
+            res.json(result);
+        }, 500);
+    } catch (e) {
+        res.json(e);
+    }
+});
+
+//show schedule data
+router.get("/api/schedule", async function (req, res, next) {
+    try {
+        setTimeout(async function () {
+            let result = await db.all("SELECT * FROM schedule");
             res.json(result);
         }, 500);
     } catch (e) {
