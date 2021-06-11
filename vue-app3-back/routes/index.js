@@ -106,8 +106,10 @@ router.get("/api/showdummy", async function (req, res, next) {
 // Show exam schedule data
 router.get("/api/exam-schedule", async function (req, res, next) {
     try {
-        let result = await db.all("SELECT * FROM exam_schedule");
-        res.json(result);
+        setTimeout(async function () {
+                let result = await db.all("SELECT * FROM exam_schedule");
+                res.json(result);
+        }, 500);
     } catch (e) {
         res.json(e);
     }
