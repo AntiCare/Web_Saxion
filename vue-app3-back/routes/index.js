@@ -118,7 +118,6 @@ router.get("/api/exam-score", async function (req, res, next) {
     try {
         let result = await db.all("SELECT * FROM exam_score");
         res.json(result);
-        res.json(result).send ;
     } catch (e) {
         res.json(e);
     }
