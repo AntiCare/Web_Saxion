@@ -53,7 +53,7 @@ let abb = (async () => {
         "insert into EXAM_SCORE (id, exam_name, exam_result) values (5, 'Hello World', 10);\n"+
         "insert into EXAM_SCORE (id, exam_name, exam_result) values (2, 'Web applications', 8);\n" +
         "insert into EXAM_SCORE (id, exam_name, exam_result) values (3, 'C++', 10);\n" +
-        "insert into EXAM_SCORE (id, exam_name, exam_result) values (4, 'Complexity and Algorithms', 8);\n" +
+        "insert into EXAM_SCORE (id, exam_name, exam_result) values (4, 'Algorithms 2', 8);\n" +
         "insert into EXAM_SCORE (id, exam_name, exam_result) values (5, 'Concurrency', 9);\n" +
         "insert into EXAM_SCORE (id, exam_name, exam_result) values (5, 'Web Technology', 10);\n" +
         "insert into EXAM_SCORE (id, exam_name, exam_result) values (5, 'Curiosity', 9);\n"+
@@ -88,12 +88,12 @@ let abb = (async () => {
         "\tM INT,\n" +
         "\tcourse_name VARCHAR(50)\n" +
         ");\n" +
-        "insert into SCHEDULE (id,  H , M , course_name) values (1, 8, 30 , 'Introduction to programming');\n" +
-        "insert into SCHEDULE (id,  H , M ,course_name) values (2, 10, 15, 'Compliers and Operating system');\n" +
-        "insert into SCHEDULE (id,  H , M ,course_name) values (3, 11, 45,'concurrency');\n"+
+        "insert into SCHEDULE (id,  H , M , course_name) values (1, 8, 30 , 'C++');\n" +
+        "insert into SCHEDULE (id,  H , M ,course_name) values (2, 10, 15, 'Curiosity');\n" +
+        "insert into SCHEDULE (id,  H , M ,course_name) values (3, 11, 45,'Concurrency');\n"+
         "insert into SCHEDULE (id,  H , M ,course_name) values (3, 14, 30, 'IT and Law');\n"+
         "insert into SCHEDULE (id,  H , M ,course_name) values (3, 17, 10, 'Development tools');\n"+
-        "insert into SCHEDULE (id,  H , M ,course_name) values (3, 19, 30, 'international work');\n"
+        "insert into SCHEDULE (id,  H , M ,course_name) values (3, 19, 30, 'International work');\n"
     )
 
 
