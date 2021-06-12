@@ -147,6 +147,129 @@
                       <v-icon right dark>mdi-cloud-upload</v-icon>
                     </v-btn>
                   </div>
+                  <!--Quiz-->
+                  <div class="text-left"
+                       v-if="weekPage.submenu==='Quiz'">
+                    <v-progress-linear
+                      v-model="skill"
+                      color="blue-grey"
+                      height="25"
+                    >
+                      <template v-slot:default="{ value }">
+                        <strong>{{ Math.ceil(value) }}%</strong>
+                      </template>
+                    </v-progress-linear>
+                    <!--progress Bar-->
+                    <div>
+                      <v-stepper v-model="e1">
+                        <v-stepper-header>
+                          <template v-for="n in 5">
+                            <v-stepper-step
+                              :key="`${n}-step`"
+                              :complete="e1 > n"
+                              :step="n"
+                              editable
+                            >
+                              Step {{ n }}
+                            </v-stepper-step>
+
+                            <v-divider
+                              v-if="n !== 5"
+                              :key="n"
+                            ></v-divider>
+                          </template>
+                        </v-stepper-header>
+
+                        <v-stepper-items>
+                          <v-stepper-content
+                            v-for="n in 7"
+                            :key="`${n}-content`"
+                            :step="n"
+                          >
+
+                            <!--quiz Q1-->
+                            <v-card
+                              color="grey lighten-1"
+                              v-if="n !== 7 && n===1"
+                              class="mb-12"
+                              height="200px"
+                            >
+                              <v-card-title>Which of the following cannot be used as a loop condition</v-card-title>
+
+                              <v-card-text>
+                                <v-chip-group
+                                  active-class="deep-purple accent-4 white--text"
+                                  column
+                                >
+                                  <v-chip>A. i++; </v-chip>
+
+                                  <v-chip>B. i>5;</v-chip>
+
+                                  <v-chip>C. bEqual = str.equals("q");</v-chip>
+
+                                  <v-chip>D. count = = i;</v-chip>
+                                </v-chip-group>
+                              </v-card-text>
+                            </v-card>
+
+                            <v-card
+                              color="grey lighten-1"
+                              v-if="n !== 7 && n===2"
+                              class="mb-12"
+                              height="200px"
+                            >
+                              <v-card-title>Which of the following cannot be used as a loop condition</v-card-title>
+
+                              <v-card-text>
+                                <v-chip-group
+                                  active-class="deep-purple accent-4 white--text"
+                                  column
+                                >
+                                  <v-chip>A. i++; </v-chip>
+
+                                  <v-chip>B. i>5;</v-chip>
+
+                                  <v-chip>C. bEqual = str.equals("q");</v-chip>
+
+                                  <v-chip>D. count = = i;</v-chip>
+                                </v-chip-group>
+                              </v-card-text>
+                            </v-card>
+
+                            <v-icon
+                              v-if="n === 7"
+                              color="success"
+                              align-center
+                              large="large"
+                            >
+                              mdi-check
+                            </v-icon>
+
+                            <v-btn
+                              color="primary"
+                              @click="nextStep(n)"
+                              v-if="n !== 6 && n!==7"
+                            >
+                              Continue
+                            </v-btn>
+
+                            <v-btn
+                              color="primary"
+                              @click="nextStep(n)"
+                              v-if="n === 6"
+                            >
+                              Finish
+                            </v-btn>
+                            <v-btn text @click="backStep(n)"
+                                   v-if="n !== 7">
+                              Back
+                            </v-btn>
+
+                          </v-stepper-content>
+                        </v-stepper-items>
+                      </v-stepper>
+                    </div>
+                  </div>
                   <v-card-text>
                     {{ task.text }}
                     <!--img assignment1-->
@@ -192,7 +315,7 @@
                     </v-snackbar>
                   </v-card-text>
                   <v-card-actions></v-card-actions>
-                  <!--                  <button v-on:click="pushState"> Update url</button>-->
+
                 </v-card>
               </v-tab-item>
             </v-tabs>
@@ -307,8 +430,7 @@ export default {
           submenu: 'Quiz',
           icon: 'mdi-book-open-blank-variant',
           tasks: [
-            { title: 'assignment 3a', subtitle: 'level 3', text: 'copy paste is golden' },
-            { title: 'assignment 3b', subtitle: 'level 3', text: 'copy paste is golden' }
+            { title: 'Week 1 quize', subtitle: 'level :easy' }
           ]
         }
       ],
