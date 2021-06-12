@@ -94,7 +94,7 @@
                 >
                   <v-card-title>{{ task.title }}</v-card-title>
                   <v-card-subtitle>{{ task.subtitle }}</v-card-subtitle>
-
+                  <!--Assignment-->
                   <div class="text-left"
                        v-if="weekPage.submenu==='Assignment'">
                     <v-rating
@@ -102,7 +102,51 @@
                       icon-label="custom icon label text {0} of {1}"
                     ></v-rating>
                   </div>
+                  <!--Peer study-->
+                  <div class="text-left"
+                       v-if="weekPage.submenu==='Peer study'">
+                    <v-file-input
+                      v-model="files"
+                      color="primary"
+                      counter
+                      label="File input"
+                      multiple
+                      placeholder="Select your files"
+                      prepend-icon="mdi-paperclip"
+                      outlined
+                      :show-size="1000"
+                    >
+                      <template v-slot:selection="{ index, text }">
+                        <v-chip
+                          v-if="index < 2"
+                          color="primary"
+                          dark
+                          label
+                          small
+                        >
+                          {{ text }}
+                        </v-chip>
 
+                        <span
+                          v-else-if="index === 2"
+                          class="text-overline grey--text text--darken-3 mx-2"
+                        >
+                         +{{ files.length - 2 }} File(s)
+                      </span>
+                      </template>
+                    </v-file-input>
+                    <!--upload button-->
+                    <v-btn
+                      :loading="loading3"
+                      :disabled="loading3"
+                      color="blue-grey"
+                      class="ma-2 white--text"
+                      @click="isShow=true"
+                    >
+                      Upload
+                      <v-icon right dark>mdi-cloud-upload</v-icon>
+                    </v-btn>
+                  </div>
                   <v-card-text>
                     {{ task.text }}
                     <!--img assignment1-->
@@ -132,6 +176,19 @@
                       src="../assets/assignment3.png"
                     >
                     </v-img>
+                    <v-snackbar
+                      v-show="isShow"
+                      shaped
+                      color="primary"
+                      :elevation=10
+                      v-if="weekPage.submenu==='Peer study'&&task.comment!==null"
+                      :timeout="-1"
+                      :value="true"
+                      absolute
+                      left
+                    >
+                      {{ task.comment }}
+                    </v-snackbar>
                   </v-card-text>
                   <v-card-actions></v-card-actions>
                   <!--                  <button v-on:click="pushState"> Update url</button>-->
@@ -157,6 +214,9 @@ Vue.use(VueCoreVideoPlayer)
 export default {
   data () {
     return {
+      loading3: false,
+      isShow: false,
+      files: [],
       skill: 0,
       number: 20,
       tab: null,
@@ -214,8 +274,12 @@ export default {
           submenu: 'Peer study',
           icon: 'mdi-forum',
           tasks: [
-            { title: 'assignment 3a', subtitle: 'level 3', text: 'copy paste is golden' },
-            { title: 'assignment 3b', subtitle: 'level 3', text: 'copy paste is golden' }
+            { title: 'assignment 1', subtitle: 'level 1', text: 'comments: 0', comment: 'good job , Can I copy your code? +rep' }
+            // ,
+            // { title: 'assignment 2', subtitle: 'level 2', text: 'comments:\n', comment: 'It is working, thanks' }
+            // { title: 'assignment 3', subtitle: 'level 3', text: 'comments:\n', comment: 'Your code is like rubbish' },
+            // { title: 'assignment 4', subtitle: 'level 4', text: 'comments:\n', comment: 'Are you kidding me? Error everywhere. -rep' },
+            // { title: 'assignment 5', subtitle: 'level 2', text: 'comments:\n', comment: 'I will leave the project, you are all too weak!' }
           ]
         },
         // Video
@@ -288,3 +352,44 @@ export default {
   }
 }
 </script>
+
+<style>
+.custom-loader {
+  animation: loader 1s infinite;
+  display: flex;
+}
+@-moz-keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+</style>
+
+
