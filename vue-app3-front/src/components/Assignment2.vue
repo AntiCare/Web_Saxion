@@ -176,13 +176,14 @@
                       src="../assets/assignment3.png"
                     >
                     </v-img>
+                    <!--comments-->
                     <v-snackbar
                       v-show="isShow"
+                      :timeout="-1"
                       shaped
                       color="primary"
                       :elevation=10
                       v-if="weekPage.submenu==='Peer study'&&task.comment!==null"
-                      :timeout="-1"
                       :value="true"
                       absolute
                       left
@@ -214,6 +215,7 @@ Vue.use(VueCoreVideoPlayer)
 export default {
   data () {
     return {
+
       loading3: false,
       isShow: false,
       files: [],
@@ -352,44 +354,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.custom-loader {
-  animation: loader 1s infinite;
-  display: flex;
-}
-@-moz-keyframes loader {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes loader {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-@-o-keyframes loader {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-@keyframes loader {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-</style>
-
-
