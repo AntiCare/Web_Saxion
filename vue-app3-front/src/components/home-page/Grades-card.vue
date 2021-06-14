@@ -11,8 +11,27 @@
         <div class="progress-bar__outer"></div>
         <div class="progress-bar__inner"></div>
       </div>
-      <div class="spider-map-btn">
-      </div>
+      <v-dialog
+        v-model="dialog"
+        width="500"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            color="primary lighten-2"
+            dark
+            icon
+            v-bind="attrs"
+            v-on="on">
+            <v-icon size="30px">
+              mdi-spider-web
+            </v-icon>
+          </v-btn>
+        </template>
+        <v-card>
+          <spider></spider>
+        </v-card>
+      </v-dialog>
+
     </div>
     <div id="gradeBox">
 
@@ -23,8 +42,10 @@
 </template>
 
 <script>
+import Spider from "@/components/Spider";
 export default {
   name: "Grades",
+  components: {Spider},
   mounted () {
     this.getGrades()
   },
