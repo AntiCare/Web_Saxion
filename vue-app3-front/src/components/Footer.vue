@@ -9,7 +9,7 @@
       tile
     >
       <v-card-title class="primary">
-        <strong class="subheading">Google it yourself!</strong>
+        <strong class="subheading">Welcome to Saxion University of Applied Sciences</strong>
 
         <v-spacer></v-spacer>
 
@@ -27,7 +27,7 @@
       </v-card-title>
 
       <v-card-text class="py-2 white--text text-center">
-        {{ new Date().getFullYear() }} — <strong>IT CORP Project 2.4 by Tuan</strong>
+        {{ new Date().getFullYear() }} — <strong>IT CORP Project 2.4 by Mykhalio & Yang</strong>
       </v-card-text>
     </v-card>
   </v-footer>
