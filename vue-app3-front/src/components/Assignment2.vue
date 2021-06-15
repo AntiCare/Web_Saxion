@@ -147,6 +147,101 @@
                       <v-icon right dark>mdi-cloud-upload</v-icon>
                     </v-btn>
                   </div>
+                  <!--Submit-->
+                  <!--Delivery assignment 1-->
+                  <div class="text-left"
+                       v-if="weekPage.submenu==='Submit' && task.title==='Delivery assignment 1'">
+                    <v-file-input
+                      v-model="files1"
+                      color="primary"
+                      counter
+                      label="File input"
+                      multiple
+                      placeholder="Select your files"
+                      prepend-icon="mdi-paperclip"
+                      outlined
+                      :show-size="1000"
+                      @click="ShowSuccess=false"
+                    >
+                      <template v-slot:selection="{ index, text }">
+                        <v-chip
+                          v-if="index < 2"
+                          color="primary"
+                          dark
+                          label
+                          small
+                        >
+                          {{ text }}
+                        </v-chip>
+
+                        <span
+                          v-else-if="index === 2"
+                          class="text-overline grey--text text--darken-3 mx-2"
+                        >
+                         +{{ files.length - 2 }} File(s)
+                      </span>
+                      </template>
+                    </v-file-input>
+                    <!--upload button-->
+                    <v-btn
+                      :loading="loading3"
+                      :disabled="loading3"
+                      color="blue-grey"
+                      class="ma-2 white--text"
+                      @click="ShowSuccess=true"
+                    >
+                      Upload
+                      <v-icon right dark>mdi-cloud-upload</v-icon>
+                    </v-btn>
+                    <v-icon color="primary" large v-show="ShowSuccess">mdi-check</v-icon>
+                  </div>
+                  <!--Delivery assignment 2-->
+                  <div class="text-left"
+                       v-if="weekPage.submenu==='Submit' && task.title==='Delivery assignment 2'">
+                    <v-file-input
+                      v-model="files2"
+                      color="primary"
+                      counter
+                      label="File input"
+                      multiple
+                      placeholder="Select your files"
+                      prepend-icon="mdi-paperclip"
+                      outlined
+                      :show-size="1000"
+                      @click="ShowSuccess1=false"
+                    >
+                      <template v-slot:selection="{ index, text }">
+                        <v-chip
+                          v-if="index < 2"
+                          color="primary"
+                          dark
+                          label
+                          small
+                        >
+                          {{ text }}
+                        </v-chip>
+
+                        <span
+                          v-else-if="index === 2"
+                          class="text-overline grey--text text--darken-3 mx-2"
+                        >
+                         +{{ files.length - 2 }} File(s)
+                      </span>
+                      </template>
+                    </v-file-input>
+                    <!--upload button-->
+                    <v-btn
+                      :loading="loading3"
+                      :disabled="loading3"
+                      color="blue-grey"
+                      class="ma-2 white--text"
+                      @click="ShowSuccess1=true"
+                    >
+                      Upload
+                      <v-icon right dark>mdi-cloud-upload</v-icon>
+                    </v-btn>
+                    <v-icon color="primary" large v-show="ShowSuccess1">mdi-check</v-icon>
+                  </div>
                   <!--Quiz-->
                   <div class="text-left"
                        v-if="weekPage.submenu==='Quiz'">
@@ -338,10 +433,13 @@ Vue.use(VueCoreVideoPlayer)
 export default {
   data () {
     return {
-
+      ShowSuccess1: false,
+      ShowSuccess: false,
       loading3: false,
       isShow: false,
       files: [],
+      files1: [],
+      files2: [],
       skill: 0,
       number: 20,
       tab: null,
@@ -421,8 +519,8 @@ export default {
           submenu: 'Submit',
           icon: 'mdi-bookmark',
           tasks: [
-            { title: 'assignment 3a', subtitle: 'level 3', text: 'copy paste is golden' },
-            { title: 'assignment 3b', subtitle: 'level 3', text: 'copy paste is golden' }
+            { title: 'Delivery assignment 1', subtitle: 'level: easy', text: 'Please confirm that it meets the requirements before uploading, code + document' },
+            { title: 'Delivery assignment 2', subtitle: 'level: difficult', text: 'Please confirm that it meets the requirements before uploading, code + document' }
           ]
         },
         // Quiz
