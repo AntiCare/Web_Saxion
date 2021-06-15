@@ -18,7 +18,7 @@
     </v-card-title>
     <v-card-subtitle>Naga Baker 418136</v-card-subtitle>
     <div id="chart"> </div>
-
+    <p class="pa-2">This spider web shows which competencies you have achieved.</p>
   </v-card>
 
 
