@@ -11,22 +11,27 @@
         <div class="progress-bar__outer"></div>
         <div class="progress-bar__inner"></div>
       </div>
-        <div class="text-center">
-          <v-menu transition="fab-transition">
-            <template v-slot:activator="{ on, attrs }">
-                <v-btn
-                  to="/spider"
-                  icon
-                  color="primary"
-                  v-bind="attrs"
-                  v-on="on"
-                >
-                  <v-icon>mdi-star</v-icon>
-                </v-btn>
-            </template>
+      <v-dialog
+        v-model="dialog"
+        width="500"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            color="primary lighten-2"
+            dark
+            icon
+            v-bind="attrs"
+            v-on="on">
+            <v-icon size="30px">
+              mdi-spider-web
+            </v-icon>
+          </v-btn>
+        </template>
+        <v-card>
+          <spider></spider>
+        </v-card>
+      </v-dialog>
 
-          </v-menu>
-        </div>
     </div>
     <div id="gradeBox">
 
@@ -37,9 +42,10 @@
 </template>
 
 <script>
-
+import Spider from "@/components/Spider";
 export default {
-  name: 'Grades',
+  name: "Grades",
+  components: {Spider},
   mounted () {
     this.getGrades()
   },
