@@ -1,0 +1,95 @@
+<template>
+  <!-- Lectures page-->
+  <v-tab-item>
+    <v-card>
+      <v-tabs vertical>
+        <v-tab v-for="lecture in lectures " :key="lecture" class="vertical-tab">
+          <v-icon left>
+            {{ lecture.icon }}
+          </v-icon>
+          {{ lecture.submenu }}
+        </v-tab>
+
+        <v-tab-item v-for="lecture in lectures" :key="lecture">
+          <v-card
+            class="pa-2 mb-4"
+            outlined
+            elevation="2"
+            shaped
+            color="" v-for="task in lecture.tasks" :key="task"
+            :disabled="task.disabled"
+          >
+            <v-card-title>{{ task.title }}</v-card-title>
+            <v-card-text>
+              {{ task.text }}
+            </v-card-text>
+            <v-card-text v-if="task.duration" class="font-weight-bold">
+              Duration: {{ task.duration }}
+            </v-card-text>
+            <v-card-actions>
+              <v-btn
+                color="primary"
+                text
+                @click="view"
+                v-if="!lecture.archive"
+              >
+                <v-icon left>
+                  {{ lecture.icon }}
+                </v-icon>
+                JOIN
+              </v-btn>
+
+              <v-btn
+                color="primary"
+                text
+                @click="view"
+                v-else
+              >
+                <v-icon left>
+                  mdi-play
+                </v-icon>
+                WATCH
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-tab-item>
+      </v-tabs>
+    </v-card>
+  </v-tab-item>
+</template>
+
+<script>
+export default {
+  name: "Lectures",
+  data() {
+    return {
+      // Online lectures page.
+      lectures: [
+        {
+          submenu: 'Lectures',
+          icon: 'mdi-play',
+          tasks: [
+            { title: 'Week 3', text: '6/18/21, 11:45 AM - 6/18/21, 2:00 PM' },
+            { title: 'Exam preparation', text: '6/21/21, 12:45 AM - 6/21/21, 2:00 PM', disabled : true },
+            { title: 'Exam review', text: '6/27/21, 11:45 AM - 6/27/21, 2:00 PM', disabled : true }
+          ]
+        },
+        {
+          submenu: 'Archive',
+          icon: 'mdi-archive',
+          archive: true,
+          tasks: [
+            { title: 'Week 1', image: '', text: '6/1/21, 11:45 AM - 6/1/21, 2:00 PM', duration: '1h 43m' },
+            { title: 'Week 2', text: '6/14/21, 11:45 AM - 6/14/21, 2:00 PM', duration: '46m' },
+          ]
+        }
+      ],
+    }
+  }
+
+  }
+</script>
+
+<style scoped>
+
+</style>
