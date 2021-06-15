@@ -52,15 +52,15 @@ export default {
   methods: {
     // get the grades.
     getGrades: function () {
-      // use fetch to get data.
+    // use fetch to get data.
       fetch('http://localhost:3000/api/exam-score', {
         method: 'GET'
       }).then(res => res.json())
         .then(data => {
-          // get the respond from backend.
+        // get the respond from backend.
           console.log(data)
           if (data !== null) {
-            // console.log(data.length)
+          // console.log(data.length)
             var box = document.getElementById('gradeBox')
             for (let i = 0; i < data.length; i++) {
               var gradeInner = document.createElement('div')

@@ -33,7 +33,7 @@ export default {
               subject.className = 'subject-item'
               subject.innerHTML = data[i].subject_name.toString()
               if (data[i].subject_name.toString() === 'Introduction to programming') {
-                subject.href = 'assignment3'
+                subject.href = 'assignment2'
               }
               subjects.appendChild(subject)
             }
