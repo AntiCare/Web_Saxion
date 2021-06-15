@@ -75,8 +75,10 @@
         <v-tab-item
           v-for="weekPage in weekPages"
           :key="weekPage"
+          class="elevation-0"
         >
-          <v-card>
+          <v-card
+            class="elevation-0">
             <v-tabs vertical>
               <v-tab v-for="weekPage in weekPages" :key="weekPage">
                 <v-icon left>
@@ -88,7 +90,7 @@
                 <v-card
                   class="pa-2 mb-4"
                   outlined
-                  elevation="2"
+                  elevation="0"
                   shaped
                   color="" v-for="task in weekPage.tasks" :key="task"
                 >
@@ -168,7 +170,6 @@
                               :key="`${n}-step`"
                               :complete="e1 > n"
                               :step="n"
-                              editable
                             >
                               Step {{ n }}
                             </v-stepper-step>
@@ -189,16 +190,15 @@
 
                             <!--quiz Q1-->
                             <v-card
-                              color="grey lighten-1"
                               v-if="n !== 7 && n===1"
-                              class="mb-12"
+                              class="mb-12 elevation-0"
                               height="200px"
                             >
-                              <v-card-title>Which of the following cannot be used as a loop condition</v-card-title>
+                              <v-card-title>Which of the following cannot be used as a loop condition.</v-card-title>
 
                               <v-card-text>
                                 <v-chip-group
-                                  active-class="deep-purple accent-4 white--text"
+                                  active-class="primary accent-4 white--text"
                                   column
                                 >
                                   <v-chip>A. i++; </v-chip>
@@ -212,27 +212,92 @@
                               </v-card-text>
                             </v-card>
 
+                            <!--quiz Q2-->
                             <v-card
-                              color="grey lighten-1"
                               v-if="n !== 7 && n===2"
-                              class="mb-12"
+                              class="mb-12 elevation-0"
                               height="200px"
                             >
-                              <v-card-title>Which of the following cannot be used as a loop condition</v-card-title>
+                              <v-card-title>Which of the following options belong to the reference data type. (multiple choice)</v-card-title>
+                              <v-card-text>
+                                <v-chip-group
+                                  multiple
+                                  active-class="primary accent-4 white--text"
+                                  column
+                                >
+                                  <v-chip>A. String </v-chip>
+
+                                  <v-chip>B. char</v-chip>
+
+                                  <v-chip>C. Student</v-chip>
+
+                                  <v-chip>D. int</v-chip>
+                                </v-chip-group>
+                              </v-card-text>
+                            </v-card>
+
+                            <!--quiz Q3-->
+                            <v-card
+                              v-if="n !== 7 && n===3"
+                              class="mb-12 elevation-0"
+                              height="200px"
+                            >
+                              <v-card-title>In the Java interface, the valid method declaration in the following options is _______.(multiple choice)</v-card-title>
 
                               <v-card-text>
                                 <v-chip-group
-                                  active-class="deep-purple accent-4 white--text"
+                                  multiple
+                                  active-class="primary accent-4 white--text"
                                   column
                                 >
-                                  <v-chip>A. i++; </v-chip>
+                                  <v-chip>A. public void aMethod(); </v-chip>
 
-                                  <v-chip>B. i>5;</v-chip>
+                                  <v-chip>B. void aMethod();</v-chip>
 
-                                  <v-chip>C. bEqual = str.equals("q");</v-chip>
+                                  <v-chip>C. protected void aMethod();</v-chip>
 
-                                  <v-chip>D. count = = i;</v-chip>
+                                  <v-chip>D. private void aMethod();</v-chip>
                                 </v-chip-group>
+                              </v-card-text>
+                            </v-card>
+
+                            <!--quiz Q4-->
+                            <v-card
+                              v-if="n !== 7 && n===4"
+                              class="mb-12 elevation-0"
+                              height="200px"
+                            >
+                              <v-card-title>Initialize an array of type int, which contains 5 elements. </v-card-title>
+                              <v-card-text>
+                                <v-combobox
+                                  label="enter your answer here"
+                                  prepend-icon="mdi-pen"
+                                >
+                                </v-combobox>
+                              </v-card-text>
+                            </v-card>
+
+                            <!--quiz Q5-->
+                            <v-card
+                              v-if="n !== 7 && n===5"
+                              class="mb-12 elevation-0"
+                              height="200px"
+                            >
+                              <v-card-title>i is an int type, it can be changed to a string type through i.toString()</v-card-title>
+
+                              <v-card-text>
+                                <v-radio-group
+                                  column
+                                >
+                                  <v-radio
+                                    label="True"
+                                    value="radio-1"
+                                  ></v-radio>
+                                  <v-radio
+                                    label="False"
+                                    value="radio-2"
+                                  ></v-radio>
+                                </v-radio-group>
                               </v-card-text>
                             </v-card>
 
@@ -257,6 +322,7 @@
                               color="primary"
                               @click="nextStep(n)"
                               v-if="n === 6"
+                              large
                             >
                               Finish
                             </v-btn>
@@ -476,3 +542,5 @@ export default {
   }
 }
 </script>
+
+
