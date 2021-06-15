@@ -228,8 +228,10 @@
         <v-tab-item
           v-for="weekPage in weekPages"
           :key="weekPage"
+          class="elevation-0"
         >
-          <v-card>
+          <v-card
+            class="elevation-0">
             <v-tabs vertical>
               <v-tab v-for="weekPage in weekPages" :key="weekPage">
                 <v-icon left>
@@ -241,7 +243,7 @@
                 <v-card
                   class="pa-2 mb-4"
                   outlined
-                  elevation="2"
+                  elevation="0"
                   shaped
                   color="" v-for="task in weekPage.tasks" :key="task"
                 >
@@ -300,6 +302,101 @@
                       <v-icon right dark>mdi-cloud-upload</v-icon>
                     </v-btn>
                   </div>
+                  <!--Submit-->
+                  <!--Delivery assignment 1-->
+                  <div class="text-left"
+                       v-if="weekPage.submenu==='Submit' && task.title==='Delivery assignment 1'">
+                    <v-file-input
+                      v-model="files1"
+                      color="primary"
+                      counter
+                      label="File input"
+                      multiple
+                      placeholder="Select your files"
+                      prepend-icon="mdi-paperclip"
+                      outlined
+                      :show-size="1000"
+                      @click="ShowSuccess=false"
+                    >
+                      <template v-slot:selection="{ index, text }">
+                        <v-chip
+                          v-if="index < 2"
+                          color="primary"
+                          dark
+                          label
+                          small
+                        >
+                          {{ text }}
+                        </v-chip>
+
+                        <span
+                          v-else-if="index === 2"
+                          class="text-overline grey--text text--darken-3 mx-2"
+                        >
+                         +{{ files.length - 2 }} File(s)
+                      </span>
+                      </template>
+                    </v-file-input>
+                    <!--upload button-->
+                    <v-btn
+                      :loading="loading3"
+                      :disabled="loading3"
+                      color="blue-grey"
+                      class="ma-2 white--text"
+                      @click="ShowSuccess=true"
+                    >
+                      Upload
+                      <v-icon right dark>mdi-cloud-upload</v-icon>
+                    </v-btn>
+                    <v-icon color="primary" large v-show="ShowSuccess">mdi-check</v-icon>
+                  </div>
+                  <!--Delivery assignment 2-->
+                  <div class="text-left"
+                       v-if="weekPage.submenu==='Submit' && task.title==='Delivery assignment 2'">
+                    <v-file-input
+                      v-model="files2"
+                      color="primary"
+                      counter
+                      label="File input"
+                      multiple
+                      placeholder="Select your files"
+                      prepend-icon="mdi-paperclip"
+                      outlined
+                      :show-size="1000"
+                      @click="ShowSuccess1=false"
+                    >
+                      <template v-slot:selection="{ index, text }">
+                        <v-chip
+                          v-if="index < 2"
+                          color="primary"
+                          dark
+                          label
+                          small
+                        >
+                          {{ text }}
+                        </v-chip>
+
+                        <span
+                          v-else-if="index === 2"
+                          class="text-overline grey--text text--darken-3 mx-2"
+                        >
+                         +{{ files.length - 2 }} File(s)
+                      </span>
+                      </template>
+                    </v-file-input>
+                    <!--upload button-->
+                    <v-btn
+                      :loading="loading3"
+                      :disabled="loading3"
+                      color="blue-grey"
+                      class="ma-2 white--text"
+                      @click="ShowSuccess1=true"
+                    >
+                      Upload
+                      <v-icon right dark>mdi-cloud-upload</v-icon>
+                    </v-btn>
+                    <v-icon color="primary" large v-show="ShowSuccess1">mdi-check</v-icon>
+                  </div>
                   <!--Quiz-->
                   <div class="text-left"
                        v-if="weekPage.submenu==='Quiz'">
@@ -321,7 +418,6 @@
                               :key="`${n}-step`"
                               :complete="e1 > n"
                               :step="n"
-                              editable
                             >
                               Step {{ n }}
                             </v-stepper-step>
@@ -342,16 +438,15 @@
 
                             <!--quiz Q1-->
                             <v-card
-                              color="grey lighten-1"
                               v-if="n !== 7 && n===1"
-                              class="mb-12"
+                              class="mb-12 elevation-0"
                               height="200px"
                             >
-                              <v-card-title>Which of the following cannot be used as a loop condition</v-card-title>
+                              <v-card-title>Which of the following cannot be used as a loop condition.</v-card-title>
 
                               <v-card-text>
                                 <v-chip-group
-                                  active-class="deep-purple accent-4 white--text"
+                                  active-class="primary accent-4 white--text"
                                   column
                                 >
                                   <v-chip>A. i++; </v-chip>
@@ -365,27 +460,92 @@
                               </v-card-text>
                             </v-card>
 
+                            <!--quiz Q2-->
                             <v-card
-                              color="grey lighten-1"
                               v-if="n !== 7 && n===2"
-                              class="mb-12"
+                              class="mb-12 elevation-0"
                               height="200px"
                             >
-                              <v-card-title>Which of the following cannot be used as a loop condition</v-card-title>
+                              <v-card-title>Which of the following options belong to the reference data type. (multiple choice)</v-card-title>
+                              <v-card-text>
+                                <v-chip-group
+                                  multiple
+                                  active-class="primary accent-4 white--text"
+                                  column
+                                >
+                                  <v-chip>A. String </v-chip>
+
+                                  <v-chip>B. char</v-chip>
+
+                                  <v-chip>C. Student</v-chip>
+
+                                  <v-chip>D. int</v-chip>
+                                </v-chip-group>
+                              </v-card-text>
+                            </v-card>
+
+                            <!--quiz Q3-->
+                            <v-card
+                              v-if="n !== 7 && n===3"
+                              class="mb-12 elevation-0"
+                              height="200px"
+                            >
+                              <v-card-title>In the Java interface, the valid method declaration in the following options is _______.(multiple choice)</v-card-title>
 
                               <v-card-text>
                                 <v-chip-group
-                                  active-class="deep-purple accent-4 white--text"
+                                  multiple
+                                  active-class="primary accent-4 white--text"
                                   column
                                 >
-                                  <v-chip>A. i++; </v-chip>
+                                  <v-chip>A. public void aMethod(); </v-chip>
 
-                                  <v-chip>B. i>5;</v-chip>
+                                  <v-chip>B. void aMethod();</v-chip>
 
-                                  <v-chip>C. bEqual = str.equals("q");</v-chip>
+                                  <v-chip>C. protected void aMethod();</v-chip>
 
-                                  <v-chip>D. count = = i;</v-chip>
+                                  <v-chip>D. private void aMethod();</v-chip>
                                 </v-chip-group>
+                              </v-card-text>
+                            </v-card>
+
+                            <!--quiz Q4-->
+                            <v-card
+                              v-if="n !== 7 && n===4"
+                              class="mb-12 elevation-0"
+                              height="200px"
+                            >
+                              <v-card-title>Initialize an array of type int, which contains 5 elements. </v-card-title>
+                              <v-card-text>
+                                <v-combobox
+                                  label="enter your answer here"
+                                  prepend-icon="mdi-pen"
+                                >
+                                </v-combobox>
+                              </v-card-text>
+                            </v-card>
+
+                            <!--quiz Q5-->
+                            <v-card
+                              v-if="n !== 7 && n===5"
+                              class="mb-12 elevation-0"
+                              height="200px"
+                            >
+                              <v-card-title>i is an int type, it can be changed to a string type through i.toString()</v-card-title>
+
+                              <v-card-text>
+                                <v-radio-group
+                                  column
+                                >
+                                  <v-radio
+                                    label="True"
+                                    value="radio-1"
+                                  ></v-radio>
+                                  <v-radio
+                                    label="False"
+                                    value="radio-2"
+                                  ></v-radio>
+                                </v-radio-group>
                               </v-card-text>
                             </v-card>
 
@@ -410,6 +570,7 @@
                               color="primary"
                               @click="nextStep(n)"
                               v-if="n === 6"
+                              large
                             >
                               Finish
                             </v-btn>
@@ -491,24 +652,26 @@ Vue.use(VueCoreVideoPlayer)
 export default {
   data () {
     return {
-      //two
       events2: [],
       input2: null,
       nonce2: 0,
-      //one
       events: [],
       input: null,
       nonce: 0,
+      ShowSuccess1: false,
+      ShowSuccess: false,
       loading3: false,
       isShow: false,
       files: [],
+      files1: [],
+      files2: [],
       skill: 0,
       number: 20,
       tab: null,
 
       // weeks (tabs)
       weeks: [
-        'Intro', 'Discussion', 'Week 1', 'Week 2', 'Week 3' , 'Extra'
+        'Intro', 'Discussion', 'Week 1', 'Week 2', 'Week 3', 'Extra'
       ],
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
 
@@ -581,8 +744,8 @@ export default {
           submenu: 'Submit',
           icon: 'mdi-bookmark',
           tasks: [
-            { title: 'assignment 3a', subtitle: 'level 3', text: 'copy paste is golden' },
-            { title: 'assignment 3b', subtitle: 'level 3', text: 'copy paste is golden' }
+            { title: 'Delivery assignment 1', subtitle: 'level: easy', text: 'Please confirm that it meets the requirements before uploading, code + document' },
+            { title: 'Delivery assignment 2', subtitle: 'level: difficult', text: 'Please confirm that it meets the requirements before uploading, code + document' }
           ]
         },
         // Quiz
