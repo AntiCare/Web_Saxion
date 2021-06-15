@@ -71,6 +71,9 @@
           </v-card>
         </v-tab-item>
 
+        <!--Online lectures page-->
+        <Lectures></Lectures>
+
         <!--week page week1-3-->
         <v-tab-item
           v-for="weekPage in weekPages"
@@ -78,7 +81,7 @@
         >
           <v-card>
             <v-tabs vertical>
-              <v-tab v-for="weekPage in weekPages" :key="weekPage">
+              <v-tab v-for="weekPage in weekPages" :key="weekPage" class="vertical-tab">
                 <v-icon left>
                   {{weekPage.icon }}
                 </v-icon>
@@ -332,10 +335,12 @@
 <script>
 import VueCoreVideoPlayer from 'vue-core-video-player'
 import Vue from 'vue'
+import Lectures from "@/components/Lectures";
 
 Vue.use(VueCoreVideoPlayer)
 
 export default {
+  components: {Lectures},
   data () {
     return {
 
@@ -348,7 +353,7 @@ export default {
 
       // weeks (tabs)
       weeks: [
-        'Intro', 'Week 1', 'Week 2', 'Week 3', 'Discussion', 'Extra'
+        'Intro', 'Online lectures', 'Week 1', 'Week 2', 'Week 3', 'Discussion', 'Extra'
       ],
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
 
@@ -476,3 +481,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.vertical-tab {
+  justify-content: normal;
+}
+</style>
