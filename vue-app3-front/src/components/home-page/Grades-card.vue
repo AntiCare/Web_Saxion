@@ -33,8 +33,28 @@
       </v-dialog>
 
     </div>
-    <div id="gradeBox">
-
+    <div id="gradeBox" >
+      <section v-if="errored">
+      <p class="pa-2">We're sorry, we're not able to retrieve this information at the moment, please try again
+        later</p>
+    </section>
+      <section v-else class="grades__inner">
+        <div v-if="loading" class="pa-5">Loading...</div>
+        <div
+          v-else
+          v-for="item in teachers"
+          class="find-item"
+        >
+      <div class="grade"  >
+        <div class="subject-name " > {{ item.exam_name }}</div>
+        <v-chip
+        class="grade_result v-icon--right"
+        small
+        >{{ item.exam_result }}
+        </v-chip>
+      </div>
+        </div>
+      </section>
     </div>
     <div class = "loginBox" id="loginBox">
     </div>
@@ -43,8 +63,14 @@
 
 <script>
 import Spider from "@/components/Spider";
+import * as axios from "axios";
 export default {
   name: "Grades",
+  data: () => ({
+    teachers: [],
+    loading: true,
+    errored: false
+  }),
   components: {Spider},
   mounted () {
     this.getGrades()
@@ -52,37 +78,17 @@ export default {
   methods: {
     // get the grades.
     getGrades: function () {
-    // use fetch to get data.
-      fetch('http://localhost:3000/api/exam-score', {
-        method: 'GET'
-      }).then(res => res.json())
-        .then(data => {
-        // get the respond from backend.
-          console.log(data)
-          if (data !== null) {
-          // console.log(data.length)
-            var box = document.getElementById('gradeBox')
-            for (let i = 0; i < data.length; i++) {
-              var gradeInner = document.createElement('div')
-              var grade = document.createElement('div')
-              var subjectName = document.createElement('div')
-              var gradeResult = document.createElement('div')
-
-              gradeInner.className = 'grades__inner'
-              grade.className = 'grade'
-              subjectName.className = 'subject-name'
-              gradeResult.className = 'grade-result'
-
-              subjectName.innerHTML = data[i].exam_name.toString()
-              gradeResult.innerHTML = data[i].exam_result.toString()
-
-              grade.appendChild(subjectName)
-              grade.appendChild(gradeResult)
-              gradeInner.appendChild(grade)
-              box.appendChild(gradeInner)
-            }
-          }
+      axios
+        .get('http://localhost:3000/api/exam-score')
+        .then(response => {
+          console.log(response)
+          this.teachers = response.data;
         })
+        .catch(error => {
+          console.log(error)
+          this.errored = true
+        })
+        .finally(() => this.loading = false)
     }
   }
 
