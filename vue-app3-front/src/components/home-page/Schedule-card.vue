@@ -32,10 +32,7 @@ import * as axios from 'axios';
 export default {
   name: 'Schedule-card',
   data: () => ({
-    hover: false,
     arrayEvents: null,
-    date1: new Date().toISOString().substr(0, 10),
-    date2: new Date().toISOString().substr(0, 10),
     schedule: [],
     loading: true,
     errored: false,
