@@ -42,7 +42,7 @@
         <div v-if="loading" class="pa-5">Loading...</div>
         <div
           v-else
-          v-for="item in teachers"
+          v-for="item in grades"
           class="find-item"
         >
       <div class="grade"  >
@@ -67,7 +67,7 @@ import * as axios from "axios";
 export default {
   name: "Grades",
   data: () => ({
-    teachers: [],
+    grades: [],
     loading: true,
     errored: false
   }),
@@ -82,7 +82,7 @@ export default {
         .get('http://localhost:3000/api/exam-score')
         .then(response => {
           console.log(response)
-          this.teachers = response.data;
+          this.grades = response.data;
         })
         .catch(error => {
           console.log(error)
