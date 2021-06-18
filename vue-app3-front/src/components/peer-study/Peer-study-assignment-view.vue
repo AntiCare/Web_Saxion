@@ -39,6 +39,36 @@
                       </span>
             </template>
           </v-file-input>
+          <v-container fluid>
+            <v-row>
+          <v-col cols="12">
+            <v-combobox
+              v-model="select"
+              :items="items"
+              label="Choose a classmate to give you feedback"
+              multiple
+              chips
+            >
+              <template v-slot:selection="data">
+                <v-chip
+                  :key="JSON.stringify(data.item)"
+                  v-bind="data.attrs"
+                  :input-value="data.selected"
+                  :disabled="data.disabled"
+                  @click:close="data.parent.selectItem(data.item)"
+                >
+                  <v-avatar
+                    class="accent white--text"
+                    left
+                    v-text="data.item.slice(0, 1).toUpperCase()"
+                  ></v-avatar>
+                  {{ data.item }}
+                </v-chip>
+              </template>
+            </v-combobox>
+          </v-col>
+            </v-row>
+          </v-container>
           <v-btn
             :loading="loading"
             :disabled="loading"
@@ -57,33 +87,35 @@
       </div>
     </v-card>
 
-
   </div>
-
 
 </template>
 
 <script>
-import PeerStudySubmittedAssignments from "@/components/peer-study/Peer-study-submitted-assignments";
+import PeerStudySubmittedAssignments from '@/components/peer-study/Peer-study-submitted-assignments'
 export default {
-name: "Peer-study-assignment-view",
-  components: {PeerStudySubmittedAssignments},
-  data() {
+  name: 'Peer-study-assignment-view',
+  components: { PeerStudySubmittedAssignments },
+  data () {
     return {
       files: [],
       loading: false,
       showSuccess: false,
-      isUploaded: false
-
+      isUploaded: false,
+      items: [
+        'Yang',
+        'Mykhailo'
+      ],
+      select: []
     }
   },
-  methods : {
-  updateSuccessStates() {
-    this.isUploaded = true;
-    this.showSuccess = true;
-    console.log(this.isUploaded)
-    console.log(this.showSuccess)
-  }
+  methods: {
+    updateSuccessStates () {
+      this.isUploaded = true
+      this.showSuccess = true
+      console.log(this.isUploaded)
+      console.log(this.showSuccess)
+    }
   }
 }
 </script>
