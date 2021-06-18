@@ -34,7 +34,7 @@
         <!-- Introduction page-->
         <v-tab-item
           v-for="(introduction, idx ) in introductionPage"
-          :key="idx">
+          :key="'introduction' + idx">
           <v-card>
             <v-tabs vertical>
               <v-tab v-for="(introduction, idx) in introductionPage " :key="idx">
@@ -50,7 +50,7 @@
                   outlined
                   elevation="2"
                   shaped
-                  color="" v-for="(task, idx) in introduction.tasks" :key="idx"
+                  color="" v-for="(task, idx) in introduction.tasks" :key="'Task' + idx"
                 >
                   <v-card-title>{{ task.title }}</v-card-title>
                   <v-card-text>
@@ -134,7 +134,7 @@
                     >
                       <v-timeline-item
                         v-for="(event, idx) in timeline"
-                        :key="idx"
+                        :key="'event' + idx"
                         class="mb-4"
                         Medium
                       >
