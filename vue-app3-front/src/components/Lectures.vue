@@ -30,7 +30,6 @@
               <v-btn
                 color="primary"
                 text
-                @click="view"
                 v-if="!lecture.archive"
               >
                 <v-icon left>
@@ -42,7 +41,6 @@
               <v-btn
                 color="primary"
                 text
-                @click="view"
                 v-else
               >
                 <v-icon left>

@@ -262,48 +262,19 @@
                   </div>
                   <!--Peer study-->
                   <div class="text-left"
-                       v-if="weekPage.submenu==='Peer study'">
-                    <v-file-input
-                      v-model="files"
-                      color="primary"
-                      counter
-                      label="File input"
-                      multiple
-                      placeholder="Select your files"
-                      prepend-icon="mdi-paperclip"
-                      outlined
-                      :show-size="1000"
-                    >
-                      <template v-slot:selection="{ index, text }">
-                        <v-chip
-                          v-if="index < 2"
-                          color="primary"
-                          dark
-                          label
-                          small
-                        >
-                          {{ text }}
-                        </v-chip>
+                       v-if="weekPage.submenu =='Peer study'">
 
-                        <span
-                          v-else-if="index === 2"
-                          class="text-overline grey--text text--darken-3 mx-2"
-                        >
-                         +{{ files.length - 2 }} File(s)
-                      </span>
-                      </template>
-                    </v-file-input>
-                    <!--upload button-->
                     <v-btn
                       :loading="loading3"
                       :disabled="loading3"
                       color="blue-grey"
                       class="ma-2 white--text"
-                      @click="isShow=true"
+                      @click="ShowSuccess1=true"
                     >
                       Upload
                       <v-icon right dark>mdi-cloud-upload</v-icon>
                     </v-btn>
+<!--                    <PeerStudy></PeerStudy>-->
                   </div>
                   <!--Submit-->
                   <!--Delivery assignment 1-->
@@ -650,11 +621,12 @@
 import VueCoreVideoPlayer from 'vue-core-video-player'
 import Vue from 'vue'
 import Lectures from "@/components/Lectures";
+import PeerStudy from "@/components/Peer-study";
 
 Vue.use(VueCoreVideoPlayer)
 
 export default {
-  components: {Lectures},
+  components: {PeerStudy, Lectures},
   data () {
     return {
       events2: [],
@@ -725,15 +697,7 @@ export default {
         // peer study
         {
           submenu: 'Peer study',
-          icon: 'mdi-forum',
-          tasks: [
-            { title: 'assignment 1', subtitle: 'level 1', text: 'comments: 0', comment: 'good job , Can I copy your code? +rep' }
-            // ,
-            // { title: 'assignment 2', subtitle: 'level 2', text: 'comments:\n', comment: 'It is working, thanks' }
-            // { title: 'assignment 3', subtitle: 'level 3', text: 'comments:\n', comment: 'Your code is like rubbish' },
-            // { title: 'assignment 4', subtitle: 'level 4', text: 'comments:\n', comment: 'Are you kidding me? Error everywhere. -rep' },
-            // { title: 'assignment 5', subtitle: 'level 2', text: 'comments:\n', comment: 'I will leave the project, you are all too weak!' }
-          ]
+          icon: 'mdi-forum'
         },
         // Video
         {
