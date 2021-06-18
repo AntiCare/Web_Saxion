@@ -3,20 +3,20 @@
   <v-tab-item>
     <v-card>
       <v-tabs vertical>
-        <v-tab v-for="lecture in lectures " :key="lecture" class="vertical-tab">
+        <v-tab v-for="(lecture, idx) in lectures " :key="idx" class="vertical-tab">
           <v-icon left>
             {{ lecture.icon }}
           </v-icon>
           {{ lecture.submenu }}
         </v-tab>
 
-        <v-tab-item v-for="lecture in lectures" :key="lecture">
+        <v-tab-item v-for="(lecture, idx) in lectures" :key="idx">
           <v-card
             class="pa-2 mb-4"
             outlined
             elevation="2"
             shaped
-            color="" v-for="task in lecture.tasks" :key="task"
+            color="" v-for="(task, idx) in lecture.tasks" :key="'t' + idx"
             :disabled="task.disabled"
           >
             <v-card-title>{{ task.title }}</v-card-title>

@@ -20,8 +20,8 @@
         <v-tabs-slider color="white"></v-tabs-slider>
 
         <v-tab
-          v-for="week in weeks"
-          :key="week"
+          v-for="(week, idx) in weeks"
+          :key="idx"
         >
           {{ week }}
         </v-tab>
@@ -33,24 +33,24 @@
 
         <!-- Introduction page-->
         <v-tab-item
-          v-for="introduction in introductionPage"
-          :key="introduction">
+          v-for="(introduction, idx ) in introductionPage"
+          :key="idx">
           <v-card>
             <v-tabs vertical>
-              <v-tab v-for="introduction in introductionPage " :key="introduction">
+              <v-tab v-for="(introduction, idx) in introductionPage " :key="idx">
                 <v-icon left>
                   {{introduction.icon }}
                 </v-icon>
                 {{introduction.submenu }}
               </v-tab>
 
-              <v-tab-item v-for="introduction in introductionPage " :key="introduction">
+              <v-tab-item v-for="(introduction, idx) in introductionPage " :key="idx">
                 <v-card
                   class="pa-2 mb-4"
                   outlined
                   elevation="2"
                   shaped
-                  color="" v-for="task in introduction.tasks" :key="task"
+                  color="" v-for="(task, idx) in introduction.tasks" :key="idx"
                 >
                   <v-card-title>{{ task.title }}</v-card-title>
                   <v-card-text>
@@ -133,8 +133,8 @@
                       group
                     >
                       <v-timeline-item
-                        v-for="event in timeline"
-                        :key="event.id"
+                        v-for="(event, idx) in timeline"
+                        :key="idx"
                         class="mb-4"
                         Medium
                       >
@@ -229,26 +229,26 @@
         </v-tab-item>
         <!--week page week1-3-->
         <v-tab-item
-          v-for="weekPage in weekPages"
-          :key="weekPage"
+          v-for="(weekPage, idx) in weekPages"
+          :key="idx"
           class="elevation-0"
         >
           <v-card
             class="elevation-0">
             <v-tabs vertical>
-              <v-tab v-for="weekPage in weekPages" :key="weekPage" class="vertical-tab">
+              <v-tab v-for="(weekPage, idx) in weekPages" :key="'W' + idx" class="vertical-tab">
                 <v-icon left>
                   {{weekPage.icon }}
                 </v-icon>
                 {{ weekPage.submenu }}
               </v-tab>
-              <v-tab-item v-for="weekPage in weekPages" :key="weekPage">
+              <v-tab-item v-for="(weekPage, idx) in weekPages" :key="'W2' + idx">
                 <v-card
                   class="pa-2 mb-4"
                   outlined
                   elevation="0"
                   shaped
-                  color="" v-for="task in weekPage.tasks" :key="task"
+                  color="" v-for="(task, idx) in weekPage.tasks" :key="'T' + idx"
                 >
                   <v-card-title>{{ task.title }}</v-card-title>
                   <v-card-subtitle>{{ task.subtitle }}</v-card-subtitle>
