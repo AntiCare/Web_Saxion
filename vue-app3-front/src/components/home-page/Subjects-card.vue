@@ -6,39 +6,51 @@
     <div class="subjects-quartiles">
       Q1 | Q2 | Q3 | Q4
     </div>
+    <div class="grades__inner">
+    <section v-if="errored">
+      <p class="pa-2">We're sorry, we're not able to retrieve this information at the moment, please try again
+        later</p>
+    </section>
+    <section class="grades__inner" v-else>
+      <div v-if="loading" class="pa-2">Loading...</div>
+      <div
+        v-else
+        v-for="item in subjects"
+        class="find-item"
+      >
+          <a class="grade" href="/assignment2"> {{ item.subject_name }}</a>
+      </div>
+    </section>
+    </div>
   </div>
 </template>
 
 <script>
+import * as axios from "axios";
+
 export default {
   name: 'subjects-card',
+  data: () => ({
+    subjects: [],
+    loading: true,
+    errored: false
+  }),
   mounted () {
     this.getSubjects()
   },
   methods: {
-    // get the grades.
     getSubjects: function () {
-      // use fetch to get data.
-      fetch('http://localhost:3000/api/subjects', {
-        method: 'GET'
-      }).then(res => res.json())
-        .then(data => {
-          // get the respond from backend.
-          console.log(data)
-          if (data !== null) {
-            // console.log(data.length)
-            var subjects = document.getElementById('subjects')
-            for (let i = 0; i < data.length; i++) {
-              var subject = document.createElement('a')
-              subject.className = 'subject-item'
-              subject.innerHTML = data[i].subject_name.toString()
-              if (data[i].subject_name.toString() === 'Introduction to programming') {
-                subject.href = 'assignment2'
-              }
-              subjects.appendChild(subject)
-            }
-          }
+      axios
+        .get('http://localhost:3000/api/subjects')
+        .then(response => {
+          console.log(response)
+          this.subjects = response.data;
         })
+        .catch(error => {
+          console.log(error)
+          this.errored = true
+        })
+        .finally(() => this.loading = false)
     }
   }
 }
