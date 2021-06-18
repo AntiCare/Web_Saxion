@@ -81,19 +81,17 @@ let abb = (async () => {
         "insert into NEWS (id, news_title) values (3, 'CORONA-UPDATE: REQUEST SELF-TESTS FROM MAY 5');\n"
     )
 
-    //schedule
+    // schedule
     await db.exec("DROP TABLE IF EXISTS schedule; CREATE TABLE IF NOT EXISTS schedule (\n" +
         "\tid INT,\n" +
-        "\tH INT,\n" +
-        "\tM INT,\n" +
-        "\tcourse_name VARCHAR(50)\n" +
+        "\tschedule_name VARCHAR(50),\n" +
+        "\tschedule_time TIMESTAMP\n" +
         ");\n" +
-        "insert into SCHEDULE (id,  H , M , course_name) values (1, 8, 30 , 'C++');\n" +
-        "insert into SCHEDULE (id,  H , M ,course_name) values (2, 10, 15, 'Curiosity');\n" +
-        "insert into SCHEDULE (id,  H , M ,course_name) values (3, 11, 45,'Concurrency');\n"+
-        "insert into SCHEDULE (id,  H , M ,course_name) values (3, 14, 30, 'IT and Law');\n"+
-        "insert into SCHEDULE (id,  H , M ,course_name) values (3, 17, 10, 'Development tools');\n"+
-        "insert into SCHEDULE (id,  H , M ,course_name) values (3, 19, 30, 'International work');\n"
+        "insert into SCHEDULE (id, schedule_name,schedule_time) values (1, 'C++', '1623266926');\n" +
+        "insert into SCHEDULE (id, schedule_name, schedule_time) values (2, 'Curiosity', '1623266926');\n" +
+        "insert into SCHEDULE (id, schedule_name, schedule_time) values (3, 'Concurrency', '1623266926');\n" +
+        "insert into SCHEDULE (id, schedule_name, schedule_time) values (4, 'IT and Law', '1623266926');\n" +
+        "insert into SCHEDULE (id, schedule_name, schedule_time) values (5, 'International work', '1623266926');\n"
     )
 
 
@@ -211,8 +209,10 @@ router.get("/api/email-preview", async function (req, res, next) {
 // Show exam score data
 router.get("/api/exam-score", async function (req, res, next) {
     try {
-        let result = await db.all("SELECT * FROM exam_score");
-        res.json(result);
+        setTimeout(async function () {
+            let result = await db.all("SELECT * FROM exam_score");
+            res.json(result);
+        }, 500);
     } catch (e) {
         res.json(e);
     }
