@@ -18,6 +18,7 @@
             color="" v-for="(task, idx) in introduction.tasks" :key="'Task' + idx"
           >
             <v-card-title>{{ task.title }}</v-card-title>
+              <ProgressBarIntroduction v-if="task.title==='Learning progress'"></ProgressBarIntroduction>
             <v-card-text>
               <v-img
                 v-if="task.image==='course manual'"
@@ -38,7 +39,9 @@
 </template>
 
 <script>
+import ProgressBarIntroduction from "./Introduction/ProgressBarIntroduction";
 export default {
+  components: {ProgressBarIntroduction},
   data() {
     return {
       name: 'Introduction',
@@ -47,6 +50,9 @@ export default {
           submenu: 'Introduction',
           icon: 'mdi-help-circle',
           tasks: [
+            {
+              title: 'Learning progress'
+            },
             {
               title: 'Introduction',
               image: '',
