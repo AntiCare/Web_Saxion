@@ -29,7 +29,7 @@
       <!--      </template>-->
       <!--    </v-toolbar>-->
 
-      <v-tabs-items v-model="tab" >
+      <v-tabs-items v-model="tab">
 
         <!-- Introduction page-->
         <v-tab-item
@@ -39,9 +39,9 @@
             <v-tabs vertical>
               <v-tab v-for="(introduction, idx) in introductionPage " :key="idx">
                 <v-icon left>
-                  {{introduction.icon }}
+                  {{ introduction.icon }}
                 </v-icon>
-                {{introduction.submenu }}
+                {{ introduction.submenu }}
               </v-tab>
 
               <v-tab-item v-for="(introduction, idx) in introductionPage " :key="idx">
@@ -238,11 +238,17 @@
             <v-tabs vertical>
               <v-tab v-for="(weekPage, idx) in weekPages" :key="'W' + idx" class="vertical-tab">
                 <v-icon left>
-                  {{weekPage.icon }}
+                  {{ weekPage.icon }}
                 </v-icon>
                 {{ weekPage.submenu }}
               </v-tab>
+
               <v-tab-item v-for="(weekPage, idx) in weekPages" :key="'W2' + idx">
+                <!--Peer study-->
+                <div class="text-left"
+                     v-if="weekPage.submenu === 'Peer study'">
+                  <PeerStudy></PeerStudy>
+                </div>
                 <v-card
                   class="pa-2 mb-4"
                   outlined
@@ -259,51 +265,6 @@
                       v-model="task.rating"
                       icon-label="custom icon label text {0} of {1}"
                     ></v-rating>
-                  </div>
-                  <!--Peer study-->
-                  <div class="text-left"
-                       v-if="weekPage.submenu==='Peer study'">
-                    <v-file-input
-                      v-model="files"
-                      color="primary"
-                      counter
-                      label="File input"
-                      multiple
-                      placeholder="Select your files"
-                      prepend-icon="mdi-paperclip"
-                      outlined
-                      :show-size="1000"
-                    >
-                      <template v-slot:selection="{ index, text }">
-                        <v-chip
-                          v-if="index < 2"
-                          color="primary"
-                          dark
-                          label
-                          small
-                        >
-                          {{ text }}
-                        </v-chip>
-
-                        <span
-                          v-else-if="index === 2"
-                          class="text-overline grey--text text--darken-3 mx-2"
-                        >
-                         +{{ files.length - 2 }} File(s)
-                      </span>
-                      </template>
-                    </v-file-input>
-                    <!--upload button-->
-                    <v-btn
-                      :loading="loading3"
-                      :disabled="loading3"
-                      color="blue-grey"
-                      class="ma-2 white--text"
-                      @click="isShow=true"
-                    >
-                      Upload
-                      <v-icon right dark>mdi-cloud-upload</v-icon>
-                    </v-btn>
                   </div>
                   <!--Submit-->
                   <!--Delivery assignment 1-->
@@ -452,7 +413,7 @@
                                   active-class="primary accent-4 white--text"
                                   column
                                 >
-                                  <v-chip>A. i++; </v-chip>
+                                  <v-chip>A. i++;</v-chip>
 
                                   <v-chip>B. i>5;</v-chip>
 
@@ -469,14 +430,16 @@
                               class="mb-12 elevation-0"
                               height="200px"
                             >
-                              <v-card-title>Which of the following options belong to the reference data type. (multiple choice)</v-card-title>
+                              <v-card-title>Which of the following options belong to the reference data type. (multiple
+                                choice)
+                              </v-card-title>
                               <v-card-text>
                                 <v-chip-group
                                   multiple
                                   active-class="primary accent-4 white--text"
                                   column
                                 >
-                                  <v-chip>A. String </v-chip>
+                                  <v-chip>A. String</v-chip>
 
                                   <v-chip>B. char</v-chip>
 
@@ -493,7 +456,9 @@
                               class="mb-12 elevation-0"
                               height="200px"
                             >
-                              <v-card-title>In the Java interface, the valid method declaration in the following options is _______.(multiple choice)</v-card-title>
+                              <v-card-title>In the Java interface, the valid method declaration in the following options
+                                is _______.(multiple choice)
+                              </v-card-title>
 
                               <v-card-text>
                                 <v-chip-group
@@ -501,7 +466,7 @@
                                   active-class="primary accent-4 white--text"
                                   column
                                 >
-                                  <v-chip>A. public void aMethod(); </v-chip>
+                                  <v-chip>A. public void aMethod();</v-chip>
 
                                   <v-chip>B. void aMethod();</v-chip>
 
@@ -518,7 +483,7 @@
                               class="mb-12 elevation-0"
                               height="200px"
                             >
-                              <v-card-title>Initialize an array of type int, which contains 5 elements. </v-card-title>
+                              <v-card-title>Initialize an array of type int, which contains 5 elements.</v-card-title>
                               <v-card-text>
                                 <v-combobox
                                   label="enter your answer here"
@@ -534,7 +499,8 @@
                               class="mb-12 elevation-0"
                               height="200px"
                             >
-                              <v-card-title>i is an int type, it can be changed to a string type through i.toString()</v-card-title>
+                              <v-card-title>i is an int type, it can be changed to a string type through i.toString()
+                              </v-card-title>
 
                               <v-card-text>
                                 <v-radio-group
@@ -650,12 +616,13 @@
 import VueCoreVideoPlayer from 'vue-core-video-player'
 import Vue from 'vue'
 import Lectures from "@/components/Lectures";
+import PeerStudy from "@/components/Peer-study";
 
 Vue.use(VueCoreVideoPlayer)
 
 export default {
-  components: {Lectures},
-  data () {
+  components: {PeerStudy, Lectures},
+  data() {
     return {
       events2: [],
       input2: null,
@@ -676,7 +643,7 @@ export default {
 
       // weeks (tabs)
       weeks: [
-        'Intro','Online lectures', 'Discussion', 'Week 1', 'Week 2', 'Week 3', 'Extra'
+        'Intro', 'Online lectures', 'Discussion', 'Week 1', 'Week 2', 'Week 3', 'Extra'
       ],
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
 
@@ -686,8 +653,12 @@ export default {
           submenu: 'Introduction',
           icon: 'mdi-help-circle',
           tasks: [
-            { title: 'Introduction', image: '', text: 'Hello students (that participated in the retake of an Introduction to Programming)!\n\n              In a few moments the final grades for Introduction Programming retake of January 12th 2021 will be\n              published via Bison. For most of you the results will not be a surprise as the individual rubric scores\n              have been on Blackboard for some time now.\n\n              We would like to ask all students to check if we have entered your grade correctly based on the number\n              of points. Blackboard is leading in this, so if your grade somehow is incorrect, please contact me\n              (Tristan, t.pothoven@saxion.nl) as soon as possible.\n\n              As far as the exam review is concerned, Introduction Programming will *not* make use of the scheduled\n              exam review time in quartile 3. This is because your grade is already explained via Blackboard including\n              our arguments.\n\n              It is of course possible that you have questions about your result or that you suspect an error has been\n              made somewhere. You can report this by sending me (Tristan) an email.\n\n              I do ask however that you provide the following information:\n\n              Which rubric line is it about? (functionality, data types, methods, if-statements, loops or lists)\n              What is wrong with it? (unclear reasoning from us, too few points for reason X, etc.)\n              (If you have questions on more than one topic, I would kindly request that you write this out per\n              topic.)\n\n              General remarks such as "I disagree with the result" without any further argumentation unfortunately\n              cannot be discussed. So please be as explicit as possible.\n\n              You will have 2 weeks to respond to your result in case of questions. This means that the official\n              period of "exam review" now has begun and lasts until February 17th, 2021 after which all results are\n              final.\n\n              If you have any questions about the test or your grade, please feel free to send me an e-mail!' },
-            { title: 'Course Manual', image: 'course manual', text: '' }
+            {
+              title: 'Introduction',
+              image: '',
+              text: 'Hello students (that participated in the retake of an Introduction to Programming)!\n\n              In a few moments the final grades for Introduction Programming retake of January 12th 2021 will be\n              published via Bison. For most of you the results will not be a surprise as the individual rubric scores\n              have been on Blackboard for some time now.\n\n              We would like to ask all students to check if we have entered your grade correctly based on the number\n              of points. Blackboard is leading in this, so if your grade somehow is incorrect, please contact me\n              (Tristan, t.pothoven@saxion.nl) as soon as possible.\n\n              As far as the exam review is concerned, Introduction Programming will *not* make use of the scheduled\n              exam review time in quartile 3. This is because your grade is already explained via Blackboard including\n              our arguments.\n\n              It is of course possible that you have questions about your result or that you suspect an error has been\n              made somewhere. You can report this by sending me (Tristan) an email.\n\n              I do ask however that you provide the following information:\n\n              Which rubric line is it about? (functionality, data types, methods, if-statements, loops or lists)\n              What is wrong with it? (unclear reasoning from us, too few points for reason X, etc.)\n              (If you have questions on more than one topic, I would kindly request that you write this out per\n              topic.)\n\n              General remarks such as "I disagree with the result" without any further argumentation unfortunately\n              cannot be discussed. So please be as explicit as possible.\n\n              You will have 2 weeks to respond to your result in case of questions. This means that the official\n              period of "exam review" now has begun and lasts until February 17th, 2021 after which all results are\n              final.\n\n              If you have any questions about the test or your grade, please feel free to send me an e-mail!'
+            },
+            {title: 'Course Manual', image: 'course manual', text: ''}
           ]
         }
       ],
@@ -708,8 +679,16 @@ export default {
                 '\n' +
                 'So if you have questions, feel free to post them on the server. Usually there should be someone online to help out...'
             },
-            { title: 'How to install the Java Development Kit and IntelliJ IDEA Community Edition', subtitle: 'Set up system', text: "During the first lecture we will install the required software together, but in case you are\n                wondering we have created a step-by-step guide on how to install the software needed for this course.\n                Head over to https://www.oracle.com/nl/java/technologies/javase-downloads.htmland go download the Java\n                SE 11 (LTS) installer for your specific operating system.\n                You'll need to create an Oracle account and sign in to be able to download the installer.\n                Head over to https://www.jetbrains.com/idea/download and get IntelliJ IDEA Community Edition for your\n                specific operating system.\n                Install the Java SE 11 development kit downloaded from step 1.\n                Unfortunately, there is no \"easy\" way to check whether or not the installation was a success. If the\n                installer exitedwithout errors, you should assume everything is up and running. If your installer\n                crashes, please contact your teacher.\n                Install IntelliJ IDEA Community Edition downloaded from step 2.\n                Download the DemoProject.zip file (below) and extract it to somewhere you can easily find it.\n                Open IntelliJ and select open and select the folder you extracted from the zipfile as discussed in step\n                5.\n                Head over to \"1: Project\" (top left), open up \"Demo1\", open up \"src\" before double-clicking on\n                \"Application\".\n                You might need to wait before IntelliJ has indexed the Java Development Kit. If you see a progressbar in\n                the bottom, wait a moment! Be patient.\n                If everything worked out correctly, you should a green triangle that you can now click to run your\n                program. If you can do so, your installation was succesful!\n                Just to help out, we have created a video that shows all these steps and explains a little about what\n                happens. Have a look at https://youtu.be/8Dp9jP56b4U." },
-            { title: 'Sandbox project', subtitle: '', text: 'Download the Sandbox project here. A Sandbox project does not contain exercises, but should\n                be considered a playground for you to experiment upon!' }
+            {
+              title: 'How to install the Java Development Kit and IntelliJ IDEA Community Edition',
+              subtitle: 'Set up system',
+              text: "During the first lecture we will install the required software together, but in case you are\n                wondering we have created a step-by-step guide on how to install the software needed for this course.\n                Head over to https://www.oracle.com/nl/java/technologies/javase-downloads.htmland go download the Java\n                SE 11 (LTS) installer for your specific operating system.\n                You'll need to create an Oracle account and sign in to be able to download the installer.\n                Head over to https://www.jetbrains.com/idea/download and get IntelliJ IDEA Community Edition for your\n                specific operating system.\n                Install the Java SE 11 development kit downloaded from step 1.\n                Unfortunately, there is no \"easy\" way to check whether or not the installation was a success. If the\n                installer exitedwithout errors, you should assume everything is up and running. If your installer\n                crashes, please contact your teacher.\n                Install IntelliJ IDEA Community Edition downloaded from step 2.\n                Download the DemoProject.zip file (below) and extract it to somewhere you can easily find it.\n                Open IntelliJ and select open and select the folder you extracted from the zipfile as discussed in step\n                5.\n                Head over to \"1: Project\" (top left), open up \"Demo1\", open up \"src\" before double-clicking on\n                \"Application\".\n                You might need to wait before IntelliJ has indexed the Java Development Kit. If you see a progressbar in\n                the bottom, wait a moment! Be patient.\n                If everything worked out correctly, you should a green triangle that you can now click to run your\n                program. If you can do so, your installation was succesful!\n                Just to help out, we have created a video that shows all these steps and explains a little about what\n                happens. Have a look at https://youtu.be/8Dp9jP56b4U."
+            },
+            {
+              title: 'Sandbox project',
+              subtitle: '',
+              text: 'Download the Sandbox project here. A Sandbox project does not contain exercises, but should\n                be considered a playground for you to experiment upon!'
+            }
           ]
         },
         // Assignment
@@ -717,31 +696,41 @@ export default {
           submenu: 'Assignment',
           icon: 'mdi-briefcase',
           tasks: [
-            { title: 'assignment 1', subtitle: 'level 1', rating: 1, text: 'Write a program, that greets you whenever you run it.\n' + ' \t\n' + 'For example:\n', image: 'assignment1' },
-            { title: 'assignment 2', subtitle: 'level 2', rating: 2, text: 'Write a program that prompts the user for a name. Then greet the person with that name.\n' + ' \t\n' + 'For example:\n', image: 'assignment2' },
-            { title: 'assignment 3', subtitle: 'level 3', rating: 3, text: 'Write a program that prompts the user for an answer of a calculation. You may hard-code the values used in the question.', image: 'assignment3' }
+            {
+              title: 'assignment 1',
+              subtitle: 'level 1',
+              rating: 1,
+              text: 'Write a program, that greets you whenever you run it.\n' + ' \t\n' + 'For example:\n',
+              image: 'assignment1'
+            },
+            {
+              title: 'assignment 2',
+              subtitle: 'level 2',
+              rating: 2,
+              text: 'Write a program that prompts the user for a name. Then greet the person with that name.\n' + ' \t\n' + 'For example:\n',
+              image: 'assignment2'
+            },
+            {
+              title: 'assignment 3',
+              subtitle: 'level 3',
+              rating: 3,
+              text: 'Write a program that prompts the user for an answer of a calculation. You may hard-code the values used in the question.',
+              image: 'assignment3'
+            }
           ]
         },
         // peer study
         {
           submenu: 'Peer study',
-          icon: 'mdi-forum',
-          tasks: [
-            { title: 'assignment 1', subtitle: 'level 1', text: 'comments: 0', comment: 'good job , Can I copy your code? +rep' }
-            // ,
-            // { title: 'assignment 2', subtitle: 'level 2', text: 'comments:\n', comment: 'It is working, thanks' }
-            // { title: 'assignment 3', subtitle: 'level 3', text: 'comments:\n', comment: 'Your code is like rubbish' },
-            // { title: 'assignment 4', subtitle: 'level 4', text: 'comments:\n', comment: 'Are you kidding me? Error everywhere. -rep' },
-            // { title: 'assignment 5', subtitle: 'level 2', text: 'comments:\n', comment: 'I will leave the project, you are all too weak!' }
-          ]
+          icon: 'mdi-forum'
         },
         // Video
         {
           submenu: 'Video',
           icon: 'mdi-video-box',
           tasks: [
-            { title: 'assignment 3a', subtitle: 'level 3', text: 'copy paste is golden' },
-            { title: 'assignment 3b', subtitle: 'level 3', text: 'copy paste is golden' }
+            {title: 'assignment 3a', subtitle: 'level 3', text: 'copy paste is golden'},
+            {title: 'assignment 3b', subtitle: 'level 3', text: 'copy paste is golden'}
           ]
         },
         // Submit
@@ -749,8 +738,16 @@ export default {
           submenu: 'Submit',
           icon: 'mdi-bookmark',
           tasks: [
-            { title: 'Delivery assignment 1', subtitle: 'level: easy', text: 'Please confirm that it meets the requirements before uploading, code + document' },
-            { title: 'Delivery assignment 2', subtitle: 'level: difficult', text: 'Please confirm that it meets the requirements before uploading, code + document' }
+            {
+              title: 'Delivery assignment 1',
+              subtitle: 'level: easy',
+              text: 'Please confirm that it meets the requirements before uploading, code + document'
+            },
+            {
+              title: 'Delivery assignment 2',
+              subtitle: 'level: difficult',
+              text: 'Please confirm that it meets the requirements before uploading, code + document'
+            }
           ]
         },
         // Quiz
@@ -758,37 +755,37 @@ export default {
           submenu: 'Quiz',
           icon: 'mdi-book-open-blank-variant',
           tasks: [
-            { title: 'Week 1 quize', subtitle: 'level :easy' }
+            {title: 'Week 1 quize', subtitle: 'level :easy'}
           ]
         }
       ],
 
       links: [
-        { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-        { title: 'Account', icon: 'mdi-account-box' },
-        { title: 'Admin', icon: 'mdi-laptop' }
+        {title: 'Dashboard', icon: 'mdi-view-dashboard'},
+        {title: 'Account', icon: 'mdi-account-box'},
+        {title: 'Admin', icon: 'mdi-laptop'}
       ],
       e1: 1
     }
   },
   watch: {
-    steps (val) {
+    steps(val) {
       if (this.e1 > val) {
         this.e1 = val
       }
     }
   },
   computed: {
-    timeline () {
+    timeline() {
       return this.events.slice().reverse()
     },
-    timeline2 () {
+    timeline2() {
       return this.events2.slice().reverse()
     }
   },
 
   methods: {
-    backStep (n) {
+    backStep(n) {
       if (n !== 1) {
         this.e1 = n - 1
       }
@@ -796,19 +793,19 @@ export default {
         this.skill = this.skill - 20
       }
     },
-    nextStep (n) {
+    nextStep(n) {
       this.e1 = n + 1
       if (this.skill < 100) {
         this.skill = this.skill + 20
       }
     },
-    pushState () {
-      const state = { page_id: 1, user_id: 5 }
+    pushState() {
+      const state = {page_id: 1, user_id: 5}
       const title = ''
       const url = '/course-code/intro-to-programming/week-1/assignment-2'
       history.pushState(state, title, url)
     },
-    comment () {
+    comment() {
       const time = (new Date()).toTimeString()
       this.events.push({
         id: this.nonce++,
@@ -820,7 +817,7 @@ export default {
 
       this.input = null
     },
-    comment2 () {
+    comment2() {
       const time = (new Date()).toTimeString()
       this.events2.push({
         id: this.nonce2++,
