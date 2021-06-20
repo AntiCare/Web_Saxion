@@ -65,6 +65,10 @@
                       icon-label="custom icon label text {0} of {1}"
                     ></v-rating>
                   </div>
+                  <!--Video-->
+                  <div v-if="weekPage.submenu==='Video'">
+                    <Video></Video>
+                  </div>
                  <!--Submit-->
                   <div v-if="weekPage.submenu==='Submit'">
                     <Submit></Submit>
@@ -103,20 +107,6 @@
                       src="../assets/assignment3.png"
                     >
                     </v-img>
-                    <!--comments-->
-                    <v-snackbar
-                      v-show="isShow"
-                      :timeout="-1"
-                      shaped
-                      color="primary"
-                      :elevation=10
-                      v-if="weekPage.submenu==='Peer study'&&task.comment!==null"
-                      :value="true"
-                      absolute
-                      left
-                    >
-                      {{ task.comment }}
-                    </v-snackbar>
                   </v-card-text>
                   <v-card-actions></v-card-actions>
 
@@ -142,17 +132,17 @@ import PeerStudy from "@/components/Peer-study";
 import Quiz from "./Quiz";
 import Discussion from "./Discussion/Discussion";
 import Submit from "./Submit/Submit";
+import Video from "@/components/Video";
 
 Vue.use(VueCoreVideoPlayer)
 
 export default {
-  components: {Submit, Discussion, Quiz, Introduction,PeerStudy, Lectures},
+  components: {Video, Submit, Discussion, Quiz, Introduction,PeerStudy, Lectures},
   data() {
     return {
       isShow: false,
       number: 20,
       tab: null,
-
       // weeks (tabs)
       weeks: [
         'Intro', 'Online lectures', 'Discussion', 'Week 1', 'Week 2', 'Week 3', 'Extra'
@@ -241,8 +231,8 @@ export default {
           submenu: 'Video',
           icon: 'mdi-video-box',
           tasks: [
-            {title: 'assignment 3a', subtitle: 'level 3', text: 'copy paste is golden'},
-            {title: 'assignment 3b', subtitle: 'level 3', text: 'copy paste is golden'}
+            {title: 'Loop(while)', subtitle: 'How to use while loop in Java'},
+            {title: 'Loop(for)', subtitle: 'How to use for loop in Java' }
           ]
         },
         // Submit
@@ -279,9 +269,6 @@ export default {
       ]
     }
   },
-
-
-
   methods: {
     pushState() {
       const state = {page_id: 1, user_id: 5}
