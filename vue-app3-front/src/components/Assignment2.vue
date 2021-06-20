@@ -48,6 +48,11 @@
                      v-if="weekPage.submenu === 'Peer study'">
                   <PeerStudy></PeerStudy>
                 </div>
+
+                <div class="text-left"
+                     v-if="weekPage.submenu === 'Assignment'">
+                  <ModuleAssignments></ModuleAssignments>
+                </div>
                 <v-card
                   class="pa-2 mb-4"
                   outlined
@@ -57,14 +62,6 @@
                 >
                   <v-card-title>{{ task.title }}</v-card-title>
                   <v-card-subtitle>{{ task.subtitle }}</v-card-subtitle>
-                  <!--Assignment-->
-                  <div class="text-left"
-                       v-if="weekPage.submenu==='Assignment'">
-                    <v-rating
-                      v-model="task.rating"
-                      icon-label="custom icon label text {0} of {1}"
-                    ></v-rating>
-                  </div>
                   <!--Video-->
                   <div v-if="weekPage.submenu==='Video'">
                     <Video></Video>
@@ -78,38 +75,7 @@
                   <div v-if="weekPage.submenu==='Quiz'">
                     <Quiz></Quiz>
                   </div>
-                  <v-card-text>
-                    {{ task.text }}
-                    <!--img assignment1-->
-                    <v-img
-                      max-height="300"
-                      max-width="418"
-                      v-if="task.image==='assignment1'"
-                      lazy-src="../assets/assignment1.png"
-                      src="../assets/assignment1.png"
-                    >
-                    </v-img>
-                    <!--img assignment2-->
-                    <v-img
-                      max-height="300"
-                      max-width="418"
-                      v-else-if="task.image==='assignment2'"
-                      lazy-src="../assets/assignment2.png"
-                      src="../assets/assignment2.png"
-                    >
-                    </v-img>
-                    <!--img assignment3-->
-                    <v-img
-                      max-height="300"
-                      max-width="418"
-                      v-else-if="task.image==='assignment3'"
-                      lazy-src="../assets/assignment3.png"
-                      src="../assets/assignment3.png"
-                    >
-                    </v-img>
-                  </v-card-text>
                   <v-card-actions></v-card-actions>
-
                 </v-card>
               </v-tab-item>
             </v-tabs>
@@ -133,11 +99,12 @@ import Quiz from "./Quiz";
 import Discussion from "./Discussion/Discussion";
 import Submit from "./Submit/Submit";
 import Video from "@/components/Video";
+import ModuleAssignments from "@/components/module-assignments/Module-assignments";
 
 Vue.use(VueCoreVideoPlayer)
 
 export default {
-  components: {Video, Submit, Discussion, Quiz, Introduction,PeerStudy, Lectures},
+  components: {ModuleAssignments, Video, Submit, Discussion, Quiz, Introduction,PeerStudy, Lectures},
   data() {
     return {
       isShow: false,
@@ -181,29 +148,6 @@ export default {
         {
           submenu: 'Assignment',
           icon: 'mdi-briefcase',
-          tasks: [
-            {
-              title: 'assignment 1',
-              subtitle: 'level 1',
-              rating: 1,
-              text: 'Write a program, that greets you whenever you run it.\n' + ' \t\n' + 'For example:\n',
-              image: 'assignment1'
-            },
-            {
-              title: 'assignment 2',
-              subtitle: 'level 2',
-              rating: 2,
-              text: 'Write a program that prompts the user for a name. Then greet the person with that name.\n' + ' \t\n' + 'For example:\n',
-              image: 'assignment2'
-            },
-            {
-              title: 'assignment 3',
-              subtitle: 'level 3',
-              rating: 3,
-              text: 'Write a program that prompts the user for an answer of a calculation. You may hard-code the values used in the question.',
-              image: 'assignment3'
-            }
-          ]
         },
         // peer study
         {
