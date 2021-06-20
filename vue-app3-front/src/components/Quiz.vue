@@ -36,119 +36,62 @@
             :step="n"
           >
 
-            <!--quiz Q1-->
-            <v-card
-              v-if="n !== 7 && n===1"
-              class="mb-12 elevation-0"
-              height="200px"
-            >
-              <v-card-title>Which of the following cannot be used as a loop condition.</v-card-title>
+            <!--quiz-->
+            <div  v-for="(questionNum,id) in Questions"
+                  :key="id">
+              <v-card
+                v-if="n===id+1"
+                class="mb-12 elevation-0"
+                height="200px"
+              >
+                <v-card-title >{{questionNum.question}}</v-card-title>
+                <!--type1-->
+                <v-card-text v-if="questionNum.type==='Multiple choice 1'">
+                  <v-chip-group
+                    active-class="primary accent-4 white--text"
+                    column
+                  >
+                    <v-chip v-for="(option,idx) in questionNum.options"
+                            :key="idx">{{option}} </v-chip>
+                  </v-chip-group>
+                </v-card-text>
+                <!--type2-->
+                <v-card-text v-else-if="questionNum.type==='Multiple choice 2'">
+                  <v-chip-group
+                    active-class="primary accent-4 white--text"
+                    column
+                    multiple
+                  >
+                    <v-chip v-for="(option,idx) in questionNum.options"
+                            :key="idx">{{option}} </v-chip>
+                  </v-chip-group>
+                </v-card-text>
+                <!--type3-->
+                <v-card-text v-else-if="questionNum.type==='text'">
+                  <v-combobox
+                    label="enter your answer here"
+                    prepend-icon="mdi-pen"
+                  >
+                  </v-combobox>
+                </v-card-text>
+                <!--type4-->
+                <v-card-text v-else-if="questionNum.type==='TF'">
+                  <v-radio-group
+                    column
+                  >
+                    <v-radio
+                      label="True"
+                      value="radio-1"
+                    ></v-radio>
+                    <v-radio
+                      label="False"
+                      value="radio-2"
+                    ></v-radio>
+                  </v-radio-group>
+                </v-card-text>
 
-              <v-card-text>
-                <v-chip-group
-                  active-class="primary accent-4 white--text"
-                  column
-                >
-                  <v-chip>A. i++; </v-chip>
-
-                  <v-chip>B. i>5;</v-chip>
-
-                  <v-chip>C. bEqual = str.equals("q");</v-chip>
-
-                  <v-chip>D. count = = i;</v-chip>
-                </v-chip-group>
-              </v-card-text>
-            </v-card>
-
-            <!--quiz Q2-->
-            <v-card
-              v-if="n !== 7 && n===2"
-              class="mb-12 elevation-0"
-              height="200px"
-            >
-              <v-card-title>Which of the following options belong to the reference data type. (multiple choice)</v-card-title>
-              <v-card-text>
-                <v-chip-group
-                  multiple
-                  active-class="primary accent-4 white--text"
-                  column
-                >
-                  <v-chip>A. String </v-chip>
-
-                  <v-chip>B. char</v-chip>
-
-                  <v-chip>C. Student</v-chip>
-
-                  <v-chip>D. int</v-chip>
-                </v-chip-group>
-              </v-card-text>
-            </v-card>
-
-            <!--quiz Q3-->
-            <v-card
-              v-if="n !== 7 && n===3"
-              class="mb-12 elevation-0"
-              height="200px"
-            >
-              <v-card-title>In the Java interface, the valid method declaration in the following options is _______.(multiple choice)</v-card-title>
-
-              <v-card-text>
-                <v-chip-group
-                  multiple
-                  active-class="primary accent-4 white--text"
-                  column
-                >
-                  <v-chip>A. public void aMethod(); </v-chip>
-
-                  <v-chip>B. void aMethod();</v-chip>
-
-                  <v-chip>C. protected void aMethod();</v-chip>
-
-                  <v-chip>D. private void aMethod();</v-chip>
-                </v-chip-group>
-              </v-card-text>
-            </v-card>
-
-            <!--quiz Q4-->
-            <v-card
-              v-if="n !== 7 && n===4"
-              class="mb-12 elevation-0"
-              height="200px"
-            >
-              <v-card-title>Initialize an array of type int, which contains 5 elements. </v-card-title>
-              <v-card-text>
-                <v-combobox
-                  label="enter your answer here"
-                  prepend-icon="mdi-pen"
-                >
-                </v-combobox>
-              </v-card-text>
-            </v-card>
-
-            <!--quiz Q5-->
-            <v-card
-              v-if="n !== 7 && n===5"
-              class="mb-12 elevation-0"
-              height="200px"
-            >
-              <v-card-title>i is an int type, it can be changed to a string type through i.toString()</v-card-title>
-
-              <v-card-text>
-                <v-radio-group
-                  column
-                >
-                  <v-radio
-                    label="True"
-                    value="radio-1"
-                  ></v-radio>
-                  <v-radio
-                    label="False"
-                    value="radio-2"
-                  ></v-radio>
-                </v-radio-group>
-              </v-card-text>
-            </v-card>
-
+              </v-card>
+            </div>
             <v-icon
               v-if="n === 7"
               color="success"
@@ -192,7 +135,38 @@ export default {
   data () {
     return {
       skill: 0,
-      e1: 1
+      e1: 1,
+      Questions: [
+        {
+          question: 'Which of the following cannot be used as a loop condition.',
+          type: 'Multiple choice 1',
+          options: [
+            'A: i++;', 'B: void aMethod();', 'C: bEqual = str.equals("q");', 'D: count = = i;'
+          ]
+        },
+        {
+          question: 'Which of the following options belong to the reference data type. (multiple choice)',
+          type: 'Multiple choice 2',
+          options: [
+            'A: String', 'B: char', 'C: Student', 'D: int'
+          ]
+        },
+        {
+          question: 'In the Java interface, the valid method declaration in the following options is _______.(multiple choice)',
+          type: 'Multiple choice 2',
+          options: [
+            'A: public void aMethod();', 'B: void aMethod();', 'C: protected void aMethod();', 'D: private void aMethod();'
+          ]
+        },
+        {
+          question: 'Initialize an array of type int, which contains 5 elements.',
+          type: 'text'
+        },
+        {
+          question: 'i is an int type, it can be changed to a string type through i.toString()',
+          type: 'TF'
+        }
+      ]
     }
   },
   watch: {
