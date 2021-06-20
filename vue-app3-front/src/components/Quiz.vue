@@ -191,7 +191,8 @@ export default {
         this.skill = this.skill + 20
       }
       if (n === 6) {
-        this.finishWeek1 = true
+        this.$store.commit('changeWeek1Status')
+        console.log(this.$store.state.week1Finish)
       }
     }
 

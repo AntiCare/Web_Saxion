@@ -3,13 +3,14 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: {
-  },
+const store = new Vuex.Store({
+  strict: true,
+  state: { week1Finish: false },
   mutations: {
-  },
-  actions: {
-  },
-  modules: {
+    changeWeek1Status (state) {
+      state.week1Finish = true
+    }
   }
 })
+
+export default store
