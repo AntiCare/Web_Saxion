@@ -35,7 +35,7 @@ export default {
   name: "Peer-study-assignment-comments",
   data() {
     return {
-      userComment: 'DSlksdjklf',
+      userComment: '',
       comments: [
         {
           publisher: "Mykhailo",
