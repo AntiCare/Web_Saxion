@@ -4,12 +4,6 @@
     <v-card
 
     >
-      <!--    <v-toolbar-->
-      <!--      color="cyan"-->
-      <!--      dark-->
-      <!--      flat-->
-      <!--    >-->
-      <!--      <template v-slot:extension>-->
       <v-tabs
         v-model="tab"
         align-with-title
@@ -18,7 +12,6 @@
         dark
       >
         <v-tabs-slider color="white"></v-tabs-slider>
-
         <v-tab
           v-for="(week, idx) in weeks"
           :key="idx"
@@ -26,169 +19,13 @@
           {{ week }}
         </v-tab>
       </v-tabs>
-      <!--      </template>-->
-      <!--    </v-toolbar>-->
-
       <v-tabs-items v-model="tab">
-
         <!-- Introduction page-->
        <Introduction></Introduction>
         <!--Online lectures page-->
         <Lectures></Lectures>
-
         <!-- discussion page-->
-        <v-tab-item>
-
-          <v-card>
-            <v-tabs vertical>
-              <v-tab>
-                <v-icon left>
-                  mdi-message-draw
-                </v-icon>
-                Homework
-              </v-tab>
-              <v-tab>
-                <v-icon left>
-                  mdi-help-circle
-                </v-icon>
-                Questions
-              </v-tab>
-
-              <v-tab-item>
-                <v-container>
-                  <v-timeline
-                    dense
-                    clipped
-                  >
-                    <v-timeline-item
-                      fill-dot
-                      class="white--text mb-12"
-                      color="primary"
-                      large
-                    >
-                      <template v-slot:icon>
-                        <span>YC</span>
-                      </template>
-                      <v-text-field
-                        background-color="primary"
-                        v-model="input"
-                        hide-details
-                        flat
-                        label="Enter comments here"
-                        solo
-                        @keydown.enter="comment"
-                      >
-                        <template v-slot:append>
-                          <v-btn
-                            class="mx-0 "
-                            depressed
-                            @click="comment"
-                            color="white"
-                          >
-                            Send
-                          </v-btn>
-                        </template>
-                      </v-text-field>
-                    </v-timeline-item>
-
-                    <v-slide-x-transition
-                      group
-                    >
-                      <v-timeline-item
-                        v-for="(event, idx) in timeline"
-                        :key="'event' + idx"
-                        class="mb-4"
-                        Medium
-                      >
-                        <template v-slot:icon>
-                          <span class="white--text">YC</span>
-                        </template>
-                        <v-row justify="space-between">
-                          <v-col
-                            cols="7"
-                            v-text="event.text"
-                          ></v-col>
-                          <v-col
-                            class="text-right"
-                            cols="5"
-                            v-text="event.time"
-                          ></v-col>
-                        </v-row>
-                      </v-timeline-item>
-                    </v-slide-x-transition>
-                  </v-timeline>
-                </v-container>
-              </v-tab-item>
-              <v-tab-item>
-                <v-container>
-                  <v-timeline
-                    dense
-                    clipped
-                  >
-                    <v-timeline-item
-                      fill-dot
-                      class="white--text mb-12"
-                      color="primary"
-                      large
-                    >
-                      <template v-slot:icon>
-                        <span>YC</span>
-                      </template>
-                      <v-text-field
-                        background-color="primary"
-                        v-model="input2"
-                        hide-details
-                        flat
-                        label="Enter comments here"
-                        solo
-                        @keydown.enter="comment2"
-                      >
-                        <template v-slot:append>
-                          <v-btn
-                            class="mx-0 "
-                            depressed
-                            @click="comment2"
-                            color="white"
-                          >
-                            Send
-                          </v-btn>
-                        </template>
-                      </v-text-field>
-                    </v-timeline-item>
-
-                    <v-slide-x-transition
-                      group
-                    >
-                      <v-timeline-item
-                        v-for="event2 in timeline2"
-                        :key="event2.id"
-                        class="mb-4"
-                        Medium
-                      >
-                        <template v-slot:icon>
-                          <span class="white--text">YC</span>
-                        </template>
-                        <v-row justify="space-between">
-                          <v-col
-                            cols="7"
-                            v-text="event2.text"
-                          ></v-col>
-                          <v-col
-                            class="text-right"
-                            cols="5"
-                            v-text="event2.time"
-                          ></v-col>
-                        </v-row>
-                      </v-timeline-item>
-                    </v-slide-x-transition>
-                  </v-timeline>
-                </v-container>
-
-              </v-tab-item>
-            </v-tabs>
-          </v-card>
-
-        </v-tab-item>
+         <Discussion></Discussion>
         <!--week page week1-3-->
         <v-tab-item
           v-for="(weekPage, idx) in weekPages"
@@ -228,101 +65,11 @@
                       icon-label="custom icon label text {0} of {1}"
                     ></v-rating>
                   </div>
-                  <!--Submit-->
-                  <!--Delivery assignment 1-->
-                  <div class="text-left"
-                       v-if="weekPage.submenu==='Submit' && task.title==='Delivery assignment 1'">
-                    <v-file-input
-                      v-model="files1"
-                      color="primary"
-                      counter
-                      label="File input"
-                      multiple
-                      placeholder="Select your files"
-                      prepend-icon="mdi-paperclip"
-                      outlined
-                      :show-size="1000"
-                      @click="ShowSuccess=false"
-                    >
-                      <template v-slot:selection="{ index, text }">
-                        <v-chip
-                          v-if="index < 2"
-                          color="primary"
-                          dark
-                          label
-                          small
-                        >
-                          {{ text }}
-                        </v-chip>
-
-                        <span
-                          v-else-if="index === 2"
-                          class="text-overline grey--text text--darken-3 mx-2"
-                        >
-                         +{{ files.length - 2 }} File(s)
-                      </span>
-                      </template>
-                    </v-file-input>
-                    <!--upload button-->
-                    <v-btn
-                      :loading="loading3"
-                      :disabled="loading3"
-                      color="blue-grey"
-                      class="ma-2 white--text"
-                      @click="ShowSuccess=true"
-                    >
-                      Upload
-                      <v-icon right dark>mdi-cloud-upload</v-icon>
-                    </v-btn>
-                    <v-icon color="primary" large v-show="ShowSuccess">mdi-check</v-icon>
+                 <!--Submit-->
+                  <div v-if="weekPage.submenu==='Submit'">
+                    <Submit></Submit>
                   </div>
-                  <!--Delivery assignment 2-->
-                  <div class="text-left"
-                       v-if="weekPage.submenu==='Submit' && task.title==='Delivery assignment 2'">
-                    <v-file-input
-                      v-model="files2"
-                      color="primary"
-                      counter
-                      label="File input"
-                      multiple
-                      placeholder="Select your files"
-                      prepend-icon="mdi-paperclip"
-                      outlined
-                      :show-size="1000"
-                      @click="ShowSuccess1=false"
-                    >
-                      <template v-slot:selection="{ index, text }">
-                        <v-chip
-                          v-if="index < 2"
-                          color="primary"
-                          dark
-                          label
-                          small
-                        >
-                          {{ text }}
-                        </v-chip>
 
-                        <span
-                          v-else-if="index === 2"
-                          class="text-overline grey--text text--darken-3 mx-2"
-                        >
-                         +{{ files.length - 2 }} File(s)
-                      </span>
-                      </template>
-                    </v-file-input>
-                    <!--upload button-->
-                    <v-btn
-                      :loading="loading3"
-                      :disabled="loading3"
-                      color="blue-grey"
-                      class="ma-2 white--text"
-                      @click="ShowSuccess1=true"
-                    >
-                      Upload
-                      <v-icon right dark>mdi-cloud-upload</v-icon>
-                    </v-btn>
-                    <v-icon color="primary" large v-show="ShowSuccess1">mdi-check</v-icon>
-                  </div>
                   <!--Quiz-->
                   <div v-if="weekPage.submenu==='Quiz'">
                     <Quiz></Quiz>
@@ -393,26 +140,16 @@ import Lectures from "@/components/Lectures";
 import Introduction from "./Introduction";
 import PeerStudy from "@/components/Peer-study";
 import Quiz from "./Quiz";
+import Discussion from "./Discussion/Discussion";
+import Submit from "./Submit/Submit";
 
 Vue.use(VueCoreVideoPlayer)
 
 export default {
-  components: {Quiz, Introduction,PeerStudy, Lectures},
+  components: {Submit, Discussion, Quiz, Introduction,PeerStudy, Lectures},
   data() {
     return {
-      events2: [],
-      input2: null,
-      nonce2: 0,
-      events: [],
-      input: null,
-      nonce: 0,
-      ShowSuccess1: false,
-      ShowSuccess: false,
-      loading3: false,
       isShow: false,
-      files: [],
-      files1: [],
-      files2: [],
       number: 20,
       tab: null,
 
@@ -543,14 +280,7 @@ export default {
     }
   },
 
-  computed: {
-    timeline() {
-      return this.events.slice().reverse()
-    },
-    timeline2() {
-      return this.events2.slice().reverse()
-    }
-  },
+
 
   methods: {
     pushState() {
@@ -558,30 +288,6 @@ export default {
       const title = ''
       const url = '/course-code/intro-to-programming/week-1/assignment-2'
       history.pushState(state, title, url)
-    },
-    comment() {
-      const time = (new Date()).toTimeString()
-      this.events.push({
-        id: this.nonce++,
-        text: this.input,
-        time: time.replace(/:\d{2}\sGMT-\d{4}\s\((.*)\)/, (match, contents, offset) => {
-          return ` ${contents.split(' ').map(v => v.charAt(0)).join('')}`
-        })
-      })
-
-      this.input = null
-    },
-    comment2() {
-      const time = (new Date()).toTimeString()
-      this.events2.push({
-        id: this.nonce2++,
-        text: this.input2,
-        time: time.replace(/:\d{2}\sGMT-\d{4}\s\((.*)\)/, (match, contents, offset) => {
-          return ` ${contents.split(' ').map(v => v.charAt(0)).join('')}`
-        })
-      })
-
-      this.input = null
     }
   }
 }
