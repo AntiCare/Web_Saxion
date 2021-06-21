@@ -3,6 +3,7 @@
     <v-subheader class="pl-0">
     </v-subheader>
     <v-slider
+      readonly
       v-bind:value="slider"
       :thumb-size="50"
       thumb-label="always"
