@@ -37,6 +37,9 @@ export default {
         this.slider = this.$store.state.weekFinish
       }
     }
+  },
+  mounted () {
+    this.slider = this.$store.state.weekFinish
   }
 
 }

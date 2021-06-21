@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
@@ -10,7 +11,17 @@ const store = new Vuex.Store({
     changeWeekStatus (state) {
       state.weekFinish += 10
     }
-  }
+  },
+  plugins: [
+    createPersistedState({
+      reducer (state) {
+        return {
+          weekFinish: state.weekFinish
+        }
+      }
+    }
+    )
+  ]
 })
 
 export default store
