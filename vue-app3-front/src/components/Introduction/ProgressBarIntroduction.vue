@@ -1,10 +1,9 @@
 <template>
   <v-col cols="12">
     <v-subheader class="pl-0">
-
     </v-subheader>
     <v-slider
-      v-model="slider"
+      v-bind:value="slider"
       :thumb-size="50"
       thumb-label="always"
       :max="70"
@@ -29,13 +28,24 @@ export default {
       satisfactionEmojis: ['Week1', 'Week2', 'Week3', 'Week4', 'Week5', 'Week6', 'Week7', 'Week8'],
       slider: 0
     }
+  },
+  computed: { count () { return this.$store.state.weekFinish } },
+  watch: {
+    '$store.state.weekFinish': {
+      deep: true,
+      handler: function () {
+        this.slider = this.$store.state.weekFinish
+      }
+    }
+  },
+  mounted () {
+    this.slider = this.$store.state.weekFinish
   }
 
 }
 </script>
 
 <style scoped>
-
 
 >>>.v-slider--horizontal .v-slider__track-container {
   height: 10px;
