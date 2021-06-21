@@ -29,12 +29,12 @@ export default {
       slider: 0
     }
   },
-  computed: { count () { return this.$store.state.week1Finish } },
+  computed: { count () { return this.$store.state.weekFinish } },
   watch: {
-    '$store.state.week1Finish': {
+    '$store.state.weekFinish': {
       deep: true,
       handler: function () {
-        this.slider = 10
+        this.slider = this.$store.state.weekFinish
       }
     }
   }

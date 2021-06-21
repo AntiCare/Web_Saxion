@@ -5,10 +5,10 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   strict: true,
-  state: { week1Finish: false },
+  state: { weekFinish: 0 },
   mutations: {
-    changeWeek1Status (state) {
-      state.week1Finish = true
+    changeWeekStatus (state) {
+      state.weekFinish += 10
     }
   }
 })
