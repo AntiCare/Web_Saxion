@@ -50,6 +50,7 @@
                   <v-chip-group
                     active-class="primary accent-4 white--text"
                     column
+                    v-model="questionNum.answer"
                   >
                     <v-chip v-for="(option,idx) in questionNum.options"
                             :key="idx">{{option}} </v-chip>
@@ -61,6 +62,7 @@
                     active-class="primary accent-4 white--text"
                     column
                     multiple
+                    v-model="questionNum.answer"
                   >
                     <v-chip v-for="(option,idx) in questionNum.options"
                             :key="idx">{{option}} </v-chip>
@@ -71,6 +73,7 @@
                   <v-combobox
                     label="enter your answer here"
                     prepend-icon="mdi-pen"
+                    v-model="questionNum.answer"
                   >
                   </v-combobox>
                 </v-card-text>
@@ -78,6 +81,7 @@
                 <v-card-text v-else-if="questionNum.type==='TF'">
                   <v-radio-group
                     column
+                    v-model="questionNum.answer"
                   >
                     <v-radio
                       label="True"
@@ -93,13 +97,34 @@
               </v-card>
             </div>
             <v-icon
-              v-if="n === 7"
+              v-if="n === 7 && grade>3"
               color="success"
               align-center
               large="large"
             >
               mdi-check
             </v-icon>
+            <div v-if="n === 7 && grade>3">
+              Congratulation! Your score is: {{grade}}
+            </div>
+
+            <v-icon
+              v-if="n === 7 && grade<=3"
+              color="red"
+              align-center
+              large="large"
+            >
+              mdi-window-close
+            </v-icon>
+            <div v-if="n === 7 && grade<3">
+              Insufficient! Your score is: {{grade}}
+              <v-btn
+                color="primary"
+                @click="redo(n)"
+              >
+                Retake
+              </v-btn>
+            </div>
 
             <v-btn
               color="primary"
@@ -136,35 +161,46 @@ export default {
     return {
       skill: 0,
       e1: 1,
+      grade: 0,
       Questions: [
         {
           question: 'Which of the following cannot be used as a loop condition.',
           type: 'Multiple choice 1',
           options: [
             'A: i++;', 'B: void aMethod();', 'C: bEqual = str.equals("q");', 'D: count = = i;'
-          ]
+          ],
+          answer: [],
+          correct: '2'
         },
         {
           question: 'Which of the following options belong to the reference data type. (multiple choice)',
           type: 'Multiple choice 2',
           options: [
             'A: String', 'B: char', 'C: Student', 'D: int'
-          ]
+          ],
+          answer: [],
+          correct: '2,3'
         },
         {
           question: 'In the Java interface, the valid method declaration in the following options is _______.(multiple choice)',
           type: 'Multiple choice 2',
           options: [
             'A: public void aMethod();', 'B: void aMethod();', 'C: protected void aMethod();', 'D: private void aMethod();'
-          ]
+          ],
+          answer: [],
+          correct: '2,3'
         },
         {
           question: 'Initialize an array of type int, which contains 5 elements.',
-          type: 'text'
+          type: 'text',
+          answer: [],
+          correct: 'cnm'
         },
         {
           question: 'i is an int type, it can be changed to a string type through i.toString()',
-          type: 'TF'
+          type: 'TF',
+          answer: [],
+          correct: 'radio-1'
         }
       ]
     }
@@ -185,14 +221,23 @@ export default {
         this.skill = this.skill - 20
       }
     },
+    redo (n) {
+      this.e1 = 1
+    },
     nextStep (n) {
       this.e1 = n + 1
       if (this.skill < 100) {
         this.skill = this.skill + 20
       }
       if (n === 6) {
-        this.$store.commit('changeWeekStatus')
-        console.log(this.$store.state.weekFinish)
+        for (let i = 0; i < this.Questions.length; i++) {
+          if (this.Questions[i].answer.toString() === this.Questions[i].correct) {
+            this.grade = this.grade + 1
+          }
+        }
+        if (this.grade > 3) {
+          this.$store.commit('changeWeekStatus')
+        }
       }
     }
 
