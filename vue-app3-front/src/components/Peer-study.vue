@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="( assignment, idx ) in assignments">
+    <div v-for="( assignment, idx ) in ASSIGNMENTS">
       <PeerStudyAssignment v-bind:assignment="assignment" v-bind:index="idx"></PeerStudyAssignment>
     </div>
   </div>
@@ -15,11 +15,16 @@ export default {
   name: "Peer-study",
   components: {PeerStudyAssignment, PeerStudyAssignmentView},
   mounted() {
-    this.updatePeerStudyAssignmentAmount(this.assignments.length);
+    this.$store.dispatch('fetchPeerStudyAssignments');
+  },
+  computed: {
+    ASSIGNMENTS() {
+      return this.$store.state.course.peerStudy.assignments
+    }
   },
   methods: {
     ...mapMutations([
-      'updatePeerStudyAssignmentAmount'
+      'setPeerStudiesAmount',
     ])
   },
   data() {
@@ -27,19 +32,7 @@ export default {
       files: [],
       loading: false,
       icon: 'mdi-forum',
-      assignments: [
-        {
-          title: 'Research update',
-          subtitle: 'some subtitle',
-          viewUploadPoint: false
 
-        },
-        {
-          title: 'Research update',
-          subtitle: 'some subtitle',
-          viewUploadPoint: false
-        }
-      ]
 
     }
   }

@@ -6,16 +6,16 @@
     :disabled="allowedToDoAssignment"
     shaped
   >
-    <v-card-title>{{ assignment.title + ' ' + (index + 1) }}</v-card-title>
+    <v-card-title>{{ assignment.title }}</v-card-title>
     <v-card-subtitle>{{ assignment.subtitle }}</v-card-subtitle>
     <v-btn
       color="primary"
       text
-      @click="assignment.viewUploadPoint = true"
+      @click="viewUploadPoint = true"
     >
       VIEW
     </v-btn>
-    <div v-if="assignment.viewUploadPoint">
+    <div v-if="viewUploadPoint === true">
       <PeerStudyAssignmentView></PeerStudyAssignmentView>
     </div>
   </v-card>
@@ -32,6 +32,7 @@ export default {
     return {
       files: [],
       loading: false,
+      viewUploadPoint: false
     }
   },
   computed: {
