@@ -18,6 +18,9 @@ const store = new Vuex.Store({
     changeWeekStatus (state) {
       state.weekFinish += 10
     },
+    updatePeerStudyAssignmentAmount (state, amount) {
+      state.course.peerStudiesAmount = amount;
+    },
     finishedPeerStudyAssignment (state) {
       state.course.finishedPeerStudy++;
     },
@@ -27,7 +30,7 @@ const store = new Vuex.Store({
   },
   getters: {
     allowedToDoQuiz: state => {
-      return state.course.peerStudiesAmount === state.course.finishedPeerStudy;
+      return state.course.peerStudiesAmount <= state.course.finishedPeerStudy;
     },
     allowedToDoAssignment: state => (assignmentNumber) => {
       return !(assignmentNumber <= state.course.finishedPeerStudy);
