@@ -4,9 +4,10 @@
          v-if="allowedToDoQuiz"
     >
       <v-progress-linear
-        v-model="skill"
+        :value="skill"
         color="blue-grey"
         height="25"
+
       >
         <template v-slot:default="{ value }">
           <strong>{{ Math.ceil(value) }}%</strong>
@@ -242,6 +243,7 @@ export default {
     },
     redo(n) {
       this.e1 = 1
+      this.skill=0
     },
     nextStep(n) {
       this.e1 = n + 1
