@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
+import axios from "axios";
 
 Vue.use(Vuex)
 
@@ -9,31 +10,38 @@ const store = new Vuex.Store({
   state: {
     weekFinish: 0,
     course: {
-      peerStudiesAmount: 2,
-      finishedPeerStudy: 0,
+      peerStudy : {
+        finishedPeerStudy: 0,
+        assignments: []
+      }
     }
-
   },
   mutations: {
     changeWeekStatus (state) {
       state.weekFinish += 10
     },
-    updatePeerStudyAssignmentAmount (state, amount) {
-      state.course.peerStudiesAmount = amount;
-    },
     finishedPeerStudyAssignment (state) {
-      state.course.finishedPeerStudy++;
+      state.course.peerStudy.finishedPeerStudy++;
     },
-    updatePeerStudiesAmount(state, amount) {
-      state.course.peerStudiesAmount = amount;
+    SET_PEER_STUDY_ASSIGNMENTS(state, assignments) {
+      state.course.peerStudy.assignments = assignments;
     }
   },
   getters: {
     allowedToDoQuiz: state => {
-      return state.course.peerStudiesAmount <= state.course.finishedPeerStudy;
+      return state.course.peerStudy.assignments.length <= state.course.peerStudy.finishedPeerStudy;
     },
     allowedToDoAssignment: state => (assignmentNumber) => {
-      return !(assignmentNumber <= state.course.finishedPeerStudy);
+      return !(assignmentNumber <= state.course.peerStudy.finishedPeerStudy);
+    }
+  },
+  actions: {
+    fetchPeerStudyAssignments ({ commit }) {
+      axios
+        .get('http://localhost:3000/api/peer-study')
+        .then(response => {
+          commit('SET_PEER_STUDY_ASSIGNMENTS', response.data);
+        })
     }
   },
   plugins: [
