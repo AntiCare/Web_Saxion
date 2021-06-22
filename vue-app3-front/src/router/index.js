@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
-import Home1 from '@/components/Home1'
+import Home from '@/components/Home'
 import news1 from '@/components/news/news-single1'
 import news2 from '@/components/news/news-single2'
 import news3 from '@/components/news/news-single3'
@@ -48,12 +47,6 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: Register
-  },
-  // home page
-  {
-    name: 'home',
-    path: '/home',
-    component: Home1
   },
   // news 1
   {

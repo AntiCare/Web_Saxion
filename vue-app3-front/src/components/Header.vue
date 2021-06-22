@@ -21,7 +21,7 @@
     <v-spacer></v-spacer>
 
     <v-btn
-      to="/home"
+      to="/"
       text
       color=""
     >
