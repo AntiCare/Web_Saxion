@@ -6,7 +6,7 @@
     :disabled="allowedToDoAssignment"
     shaped
   >
-    <v-card-title>{{ assignment.title + ' ' + index}}</v-card-title>
+    <v-card-title>{{ assignment.title + ' ' + (index + 1) }}</v-card-title>
     <v-card-subtitle>{{ assignment.subtitle }}</v-card-subtitle>
     <v-btn
       color="primary"

@@ -125,8 +125,6 @@ export default {
       this.isUploaded = true
       this.showSuccess = true
       this.showUploadBox = false;
-      console.log(this.isUploaded)
-      console.log(this.showSuccess)
     }
   }
 }
