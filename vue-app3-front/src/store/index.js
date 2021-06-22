@@ -41,7 +41,8 @@ const store = new Vuex.Store({
       storage: window.sessionStorage,
       reducer (state) {
         return {
-          weekFinish: state.weekFinish
+          weekFinish: state.weekFinish,
+          course: state.course
         }
       }
     }
