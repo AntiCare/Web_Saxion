@@ -6,10 +6,25 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   strict: true,
-  state: { weekFinish: 0 },
+  state: {
+    weekFinish: 0,
+    course: {
+      peerStudiesAmount: 2,
+      finishedPeerStudy: 0,
+    }
+
+  },
   mutations: {
     changeWeekStatus (state) {
       state.weekFinish += 10
+    },
+    finishedPeerStudyAssignment (state) {
+      state.course.finishedPeerStudy++;
+    }
+  },
+  getters: {
+    peerStudies: state => {
+      return state.course.peerStudiesAmount === state.course.finishedPeerStudy;
     }
   },
   plugins: [
