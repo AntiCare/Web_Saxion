@@ -4,7 +4,7 @@
          v-if="allowedToDoQuiz"
     >
       <v-progress-linear
-        v-model="skill"
+        :value="skill"
         color="blue-grey"
         height="25"
 
