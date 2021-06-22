@@ -158,10 +158,9 @@
       </div>
     </div>
     <div v-else
-         class="text-left text-h5 pl-4"
+         class="text-left text-h6 pl-4"
     >
-      <span class="red--text">Finish peer studies first.</span>
-
+      <span class="red--text">Complete peer studies first.</span>
     </div>
   </div>
 
