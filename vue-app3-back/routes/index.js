@@ -16,6 +16,19 @@ let abb = (async () => {
 // await db.exec("CREATE TABLE tbl (col TEXT)");
 
     //exam schedule
+    await db.exec("DROP TABLE IF EXISTS peer_study_assignments; CREATE TABLE IF NOT EXISTS peer_study_assignments (\n" +
+        "\tid INT,\n" +
+        "\tpeer_study_id INT,\n" +
+        "\ttitle VARCHAR(50),\n" +
+        "\tsubtitle VARCHAR(50)\n" +
+        ");\n" +
+        "insert into peer_study_assignments (id, peer_study_id, title, subtitle) values (1, 23 , 'Finish Hello world assignment 1', 'Check the work of your classmate');\n" +
+        "insert into peer_study_assignments (id, peer_study_id, title, subtitle) values (2, 23 , 'Finish Hello world assignment 2', 'Check the work of your classmate');\n" +
+        "insert into peer_study_assignments (id, peer_study_id, title, subtitle) values (3, 23 , 'Finish Hello world assignment 3', 'Check the work of your classmate');\n" +
+        "insert into peer_study_assignments (id, peer_study_id, title, subtitle) values (4, 23 , 'Finish Hello world assignment 4', 'Check the work of your classmate');\n"
+    )
+
+    //exam schedule
     await db.exec("DROP TABLE IF EXISTS exam_schedule; CREATE TABLE IF NOT EXISTS exam_schedule (\n" +
         "\tid INT,\n" +
         "\texam_name VARCHAR(50),\n" +
@@ -112,6 +125,7 @@ let abb = (async () => {
     console.log( await db.all("SELECT * FROM exam_score"))
     console.log( await db.all("SELECT * FROM exam_schedule"))
     console.log( await db.all("SELECT * FROM find_teacher"))
+    console.log( await db.all("SELECT * FROM peer_study_assignments"))
 })()
 
 
