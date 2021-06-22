@@ -268,6 +268,18 @@ router.get("/api/schedule", async function (req, res, next) {
     }
 });
 
+// peer study
+router.get("/api/peer-study", async function (req, res, next) {
+    try {
+        setTimeout(async function () {
+            let result = await db.all("SELECT * FROM peer_study_assignments");
+            res.json(result);
+        }, 500);
+    } catch (e) {
+        res.json(e);
+    }
+});
+
 router.get('/api/products', function (req, res, next) {
     data.returnAllProducts(res, next);
 });
