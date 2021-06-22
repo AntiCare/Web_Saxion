@@ -5,6 +5,7 @@
       outlined
       elevation="0"
       shaped
+      v-if="showUploadBox"
     >
       <v-card-title>Upload your work</v-card-title>
         <div class="text-left">
@@ -82,11 +83,20 @@
           <v-icon color="primary" large v-show="showSuccess">mdi-check</v-icon>
         </div>
 
-      <div v-if="isUploaded">
-        <PeerStudySubmittedAssignments></PeerStudySubmittedAssignments>
-      </div>
-    </v-card>
 
+    </v-card>
+    <v-card
+      class="pa-2 mb-4 flex"
+      outlined
+      elevation="0"
+      shaped
+      v-else
+    >
+      <v-icon color="primary" v-show="showSuccess">mdi-check</v-icon> Assignment was successfully uploaded
+    </v-card>
+    <div v-if="isUploaded">
+      <PeerStudySubmittedAssignments></PeerStudySubmittedAssignments>
+    </div>
   </div>
 
 </template>
@@ -102,6 +112,7 @@ export default {
       loading: false,
       showSuccess: false,
       isUploaded: false,
+      showUploadBox: true,
       items: [
         'Yang',
         'Mykhailo'
@@ -113,8 +124,7 @@ export default {
     updateSuccessStates () {
       this.isUploaded = true
       this.showSuccess = true
-      console.log(this.isUploaded)
-      console.log(this.showSuccess)
+      this.showUploadBox = false;
     }
   }
 }
