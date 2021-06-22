@@ -256,6 +256,17 @@ router.get("/api/news", async function (req, res, next) {
     }
 });
 
+router.post("/api/download", async function (req, res, next) {
+    try {
+        setTimeout(async function () {
+            let result = await db.all("SELECT * FROM news");
+            res.json(result);
+        }, 500);
+    } catch (e) {
+        res.json(e);
+    }
+});
+
 //show schedule data
 router.get("/api/schedule", async function (req, res, next) {
     try {

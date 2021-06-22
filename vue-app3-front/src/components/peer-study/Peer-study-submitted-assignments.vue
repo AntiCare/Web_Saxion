@@ -12,7 +12,7 @@
       <v-btn
         color="blue-grey"
         class="ma-2 white--text"
-        @click="assignment.downloaded = true"
+        @click="assignment.downloaded = true; download()"
       >
         Download
         <v-icon right dark>mdi-cloud-download</v-icon>
@@ -26,12 +26,14 @@
 </template>
 
 <script>
-import PeerStudyAssignmentComments from "@/components/peer-study/Peer-study-assignment-comments";
+import PeerStudyAssignmentComments from '@/components/peer-study/Peer-study-assignment-comments'
+import fileDownload from 'js-file-download'
+import * as axios from 'axios'
 import {mapMutations} from "vuex";
 export default {
-  name: "Peer-study-submitted-assignments",
-  components: {PeerStudyAssignmentComments},
-  data() {
+  name: 'Peer-study-submitted-assignments',
+  components: { PeerStudyAssignmentComments },
+  data () {
     return {
       commented: false,
       assignments: [
@@ -64,11 +66,26 @@ export default {
       if (this.commented) return;
       this.commented = true;
       this.finishedPeerStudyAssignment()
+    },
+    download: function () {
+      axios({
+        url: 'http://localhost:3000/api/download',
+        method: 'post',
+        responseType: 'blob'
+      })
+        .then(res => {
+          console.log(res.data)
+          fileDownload(res.data, 'filename.txt')
+        })
     }
-  }
+  },
+
+
+
 }
 </script>
 
 <style scoped>
 
 </style>
+
