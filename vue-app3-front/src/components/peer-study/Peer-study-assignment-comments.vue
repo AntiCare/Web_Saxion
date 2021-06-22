@@ -33,6 +33,7 @@
 <script>
 export default {
   name: "Peer-study-assignment-comments",
+  event: 'commented',
   data() {
     return {
       userComment: '',
@@ -71,11 +72,14 @@ export default {
       if (this.userComment === '') return
 
       var comment = this.userComment;
-      this.comments.push({ publisher: "Mykhailo",
+      this.comments.push({
+        publisher: "Mykhailo",
         time: "05.01.2021",
-        text : comment })
+        text: comment
+      })
       this.userComment = '';
-    }
+      this.$emit('commented')
+    },
   }
 }
 </script>

@@ -1,163 +1,182 @@
 <template>
   <div class="text-left">
-    <v-progress-linear
-      v-model="skill"
-      color="blue-grey"
-      height="25"
+    <div class="text-left"
+         v-if="allowedToDoQuiz"
     >
-      <template v-slot:default="{ value }">
-        <strong>{{ Math.ceil(value) }}%</strong>
-      </template>
-    </v-progress-linear>
-    <!--progress Bar-->
-    <div>
-      <v-stepper v-model="e1">
-        <v-stepper-header>
-          <template v-for="n in 5">
-            <v-stepper-step
-              :key="`${n}-step`"
-              :complete="e1 > n"
+      <v-progress-linear
+        v-model="skill"
+        color="blue-grey"
+        height="25"
+      >
+        <template v-slot:default="{ value }">
+          <strong>{{ Math.ceil(value) }}%</strong>
+        </template>
+      </v-progress-linear>
+      <!--progress Bar-->
+      <div>
+        <v-stepper v-model="e1">
+          <v-stepper-header>
+            <template v-for="n in 5">
+              <v-stepper-step
+                :key="`${n}-step`"
+                :complete="e1 > n"
+                :step="n"
+              >
+                Step {{ n }}
+              </v-stepper-step>
+
+              <v-divider
+                v-if="n !== 5"
+                :key="n"
+              ></v-divider>
+            </template>
+          </v-stepper-header>
+
+          <v-stepper-items>
+            <v-stepper-content
+              v-for="n in 7"
+              :key="`${n}-content`"
               :step="n"
             >
-              Step {{ n }}
-            </v-stepper-step>
 
-            <v-divider
-              v-if="n !== 5"
-              :key="n"
-            ></v-divider>
-          </template>
-        </v-stepper-header>
+              <!--quiz-->
+              <div v-for="(questionNum,id) in Questions"
+                   :key="id">
+                <v-card
+                  v-if="n===id+1"
+                  class="mb-12 elevation-0"
+                  height="200px"
+                >
+                  <v-card-title>{{ questionNum.question }}</v-card-title>
+                  <!--type1-->
+                  <v-card-text v-if="questionNum.type==='Multiple choice 1'">
+                    <v-chip-group
+                      active-class="primary accent-4 white--text"
+                      column
+                      v-model="questionNum.answer"
+                    >
+                      <v-chip v-for="(option,idx) in questionNum.options"
+                              :key="idx">{{ option }}
+                      </v-chip>
+                    </v-chip-group>
+                  </v-card-text>
+                  <!--type2-->
+                  <v-card-text v-else-if="questionNum.type==='Multiple choice 2'">
+                    <v-chip-group
+                      active-class="primary accent-4 white--text"
+                      column
+                      multiple
+                      v-model="questionNum.answer"
+                    >
+                      <v-chip v-for="(option,idx) in questionNum.options"
+                              :key="idx">{{ option }}
+                      </v-chip>
+                    </v-chip-group>
+                  </v-card-text>
+                  <!--type3-->
+                  <v-card-text v-else-if="questionNum.type==='text'">
+                    <v-combobox
+                      label="enter your answer here"
+                      prepend-icon="mdi-pen"
+                      v-model="questionNum.answer"
+                    >
+                    </v-combobox>
+                  </v-card-text>
+                  <!--type4-->
+                  <v-card-text v-else-if="questionNum.type==='TF'">
+                    <v-radio-group
+                      column
+                      v-model="questionNum.answer"
+                    >
+                      <v-radio
+                        label="True"
+                        value="radio-1"
+                      ></v-radio>
+                      <v-radio
+                        label="False"
+                        value="radio-2"
+                      ></v-radio>
+                    </v-radio-group>
+                  </v-card-text>
 
-        <v-stepper-items>
-          <v-stepper-content
-            v-for="n in 7"
-            :key="`${n}-content`"
-            :step="n"
-          >
-
-            <!--quiz-->
-            <div  v-for="(questionNum,id) in Questions"
-                  :key="id">
-              <v-card
-                v-if="n===id+1"
-                class="mb-12 elevation-0"
-                height="200px"
+                </v-card>
+              </div>
+              <v-icon
+                v-if="n === 7 && grade>3"
+                color="success"
+                align-center
+                large="large"
               >
-                <v-card-title >{{questionNum.question}}</v-card-title>
-                <!--type1-->
-                <v-card-text v-if="questionNum.type==='Multiple choice 1'">
-                  <v-chip-group
-                    active-class="primary accent-4 white--text"
-                    column
-                    v-model="questionNum.answer"
-                  >
-                    <v-chip v-for="(option,idx) in questionNum.options"
-                            :key="idx">{{option}} </v-chip>
-                  </v-chip-group>
-                </v-card-text>
-                <!--type2-->
-                <v-card-text v-else-if="questionNum.type==='Multiple choice 2'">
-                  <v-chip-group
-                    active-class="primary accent-4 white--text"
-                    column
-                    multiple
-                    v-model="questionNum.answer"
-                  >
-                    <v-chip v-for="(option,idx) in questionNum.options"
-                            :key="idx">{{option}} </v-chip>
-                  </v-chip-group>
-                </v-card-text>
-                <!--type3-->
-                <v-card-text v-else-if="questionNum.type==='text'">
-                  <v-combobox
-                    label="enter your answer here"
-                    prepend-icon="mdi-pen"
-                    v-model="questionNum.answer"
-                  >
-                  </v-combobox>
-                </v-card-text>
-                <!--type4-->
-                <v-card-text v-else-if="questionNum.type==='TF'">
-                  <v-radio-group
-                    column
-                    v-model="questionNum.answer"
-                  >
-                    <v-radio
-                      label="True"
-                      value="radio-1"
-                    ></v-radio>
-                    <v-radio
-                      label="False"
-                      value="radio-2"
-                    ></v-radio>
-                  </v-radio-group>
-                </v-card-text>
+                mdi-check
+              </v-icon>
+              <div v-if="n === 7 && grade>3">
+                Congratulation! Your score is: {{ grade }}
+              </div>
 
-              </v-card>
-            </div>
-            <v-icon
-              v-if="n === 7 && grade>3"
-              color="success"
-              align-center
-              large="large"
-            >
-              mdi-check
-            </v-icon>
-            <div v-if="n === 7 && grade>3">
-              Congratulation! Your score is: {{grade}}
-            </div>
+              <v-icon
+                v-if="n === 7 && grade<=3"
+                color="red"
+                align-center
+                large="large"
+              >
+                mdi-window-close
+              </v-icon>
+              <div v-if="n === 7 && grade<3">
+                Insufficient! Your score is: {{ grade }}
+                <v-btn
+                  color="primary"
+                  @click="redo(n)"
+                >
+                  Retake
+                </v-btn>
+              </div>
 
-            <v-icon
-              v-if="n === 7 && grade<=3"
-              color="red"
-              align-center
-              large="large"
-            >
-              mdi-window-close
-            </v-icon>
-            <div v-if="n === 7 && grade<3">
-              Insufficient! Your score is: {{grade}}
               <v-btn
                 color="primary"
-                @click="redo(n)"
+                @click="nextStep(n)"
+                v-if="n !== 6 && n!==7"
               >
-                Retake
+                Continue
               </v-btn>
-            </div>
 
-            <v-btn
-              color="primary"
-              @click="nextStep(n)"
-              v-if="n !== 6 && n!==7"
-            >
-              Continue
-            </v-btn>
+              <v-btn
+                color="primary"
+                @click="nextStep(n)"
+                v-if="n === 6"
+                large
+              >
+                Finish
+              </v-btn>
+              <v-btn text @click="backStep(n)"
+                     v-if="n !== 7">
+                Back
+              </v-btn>
 
-            <v-btn
-              color="primary"
-              @click="nextStep(n)"
-              v-if="n === 6"
-              large
-            >
-              Finish
-            </v-btn>
-            <v-btn text @click="backStep(n)"
-                   v-if="n !== 7">
-              Back
-            </v-btn>
-
-          </v-stepper-content>
-        </v-stepper-items>
-      </v-stepper>
+            </v-stepper-content>
+          </v-stepper-items>
+        </v-stepper>
+      </div>
+    </div>
+    <div v-else
+         class="text-left text-h6 pl-4"
+    >
+      <span class="red--text">Complete peer studies first.</span>
     </div>
   </div>
+
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
   name: 'Quiz',
-  data () {
+  computed: {
+    ...mapGetters([
+      'allowedToDoQuiz'
+    ])
+  },
+  data() {
     return {
       skill: 0,
       e1: 1,
@@ -206,14 +225,14 @@ export default {
     }
   },
   watch: {
-    steps (val) {
+    steps(val) {
       if (this.e1 > val) {
         this.e1 = val
       }
     }
   },
   methods: {
-    backStep (n) {
+    backStep(n) {
       if (n !== 1) {
         this.e1 = n - 1
       }
@@ -221,10 +240,10 @@ export default {
         this.skill = this.skill - 20
       }
     },
-    redo (n) {
+    redo(n) {
       this.e1 = 1
     },
-    nextStep (n) {
+    nextStep(n) {
       this.e1 = n + 1
       if (this.skill < 100) {
         this.skill = this.skill + 20

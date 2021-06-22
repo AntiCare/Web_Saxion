@@ -19,7 +19,7 @@
       </v-btn>
       <v-icon color="primary" large v-show="assignment.downloaded">mdi-check</v-icon>
       <div v-if="assignment.downloaded">
-        <PeerStudyAssignmentComments></PeerStudyAssignmentComments>
+        <PeerStudyAssignmentComments v-on:commented="updateState"></PeerStudyAssignmentComments>
       </div>
     </v-card>
   </div>
@@ -29,11 +29,14 @@
 import PeerStudyAssignmentComments from '@/components/peer-study/Peer-study-assignment-comments'
 import fileDownload from 'js-file-download'
 import * as axios from 'axios'
+import PeerStudyAssignmentComments from "@/components/peer-study/Peer-study-assignment-comments";
+import {mapMutations} from "vuex";
 export default {
   name: 'Peer-study-submitted-assignments',
   components: { PeerStudyAssignmentComments },
   data () {
     return {
+      commented: false,
       assignments: [
         {
           publisher: 'Yang',
@@ -58,7 +61,13 @@ export default {
       ]
     }
   },
-  methods: {
+  methods : {
+    ...mapMutations(['finishedPeerStudyAssignment']),
+    updateState() {
+      if (this.commented) return;
+      this.commented = true;
+      this.finishedPeerStudyAssignment()
+    },
     download: function () {
       axios({
         url: 'http://localhost:3000/api/download',
@@ -70,7 +79,10 @@ export default {
           fileDownload(res.data, 'filename.txt')
         })
     }
-  }
+  },
+
+
+
 }
 </script>
 
