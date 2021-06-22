@@ -118,6 +118,12 @@
             </v-icon>
             <div v-if="n === 7 && grade<3">
               Insufficient! Your score is: {{grade}}
+              <v-btn
+                color="primary"
+                @click="redo(n)"
+              >
+                Retake
+              </v-btn>
             </div>
 
             <v-btn
@@ -214,6 +220,9 @@ export default {
       if (this.skill >= 20) {
         this.skill = this.skill - 20
       }
+    },
+    redo (n) {
+      this.e1 = 1
     },
     nextStep (n) {
       this.e1 = n + 1
