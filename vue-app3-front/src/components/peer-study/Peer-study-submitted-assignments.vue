@@ -29,7 +29,6 @@
 import PeerStudyAssignmentComments from '@/components/peer-study/Peer-study-assignment-comments'
 import fileDownload from 'js-file-download'
 import * as axios from 'axios'
-import PeerStudyAssignmentComments from "@/components/peer-study/Peer-study-assignment-comments";
 import {mapMutations} from "vuex";
 export default {
   name: 'Peer-study-submitted-assignments',
