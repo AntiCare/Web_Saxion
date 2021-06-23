@@ -12,6 +12,7 @@
 
       <v-rating
         v-model="assignment.rating"
+        readonly
         icon-label="custom icon label text {0} of {1}"
       ></v-rating>
       <v-card-text>
