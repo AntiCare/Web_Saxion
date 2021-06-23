@@ -1,4 +1,14 @@
 <template>
+  <div>
+  <v-card
+    class="pa-2 mb-4"
+    outlined
+    elevation="0"
+    shaped
+    color="" v-for="(task, idx) in tasks" :key="'T' + idx"
+  >
+    <v-card-title>{{ task.title }}</v-card-title>
+    <v-card-subtitle>{{ task.subtitle }}</v-card-subtitle>
   <div class="text-left">
     <div class="text-left"
          v-if="allowedToDoQuiz"
@@ -164,7 +174,8 @@
       <span class="red--text">Complete peer studies first.</span>
     </div>
   </div>
-
+  </v-card>
+  </div>
 </template>
 
 <script>
@@ -222,6 +233,9 @@ export default {
           answer: [],
           correct: 'radio-1'
         }
+      ],
+      tasks: [
+        {title: 'Week 1 quize', subtitle: 'level :easy'}
       ]
     }
   },
@@ -253,6 +267,8 @@ export default {
       }
       if (n === 6) {
         for (let i = 0; i < this.Questions.length; i++) {
+          console.log("Q"+(i+1)+" user input: "+this.Questions[i].answer.toString())
+          console.log("Q"+(i+1)+" correct answer: "+this.Questions[i].correct)
           if (this.Questions[i].answer.toString() === this.Questions[i].correct) {
             this.grade = this.grade + 1
           }

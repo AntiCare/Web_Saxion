@@ -48,27 +48,15 @@
                      v-if="weekPage.submenu === 'Peer study'">
                   <PeerStudy></PeerStudy>
                 </div>
-
+                <!--Assignment-->
                 <div class="text-left"
                      v-if="weekPage.submenu === 'Assignment'">
                   <ModuleAssignments></ModuleAssignments>
                 </div>
-
                 <!--Instruction-->
                 <div v-if="weekPage.submenu==='Instruction'">
                   <Instructions></Instructions>
                 </div>
-
-                <v-card
-                  class="pa-2 mb-4"
-                  outlined
-                  elevation="0"
-                  shaped
-                  color="" v-for="(task, idx) in weekPage.tasks" :key="'T' + idx"
-                >
-                  <v-card-title>{{ task.title }}</v-card-title>
-                  <v-card-subtitle>{{ task.subtitle }}</v-card-subtitle>
-
                   <!--Video-->
                   <div v-if="weekPage.submenu==='Video'">
                     <Video></Video>
@@ -77,13 +65,11 @@
                   <div v-if="weekPage.submenu==='Submit'">
                     <Submit></Submit>
                   </div>
-
                   <!--Quiz-->
                   <div v-if="weekPage.submenu==='Quiz'">
                     <Quiz></Quiz>
                   </div>
                   <v-card-actions></v-card-actions>
-                </v-card>
               </v-tab-item>
             </v-tabs>
           </v-card>
@@ -134,7 +120,7 @@ export default {
         // Assignment
         {
           submenu: 'Assignment',
-          icon: 'mdi-briefcase',
+          icon: 'mdi-briefcase'
         },
         // peer study
         {
@@ -144,36 +130,17 @@ export default {
         // Video
         {
           submenu: 'Video',
-          icon: 'mdi-video-box',
-          tasks: [
-            {title: 'Loop(while)', subtitle: 'How to use while loop in Java'},
-            {title: 'Loop(for)', subtitle: 'How to use for loop in Java' }
-          ]
+          icon: 'mdi-video-box'
         },
         // Submit
         {
           submenu: 'Submit',
-          icon: 'mdi-bookmark',
-          tasks: [
-            {
-              title: 'Delivery assignment 1',
-              subtitle: 'level: easy',
-              text: 'Please confirm that it meets the requirements before uploading, code + document'
-            },
-            {
-              title: 'Delivery assignment 2',
-              subtitle: 'level: difficult',
-              text: 'Please confirm that it meets the requirements before uploading, code + document'
-            }
-          ]
+          icon: 'mdi-bookmark'
         },
         // Quiz
         {
           submenu: 'Quiz',
-          icon: 'mdi-book-open-blank-variant',
-          tasks: [
-            {title: 'Week 1 quize', subtitle: 'level :easy'}
-          ]
+          icon: 'mdi-book-open-blank-variant'
         }
       ],
 
