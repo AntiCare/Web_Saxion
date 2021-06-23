@@ -19,9 +19,10 @@
           class="mx-4"
           dark
           icon
+          :href="icon.URL"
         >
           <v-icon size="24px">
-            {{ icon }}
+            {{ icon.img }}
           </v-icon>
         </v-btn>
       </v-card-title>
@@ -37,12 +38,21 @@
 export default {
   data: () => ({
     icons: [
-      'mdi-library',
-      'mdi-google',
-      'mdi-youtube',
+      {
+        img: 'mdi-library',
+        URL: 'https://saxionbibliotheek.nl/saxion-library-homepage/'
+      },
+      {
+        img: 'mdi-google',
+        URL: 'https://www.saxion.edu/'
+      },
+      {
+        img: 'mdi-youtube',
+        URL: 'https://www.youtube.com/user/SaxionHogescholen'
+      }
 
-    ],
-  }),
+    ]
+  })
 }
 </script>
 
