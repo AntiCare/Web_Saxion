@@ -149,7 +149,7 @@
                 Finish
               </v-btn>
               <v-btn text @click="backStep(n)"
-                     v-if="n !== 7">
+                     v-if="n !== 7 & n!==1" >
                 Back
               </v-btn>
 
@@ -244,6 +244,7 @@ export default {
     redo(n) {
       this.e1 = 1
       this.skill=0
+      this.grade=0
     },
     nextStep(n) {
       this.e1 = n + 1
@@ -255,6 +256,7 @@ export default {
           if (this.Questions[i].answer.toString() === this.Questions[i].correct) {
             this.grade = this.grade + 1
           }
+          this.Questions[i].answer = null
         }
         if (this.grade > 3) {
           this.$store.commit('changeWeekStatus')

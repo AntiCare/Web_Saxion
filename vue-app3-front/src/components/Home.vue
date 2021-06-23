@@ -47,6 +47,8 @@ import NewsCard from "@/components/home-page/News-card";
 import Grades from "@/components/home-page/Grades-card";
 
 export default {
+  name: 'Home',
+
   components: {Grades, NewsCard, FindCard, EmailPreview, SubjectsCard, ExamPreview, ScheduleCard },
 
   mounted () {
