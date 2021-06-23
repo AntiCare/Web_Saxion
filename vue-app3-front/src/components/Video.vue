@@ -1,10 +1,22 @@
 <template>
+  <div>
+  <v-card
+    class="pa-2 mb-4"
+    outlined
+    elevation="0"
+    shaped
+    color="" v-for="(task, idx) in tasks" :key="'T' + idx"
+  >
+    <v-card-title>{{ task.title }}</v-card-title>
+    <v-card-subtitle>{{ task.subtitle }}</v-card-subtitle>
   <div class="input_video">
     <video-player  class="video-player vjs-custom-skin"
                    ref="videoPlayer"
                    :playsinline="true"
                    :options="playerOptions"
     ></video-player>
+  </div>
+  </v-card>
   </div>
 </template>
 
@@ -33,7 +45,11 @@ export default {
         remainingTimeDisplay: false, // Show remaining time
         fullscreenToggle: true // Full screen button
       }
-    }
+    },
+    tasks: [
+      { title: 'Loop(while)', subtitle: 'How to use while loop in Java' },
+      { title: 'Loop(for)', subtitle: 'How to use for loop in Java' }
+    ]
   })
 }
 </script>

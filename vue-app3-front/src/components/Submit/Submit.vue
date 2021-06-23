@@ -1,7 +1,16 @@
 <template>
   <div class="text-left">
+    <v-card
+      class="pa-2 mb-4"
+      outlined
+      elevation="0"
+      shaped
+      color="" v-for="(text, idx) in tasks" :key="'T' + idx"
+    >
+      <v-card-title>{{ text.title }}</v-card-title>
+      <v-card-subtitle>{{ text.subtitle }}</v-card-subtitle>
     <v-file-input
-      :v-model="'file'+tasks.id"
+      :v-model="'file'+text.id"
       color="primary"
       counter
       label="File input"
@@ -10,7 +19,6 @@
       prepend-icon="mdi-paperclip"
       outlined
       :show-size="1000"
-      @click="changeFile()"
     >
       <template v-slot:selection="{ index, text }">
         <v-chip
@@ -35,12 +43,11 @@
     <v-btn
       color="blue-grey"
       class="ma-2 white--text"
-      @click="successUp()"
     >
       Upload
       <v-icon right dark>mdi-cloud-upload</v-icon>
     </v-btn>
-    <v-icon color="primary" large v-show="this.upload">mdi-check</v-icon>
+    </v-card>
   </div>
 </template>
 
@@ -50,25 +57,22 @@ export default {
 
   data () {
     return {
-      upload: false,
-      file1: [],
-      file2: [],
       tasks: [
         {
-          id: 1
+          id: 1,
+          title: 'Delivery assignment 1',
+          subtitle: 'level: easy',
+          text: 'Please confirm that it meets the requirements before uploading, code + document'
         },
         {
-          id: 2
+          id: 2,
+          title: 'Delivery assignment 2',
+          subtitle: 'level: difficult',
+          text: 'Please confirm that it meets the requirements before uploading, code + document'
         }
-      ]
-    }
-  },
-  methods: {
-    successUp () {
-      this.upload = true
-    },
-    changeFile() {
-      this.upload = false
+      ],
+      file1: [],
+      file2: []
     }
   }
 }
