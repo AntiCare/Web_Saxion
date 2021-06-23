@@ -93,7 +93,20 @@ let abb = (async () => {
         "insert into SCHEDULE (id, schedule_name, schedule_time) values (4, 'IT and Law', '1623266926');\n" +
         "insert into SCHEDULE (id, schedule_name, schedule_time) values (5, 'International work', '1623266926');\n"
     )
-
+     //Assignment
+    await db.exec("DROP TABLE IF EXISTS module_assignment; CREATE TABLE IF NOT EXISTS module_assignment (\n" +
+        "\tid INT,\n" +
+        "\tassignment_id INT,\n" +
+        "\ttitle VARCHAR(50),\n" +
+        "\tsubtitle VARCHAR(50),\n" +
+        "\trating INT,\n" +
+        "\ttext VARCHAR(50),\n" +
+        "\timage VARCHAR(50)\n"+
+        ");\n" +
+        "insert into module_assignment (id, assignment_id, title, subtitle, rating, text, image) values (1, 1 , 'assignment 1', 'level 1', 1, 'Write a program, that greets you whenever you run it.For example: ', 'assignment1.png');\n" +
+        "insert into module_assignment (id, assignment_id, title, subtitle, rating, text, image) values (2, 1 , 'assignment 2', 'level 2', 2, 'Write a program that prompts the user for a name. Then greet the person with that name. For example: ', 'assignment2.png');\n" +
+        "insert into module_assignment (id, assignment_id, title, subtitle, rating, text, image) values (3, 1 , 'assignment 3', 'level 3', 3, 'Write a program that prompts the user for an answer of a calculation. You may hard-code the values used in the question.', 'assignment3.png');\n"
+    )
 
     // teachers
     await db.exec("DROP TABLE IF EXISTS find_teacher; CREATE TABLE find_teacher (\n" +
@@ -112,6 +125,7 @@ let abb = (async () => {
     console.log( await db.all("SELECT * FROM exam_score"))
     console.log( await db.all("SELECT * FROM exam_schedule"))
     console.log( await db.all("SELECT * FROM find_teacher"))
+    console.log( await db.all("SELECT * FROM module_assignment"))
 })()
 
 
@@ -242,6 +256,7 @@ router.get("/api/news", async function (req, res, next) {
     }
 });
 
+//download
 router.post("/api/download", async function (req, res, next) {
     try {
         setTimeout(async function () {
@@ -252,6 +267,7 @@ router.post("/api/download", async function (req, res, next) {
         res.json(e);
     }
 });
+
 
 //show schedule data
 router.get("/api/schedule", async function (req, res, next) {
