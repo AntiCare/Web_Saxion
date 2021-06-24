@@ -28,6 +28,18 @@ let abb = (async () => {
         "insert into course_intro (id, course_id, title, image, text) values (3, 23 , 'Course Manual', 'course-manual.png', '');\n"
     );
 
+    //Submit assignment
+    await db.exec("DROP TABLE IF EXISTS submit_assigment ; CREATE TABLE IF NOT EXISTS submit_assigment (\n" +
+        "\tid INT,\n" +
+        "\tweek_id INT,\n" +
+        "\ttitle VARCHAR(50),\n" +
+        "\tsubtitle VARCHAR(50),\n" +
+        "\ttext VARCHAR(50)\n" +
+        ");\n" +
+        "insert into submit_assigment (id, week_id, title, subtitle, text) values (1, 23 , 'Delivery assignment 1', 'level: easy', 'Please confirm that it meets the requirements before uploading, code + document');\n" +
+        "insert into submit_assigment (id, week_id, title, subtitle, text) values (1, 23 , 'Delivery assignment 2', 'level: difficult', 'Please confirm that it meets the requirements before uploading, code + document');\n"
+    );
+
     //peer_study_assignments
     await db.exec("DROP TABLE IF EXISTS peer_study_assignments; CREATE TABLE IF NOT EXISTS peer_study_assignments (\n" +
         "\tid INT,\n" +
@@ -217,6 +229,7 @@ let abb = (async () => {
     console.log( await db.all("SELECT * FROM module_assignment"))
     console.log( await db.all("SELECT * FROM peer_study_assignments_submitted"))
     console.log( await db.all("SELECT * FROM course_intro"))
+    console.log( await db.all("SELECT * FROM submit_assigment"))
 
 })()
 
@@ -441,6 +454,21 @@ router.get("/api/intro-page", async function (req, res, next) {
         if (!courseId) return res.json([])
         setTimeout(async function () {
             let result = await db.all(`SELECT * FROM course_intro WHERE course_id = ?`, courseId);
+            res.json(result);
+            console.log(result)
+        }, 500);
+    } catch (e) {
+        res.json(e);
+    }
+});
+
+// Submit point
+router.get("/api/submit-point", async function (req, res, next) {
+    try {
+        let weekId = req.query.weekId;
+        if (!weekId) return res.json([])
+        setTimeout(async function () {
+            let result = await db.all(`SELECT * FROM submit_assigment WHERE week_id = ?`, weekId);
             res.json(result);
             console.log(result)
         }, 500);

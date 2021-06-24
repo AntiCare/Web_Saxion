@@ -10,6 +10,7 @@ const store = new Vuex.Store({
     weekFinish: 0,
     course: {
       introArticles: [],
+      submitAssignments: [],
       peerStudy : {
         finishedPeerStudy: 0,
         assignments: [],
@@ -50,6 +51,9 @@ const store = new Vuex.Store({
     SET_MODULE_ASSIGNMENTS (state, assignments) {
       state.course.moduleAssignment.assignments = assignments
     },
+    SET_SUBMIT_ASSIGNMENTS (state, submitAssignments) {
+      state.course.submitAssignments = submitAssignments
+    },
     SET_PEER_STUDY_SUBMITTED_ASSIGNMENTS(state, submittedAssignments) {
       state.course.peerStudy.submittedAssignments = submittedAssignments;
       console.log(`SET_PEER_STUDY_SUBMITTED_ASSIGNMENTS ${JSON.stringify(state.course.peerStudy.submittedAssignments)}`)
@@ -82,6 +86,13 @@ const store = new Vuex.Store({
     }
   },
   actions: {
+    fetchSubmitAssignments ({ commit }, { weekId }) {
+      axios
+        .get('http://localhost:3000/api/submit-point', { params: { weekId } })
+        .then(response => {
+          commit('SET_SUBMIT_ASSIGNMENTS', response.data);
+        })
+    },
     fetchIntroArticles ({ commit }, { courseId }) {
       axios
         .get('http://localhost:3000/api/intro-page', { params: { courseId } })
