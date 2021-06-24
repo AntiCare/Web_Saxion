@@ -16,7 +16,12 @@ const store = new Vuex.Store({
       },
       moduleAssignment: {
         assignments: []
+      },
+
+      video: {
+        tasks: []
       }
+
     }
   },
   mutations: {
@@ -45,6 +50,9 @@ const store = new Vuex.Store({
       state.course.peerStudy.submittedAssignments[idx].downloaded = true;
       console.log(`stateee ${JSON.stringify(state.course.peerStudy.submittedAssignments)}`)
     },
+    SET_VIDEO (state, tasks) {
+      state.course.video.tasks = tasks
+    }
   },
   getters: {
     allowedToDoQuiz: state => {
@@ -80,6 +88,13 @@ const store = new Vuex.Store({
         .get('http://localhost:3000/api/assignment')
         .then(response => {
           commit('SET_MODULE_ASSIGNMENTS', response.data)
+        })
+    },
+    fetchVideo ({ commit }) {
+      axios
+        .get('http://localhost:3000/api/video')
+        .then(response => {
+          commit('SET_VIDEO', response.data)
         })
     }
   },

@@ -5,7 +5,7 @@
     outlined
     elevation="0"
     shaped
-    color="" v-for="(task, idx) in tasks" :key="'T' + idx"
+    color="" v-for="(task, idx) in VIDEO" :key="'T' + idx"
   >
     <v-card-title>{{ task.title }}</v-card-title>
     <v-card-subtitle>{{ task.subtitle }}</v-card-subtitle>
@@ -45,12 +45,16 @@ export default {
         remainingTimeDisplay: false, // Show remaining time
         fullscreenToggle: true // Full screen button
       }
-    },
-    tasks: [
-      { title: 'Loop(while)', subtitle: 'How to use while loop in Java' },
-      { title: 'Loop(for)', subtitle: 'How to use for loop in Java' }
-    ]
-  })
+    }
+  }),
+  mounted () {
+    this.$store.dispatch('fetchVideo')
+  },
+  computed: {
+    VIDEO () {
+      return this.$store.state.course.video.tasks
+    }
+  }
 }
 </script>
 
