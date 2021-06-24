@@ -9,6 +9,7 @@ const store = new Vuex.Store({
   state: {
     weekFinish: 0,
     course: {
+      introArticles: [],
       peerStudy : {
         finishedPeerStudy: 0,
         assignments: [],
@@ -20,14 +21,20 @@ const store = new Vuex.Store({
       video: {
         tasks: []
       },
+      instruction: {
+        instructions: []
+      },
       lectures: {
         lecture: [],
         archive: []
       }
-
     }
   },
   mutations: {
+    SET_INTRO_ARTICLES(state, introArticles) {
+      state.course.introArticles = introArticles;
+      console.log(`SET_INTRO_ARTICLES ${JSON.stringify(state.course.introArticles)}`)
+    },
     changeWeekStatus (state) {
       state.weekFinish += 10
     },
@@ -56,6 +63,9 @@ const store = new Vuex.Store({
     SET_VIDEO (state, tasks) {
       state.course.video.tasks = tasks
     },
+    SET_INSTRUCTIONS (state, instructions) {
+      state.course.instruction.instructions = instructions
+    },
     SET_LECTURES_LECTURE (state, lecture) {
       state.course.lectures.lecture = lecture
     },
@@ -72,6 +82,13 @@ const store = new Vuex.Store({
     }
   },
   actions: {
+    fetchIntroArticles ({ commit }, { courseId }) {
+      axios
+        .get('http://localhost:3000/api/intro-page', { params: { courseId } })
+        .then(response => {
+          commit('SET_INTRO_ARTICLES', response.data);
+        })
+    },
     fetchPeerStudyAssignments ({ commit }) {
       axios
         .get('http://localhost:3000/api/peer-study')
@@ -85,11 +102,7 @@ const store = new Vuex.Store({
       axios
         .get('http://localhost:3000/api/peer-study-submitted-assignments', { params: { peerStudyId } })
         .then(response => {
-
-          // console.log(response.data)
           commit('SET_PEER_STUDY_SUBMITTED_ASSIGNMENTS', response.data);
-          // console.log(`SET_PEER_STUDY_SUBMITTED_ASSIGNMENTS ${JSON.stringify(state.course.peerStudy.submittedAssignments)}`)
-
         })
     },
     fetchModuleAssignments ({ commit }) {
@@ -104,6 +117,13 @@ const store = new Vuex.Store({
         .get('http://localhost:3000/api/video')
         .then(response => {
           commit('SET_VIDEO', response.data)
+        })
+    },
+    fetchInstructions ({ commit }) {
+      axios
+        .get('http://localhost:3000/api/instructions')
+        .then(response => {
+          commit('SET_INSTRUCTIONS', response.data)
         })
     },
     fetchLectures_lecture ({ commit }) {

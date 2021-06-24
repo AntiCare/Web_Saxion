@@ -15,6 +15,19 @@ let abb = (async () => {
     });
 // await db.exec("CREATE TABLE tbl (col TEXT)");
 
+    //Intro page
+    await db.exec("DROP TABLE IF EXISTS course_intro ; CREATE TABLE IF NOT EXISTS course_intro (\n" +
+        "\tid INT,\n" +
+        "\tcourse_id INT,\n" +
+        "\ttitle VARCHAR(50),\n" +
+        "\timage VARCHAR(50),\n" +
+        "\ttext VARCHAR(50)\n" +
+        ");\n" +
+        "insert into course_intro (id, course_id, title, image, text) values (1, 23 , 'Learning progress', '', '');\n" +
+        "insert into course_intro (id, course_id, title, image, text) values (2, 23 , 'Introduction', '', 'Hello students (that participated in the retake of an Introduction to Programming)!\n\n              In a few moments the final grades for Introduction Programming retake of January 12th 2021 will be\n              published via Bison. For most of you the results will not be a surprise as the individual rubric scores\n              have been on Blackboard for some time now.\n\n              We would like to ask all students to check if we have entered your grade correctly based on the number\n              of points. Blackboard is leading in this, so if your grade somehow is incorrect, please contact me\n              (Tristan, t.pothoven@saxion.nl) as soon as possible.\n\n              As far as the exam review is concerned, Introduction Programming will *not* make use of the scheduled\n              exam review time in quartile 3. This is because your grade is already explained via Blackboard including\n              our arguments.\n\n              It is of course possible that you have questions about your result or that you suspect an error has been\n              made somewhere. You can report this by sending me (Tristan) an email.\n\n              I do ask however that you provide the following information:\n\n              Which rubric line is it about? (functionality, data types, methods, if-statements, loops or lists)\n              What is wrong with it? (unclear reasoning from us, too few points for reason X, etc.)\n              (If you have questions on more than one topic, I would kindly request that you write this out per\n              topic.)\n\n              General remarks such as \"I disagree with the result\" without any further argumentation unfortunately\n              cannot be discussed. So please be as explicit as possible.\n\n              You will have 2 weeks to respond to your result in case of questions. This means that the official\n              period of \"exam review\" now has begun and lasts until February 17th, 2021 after which all results are\n              final.\n\n              If you have any questions about the test or your grade, please feel free to send me an e-mail!');\n" +
+        "insert into course_intro (id, course_id, title, image, text) values (3, 23 , 'Course Manual', 'course-manual.png', '');\n"
+    );
+
     //peer_study_assignments
     await db.exec("DROP TABLE IF EXISTS peer_study_assignments; CREATE TABLE IF NOT EXISTS peer_study_assignments (\n" +
         "\tid INT,\n" +
@@ -170,6 +183,19 @@ let abb = (async () => {
         "insert into video (id, video_id, title, subtitle) values (2, 1 , 'Loop(for)', 'How to use for loop in Java');\n"
     )
 
+    //instructions
+    await db.exec("DROP TABLE IF EXISTS instructions; CREATE TABLE IF NOT EXISTS instructions (\n" +
+        "\tid INT,\n" +
+        "\tinstruction_id INT,\n" +
+        "\ttitle VARCHAR(50),\n" +
+        "\tsubtitle VARCHAR(50),\n" +
+        "\ttext VARCHAR(50)\n" +
+        ");\n" +
+        "insert into instructions (id, instruction_id, title, subtitle, text) values (1, 1 , 'Discord', 'Hello students,','To assist you on your journey on learning how to program, we have created some additional help for you in the form of a Discord server. Please log in to this server to ask for assistance. So if you have questions, feel free to post them on the server. Usually there should be someone online to help out...');\n" +
+        "insert into instructions (id, instruction_id, title, subtitle, text) values (2, 1 , 'How to install the Java Development Kit and IntelliJ IDEA Community Edition', 'How to use for loop in Java Set up system','During the first lecture we will install the required software together, but in case you are wondering we have created a step-by-step guide on how to install the software needed for this course.Head over to https://www.oracle.com/nl/java/technologies/javase-downloads.htmland go download the JavaSE 11 (LTS) installer for your specific operating system.You will need to create an Oracle account and sign in to be able to download the installer.Head over to https://www.jetbrains.com/idea/download and get IntelliJ IDEA Community Edition for your specific operating system. Unfortunately, there is no easy way to check whether or not the installation was a success. If theinstaller exitedwithout errors, you should assume everything is up and running. If your installer crashes, please contact your teacher.Install IntelliJ IDEA Community Edition downloaded from step 2.Download the DemoProject.zip file (below) and extract it to somewhere you can easily find it.Open IntelliJ and select open and select the folder you extracted from the zipfile as discussed in step 5. Head over to 1: Project(top left), open upDemo1,open upsrcbefore double-clicking on Application.  You might need to wait before IntelliJ has indexed the Java Development Kit. If you see a progressbar in  the bottom, wait a moment! Be patient.  If everything worked out correctly, you should a green triangle that you can now click to run your  program. If you can do so, your installation was succesful!  Just to help out, we have created a video that shows all these steps and explains a little about what happens. Have a look at https://youtu.be/8Dp9jP56b4U.');\n" +
+        "insert into instructions (id, instruction_id, title, subtitle, text) values (3, 1 , 'Sandbox project', 'Download the Sandbox project here','Download the Sandbox project here. A Sandbox project does not contain exercises, but should be considered a playground for you to experiment upon!');\n"
+    )
+
     // teachers
     await db.exec("DROP TABLE IF EXISTS find_teacher; CREATE TABLE find_teacher (\n" +
         "\t id INT,\n" +
@@ -190,6 +216,8 @@ let abb = (async () => {
     console.log( await db.all("SELECT * FROM peer_study_assignments"))
     console.log( await db.all("SELECT * FROM module_assignment"))
     console.log( await db.all("SELECT * FROM peer_study_assignments_submitted"))
+    console.log( await db.all("SELECT * FROM course_intro"))
+
 })()
 
 
@@ -344,7 +372,7 @@ router.get("/api/assignment", async function (req, res, next) {
     }
 });
 
-// assignment
+// video
 router.get("/api/video", async function (req, res, next) {
     try {
         setTimeout(async function () {
@@ -356,6 +384,17 @@ router.get("/api/video", async function (req, res, next) {
     }
 });
 
+// instructions
+router.get("/api/instructions", async function (req, res, next) {
+    try {
+        setTimeout(async function () {
+            let result = await db.all("SELECT * FROM instructions");
+            res.json(result);
+        }, 500);
+    } catch (e) {
+        res.json(e);
+    }
+});
 
 //show schedule data
 router.get("/api/schedule", async function (req, res, next) {
@@ -388,6 +427,20 @@ router.get("/api/peer-study-submitted-assignments", async function (req, res, ne
         if (!peerStudyId) return res.json([])
         setTimeout(async function () {
             let result = await db.all(`SELECT * FROM peer_study_assignments_submitted WHERE peer_study_id = ?`, peerStudyId);
+            res.json(result);
+        }, 500);
+    } catch (e) {
+        res.json(e);
+    }
+});
+
+// Intro page
+router.get("/api/intro-page", async function (req, res, next) {
+    try {
+        let courseId = req.query.courseId;
+        if (!courseId) return res.json([])
+        setTimeout(async function () {
+            let result = await db.all(`SELECT * FROM course_intro WHERE course_id = ?`, courseId);
             res.json(result);
             console.log(result)
         }, 500);
