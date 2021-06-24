@@ -15,6 +15,19 @@ let abb = (async () => {
     });
 // await db.exec("CREATE TABLE tbl (col TEXT)");
 
+    //Intro page
+    await db.exec("DROP TABLE IF EXISTS course_intro ; CREATE TABLE IF NOT EXISTS course_intro (\n" +
+        "\tid INT,\n" +
+        "\tcourse_id INT,\n" +
+        "\ttitle VARCHAR(50),\n" +
+        "\timage VARCHAR(50),\n" +
+        "\ttext VARCHAR(50)\n" +
+        ");\n" +
+        "insert into course_intro (id, course_id, title, image, text) values (1, 23 , 'Learning progress', '', '');\n" +
+        "insert into course_intro (id, course_id, title, image, text) values (2, 23 , 'Introduction', '', 'Hello students (that participated in the retake of an Introduction to Programming)!\n\n              In a few moments the final grades for Introduction Programming retake of January 12th 2021 will be\n              published via Bison. For most of you the results will not be a surprise as the individual rubric scores\n              have been on Blackboard for some time now.\n\n              We would like to ask all students to check if we have entered your grade correctly based on the number\n              of points. Blackboard is leading in this, so if your grade somehow is incorrect, please contact me\n              (Tristan, t.pothoven@saxion.nl) as soon as possible.\n\n              As far as the exam review is concerned, Introduction Programming will *not* make use of the scheduled\n              exam review time in quartile 3. This is because your grade is already explained via Blackboard including\n              our arguments.\n\n              It is of course possible that you have questions about your result or that you suspect an error has been\n              made somewhere. You can report this by sending me (Tristan) an email.\n\n              I do ask however that you provide the following information:\n\n              Which rubric line is it about? (functionality, data types, methods, if-statements, loops or lists)\n              What is wrong with it? (unclear reasoning from us, too few points for reason X, etc.)\n              (If you have questions on more than one topic, I would kindly request that you write this out per\n              topic.)\n\n              General remarks such as \"I disagree with the result\" without any further argumentation unfortunately\n              cannot be discussed. So please be as explicit as possible.\n\n              You will have 2 weeks to respond to your result in case of questions. This means that the official\n              period of \"exam review\" now has begun and lasts until February 17th, 2021 after which all results are\n              final.\n\n              If you have any questions about the test or your grade, please feel free to send me an e-mail!');\n" +
+        "insert into course_intro (id, course_id, title, image, text) values (3, 23 , 'Course Manual', 'course-manual.png', '');\n"
+    );
+
     //peer_study_assignments
     await db.exec("DROP TABLE IF EXISTS peer_study_assignments; CREATE TABLE IF NOT EXISTS peer_study_assignments (\n" +
         "\tid INT,\n" +
@@ -178,6 +191,8 @@ let abb = (async () => {
     console.log( await db.all("SELECT * FROM peer_study_assignments"))
     console.log( await db.all("SELECT * FROM module_assignment"))
     console.log( await db.all("SELECT * FROM peer_study_assignments_submitted"))
+    console.log( await db.all("SELECT * FROM course_intro"))
+
 })()
 
 
@@ -387,6 +402,20 @@ router.get("/api/peer-study-submitted-assignments", async function (req, res, ne
         if (!peerStudyId) return res.json([])
         setTimeout(async function () {
             let result = await db.all(`SELECT * FROM peer_study_assignments_submitted WHERE peer_study_id = ?`, peerStudyId);
+            res.json(result);
+        }, 500);
+    } catch (e) {
+        res.json(e);
+    }
+});
+
+// Intro page
+router.get("/api/intro-page", async function (req, res, next) {
+    try {
+        let courseId = req.query.courseId;
+        if (!courseId) return res.json([])
+        setTimeout(async function () {
+            let result = await db.all(`SELECT * FROM course_intro WHERE course_id = ?`, courseId);
             res.json(result);
             console.log(result)
         }, 500);
