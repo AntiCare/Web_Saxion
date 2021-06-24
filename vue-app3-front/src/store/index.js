@@ -18,12 +18,15 @@ const store = new Vuex.Store({
       moduleAssignment: {
         assignments: []
       },
-
       video: {
         tasks: []
       },
       instruction: {
         instructions: []
+      },
+      lectures: {
+        lecture: [],
+        archive: []
       }
     }
   },
@@ -62,6 +65,12 @@ const store = new Vuex.Store({
     },
     SET_INSTRUCTIONS (state, instructions) {
       state.course.instruction.instructions = instructions
+    },
+    SET_LECTURES_LECTURE (state, lecture) {
+      state.course.lectures.lecture = lecture
+    },
+    SET_LECTURES_ARCHIVE (state, archive) {
+      state.course.lectures.archive = archive
     }
   },
   getters: {
@@ -115,6 +124,20 @@ const store = new Vuex.Store({
         .get('http://localhost:3000/api/instructions')
         .then(response => {
           commit('SET_INSTRUCTIONS', response.data)
+        })
+    },
+    fetchLectures_lecture ({ commit }) {
+      axios
+        .get('http://localhost:3000/api/lectures-lecture')
+        .then(response => {
+          commit('SET_LECTURES_LECTURE', response.data)
+        })
+    },
+    fetchLectures_archive ({ commit }) {
+      axios
+        .get('http://localhost:3000/api/lectures-archive')
+        .then(response => {
+          commit('SET_LECTURES_ARCHIVE', response.data)
         })
     }
   },
