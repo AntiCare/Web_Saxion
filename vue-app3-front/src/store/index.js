@@ -14,7 +14,12 @@ const store = new Vuex.Store({
 
       moduleAssignment: {
         assignments: []
+      },
+
+      video: {
+        tasks: []
       }
+
     }
 
   },
@@ -33,6 +38,9 @@ const store = new Vuex.Store({
     },
     SET_MODULE_ASSIGNMENTS (state, assignments) {
       state.course.moduleAssignment.assignments = assignments
+    },
+    SET_VIDEO (state, tasks) {
+      state.course.video.tasks = tasks
     }
   },
   getters: {
@@ -49,6 +57,13 @@ const store = new Vuex.Store({
         .get('http://localhost:3000/api/assignment')
         .then(response => {
           commit('SET_MODULE_ASSIGNMENTS', response.data)
+        })
+    },
+    fetchVideo ({ commit }) {
+      axios
+        .get('http://localhost:3000/api/video')
+        .then(response => {
+          commit('SET_VIDEO', response.data)
         })
     }
 
