@@ -5,7 +5,7 @@
       outlined
       elevation="0"
       shaped
-      color="" v-for="(text, idx) in tasks" :key="'T' + idx"
+      color="" v-for="(text, idx) in TASKS" :key="'T' + idx"
     >
       <v-card-title>{{ text.title }}</v-card-title>
       <v-card-subtitle>{{ text.subtitle }}</v-card-subtitle>
@@ -54,23 +54,19 @@
 <script>
 export default {
   name: 'Submit',
+  computed: {
+    TASKS() {
+      return this.$store.state.course.submitAssignments;
+    }
+  },
+  mounted() {
+    this.$store.dispatch('fetchSubmitAssignments', {
+      weekId: 23
+    });
+  },
 
   data () {
     return {
-      tasks: [
-        {
-          id: 1,
-          title: 'Delivery assignment 1',
-          subtitle: 'level: easy',
-          text: 'Please confirm that it meets the requirements before uploading, code + document'
-        },
-        {
-          id: 2,
-          title: 'Delivery assignment 2',
-          subtitle: 'level: difficult',
-          text: 'Please confirm that it meets the requirements before uploading, code + document'
-        }
-      ],
       file1: [],
       file2: []
     }
