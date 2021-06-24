@@ -108,6 +108,17 @@ let abb = (async () => {
         "insert into module_assignment (id, assignment_id, title, subtitle, rating, text, image) values (3, 1 , 'assignment 3', 'level 3', 3, 'Write a program that prompts the user for an answer of a calculation. You may hard-code the values used in the question.', 'assignment3.png');\n"
     )
 
+    //video
+    await db.exec("DROP TABLE IF EXISTS video; CREATE TABLE IF NOT EXISTS video (\n" +
+        "\tid INT,\n" +
+        "\tvideo_id INT,\n" +
+        "\ttitle VARCHAR(50),\n" +
+        "\tsubtitle VARCHAR(50)\n" +
+        ");\n" +
+        "insert into video (id, video_id, title, subtitle) values (1, 1 , 'Loop(while)', 'How to use while loop in Java');\n" +
+        "insert into video (id, video_id, title, subtitle) values (2, 1 , 'Loop(for)', 'How to use for loop in Java');\n"
+    )
+
     // teachers
     await db.exec("DROP TABLE IF EXISTS find_teacher; CREATE TABLE find_teacher (\n" +
         "\t id INT,\n" +
@@ -273,6 +284,18 @@ router.get("/api/assignment", async function (req, res, next) {
     try {
         setTimeout(async function () {
             let result = await db.all("SELECT * FROM module_assignment");
+            res.json(result);
+        }, 500);
+    } catch (e) {
+        res.json(e);
+    }
+});
+
+// assignment
+router.get("/api/video", async function (req, res, next) {
+    try {
+        setTimeout(async function () {
+            let result = await db.all("SELECT * FROM video");
             res.json(result);
         }, 500);
     } catch (e) {
