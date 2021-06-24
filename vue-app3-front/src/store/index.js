@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
-import axios from "axios";
-
+import axios from 'axios'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -13,6 +12,9 @@ const store = new Vuex.Store({
       peerStudy : {
         finishedPeerStudy: 0,
         assignments: []
+      },
+      moduleAssignment: {
+        assignments: []
       }
     }
   },
@@ -20,11 +22,17 @@ const store = new Vuex.Store({
     changeWeekStatus (state) {
       state.weekFinish += 10
     },
+    updatePeerStudyAssignmentAmount (state, amount) {
+      state.course.peerStudiesAmount = amount
+    },
     finishedPeerStudyAssignment (state) {
       state.course.peerStudy.finishedPeerStudy++;
     },
     SET_PEER_STUDY_ASSIGNMENTS(state, assignments) {
       state.course.peerStudy.assignments = assignments;
+    },
+    SET_MODULE_ASSIGNMENTS (state, assignments) {
+      state.course.moduleAssignment.assignments = assignments
     }
   },
   getters: {
@@ -41,6 +49,13 @@ const store = new Vuex.Store({
         .get('http://localhost:3000/api/peer-study')
         .then(response => {
           commit('SET_PEER_STUDY_ASSIGNMENTS', response.data);
+        })
+    },
+    fetchModuleAssignments ({ commit }) {
+      axios
+        .get('http://localhost:3000/api/assignment')
+        .then(response => {
+          commit('SET_MODULE_ASSIGNMENTS', response.data)
         })
     }
   },
