@@ -32,8 +32,6 @@ export default {
       files: [],
       loading: false,
       icon: 'mdi-forum',
-
-
     }
   }
 }
