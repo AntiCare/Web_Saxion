@@ -145,7 +145,7 @@ let abb = (async () => {
         "insert into video (id, video_id, title, subtitle) values (2, 1 , 'Loop(for)', 'How to use for loop in Java');\n"
     )
 
-    //video
+    //instructions
     await db.exec("DROP TABLE IF EXISTS instructions; CREATE TABLE IF NOT EXISTS instructions (\n" +
         "\tid INT,\n" +
         "\tinstruction_id INT,\n" +
@@ -344,6 +344,17 @@ router.get("/api/video", async function (req, res, next) {
     }
 });
 
+// instructions
+router.get("/api/instructions", async function (req, res, next) {
+    try {
+        setTimeout(async function () {
+            let result = await db.all("SELECT * FROM instructions");
+            res.json(result);
+        }, 500);
+    } catch (e) {
+        res.json(e);
+    }
+});
 
 //show schedule data
 router.get("/api/schedule", async function (req, res, next) {
