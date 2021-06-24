@@ -15,6 +15,32 @@ let abb = (async () => {
     });
 // await db.exec("CREATE TABLE tbl (col TEXT)");
 
+    //peer_study_assignments
+    await db.exec("DROP TABLE IF EXISTS peer_study_assignments; CREATE TABLE IF NOT EXISTS peer_study_assignments (\n" +
+        "\tid INT,\n" +
+        "\tweek_id INT,\n" +
+        "\ttitle VARCHAR(50),\n" +
+        "\tsubtitle VARCHAR(50)\n" +
+        ");\n" +
+        "insert into peer_study_assignments (id, week_id, title, subtitle) values (1, 23 , 'Finish Hello world assignment 1', 'Check the work of your classmate');\n" +
+        "insert into peer_study_assignments (id, week_id, title, subtitle) values (2, 23 , 'Finish Hello world assignment 2', 'Check the work of your classmate');\n" +
+        "insert into peer_study_assignments (id, week_id, title, subtitle) values (3, 23 , 'Finish Hello world assignment 3', 'Check the work of your classmate');\n" +
+        "insert into peer_study_assignments (id, week_id, title, subtitle) values (4, 23 , 'Finish Hello world assignment 4', 'Check the work of your classmate');\n"
+    )
+
+    //peer study assignments submitted
+    await db.exec("DROP TABLE IF EXISTS peer_study_assignments_submitted; CREATE TABLE IF NOT EXISTS peer_study_assignments_submitted (\n" +
+        "\tid INT,\n" +
+        "\tpeer_study_id INT,\n" +
+        "\tpublisher VARCHAR(50),\n" +
+        "\texam_time TIMESTAMP\n" +
+        ");\n" +
+        "insert into peer_study_assignments_submitted (id, peer_study_id, publisher, exam_time) values (1, 23 , 'Yang', '1623266926');\n" +
+        "insert into peer_study_assignments_submitted (id, peer_study_id, publisher, exam_time) values (2, 23 , 'Mykhailo', '1623266926');\n" +
+        "insert into peer_study_assignments_submitted (id, peer_study_id, publisher, exam_time) values (3, 23 , 'Mykhailo', '1623266926');\n" +
+        "insert into peer_study_assignments_submitted (id, peer_study_id, publisher, exam_time) values (4, 23 , 'Yang', '1623266926');\n"
+    )
+
     //exam schedule
     await db.exec("DROP TABLE IF EXISTS exam_schedule; CREATE TABLE IF NOT EXISTS exam_schedule (\n" +
         "\tid INT,\n" +
@@ -125,7 +151,9 @@ let abb = (async () => {
     console.log( await db.all("SELECT * FROM exam_score"))
     console.log( await db.all("SELECT * FROM exam_schedule"))
     console.log( await db.all("SELECT * FROM find_teacher"))
+    console.log( await db.all("SELECT * FROM peer_study_assignments"))
     console.log( await db.all("SELECT * FROM module_assignment"))
+    console.log( await db.all("SELECT * FROM peer_study_assignments_submitted"))
 })()
 
 
@@ -287,6 +315,33 @@ router.get("/api/schedule", async function (req, res, next) {
         setTimeout(async function () {
             let result = await db.all("SELECT * FROM schedule");
             res.json(result);
+        }, 500);
+    } catch (e) {
+        res.json(e);
+    }
+});
+
+// peer study
+router.get("/api/peer-study", async function (req, res, next) {
+    try {
+        setTimeout(async function () {
+            let result = await db.all("SELECT * FROM peer_study_assignments");
+            res.json(result);
+        }, 500);
+    } catch (e) {
+        res.json(e);
+    }
+});
+
+// peer study
+router.get("/api/peer-study-submitted-assignments", async function (req, res, next) {
+    try {
+        let peerStudyId = req.query.peerStudyId;
+        if (!peerStudyId) return res.json([])
+        setTimeout(async function () {
+            let result = await db.all(`SELECT * FROM peer_study_assignments_submitted WHERE peer_study_id = ?`, peerStudyId);
+            res.json(result);
+            console.log(result)
         }, 500);
     } catch (e) {
         res.json(e);
