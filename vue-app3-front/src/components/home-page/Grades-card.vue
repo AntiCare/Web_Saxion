@@ -12,7 +12,6 @@
         <div class="progress-bar__inner"></div>
       </div>
       <v-dialog
-        v-model="dialog"
         width="500"
       >
         <template v-slot:activator="{ on, attrs }">
@@ -62,18 +61,19 @@
 </template>
 
 <script>
-import Spider from "@/components/Spider";
-import * as axios from "axios";
+import Spider from '@/components/Spider'
+import * as axios from 'axios'
 export default {
-  name: "Grades",
+  name: 'Grades',
   data: () => ({
     grades: [],
     loading: true,
     errored: false
   }),
-  components: {Spider},
+  components: { Spider },
   mounted () {
     this.getGrades()
+    console.log(this.grades)
   },
   methods: {
     // get the grades.
@@ -82,7 +82,33 @@ export default {
         .get('http://localhost:3000/api/exam-score')
         .then(response => {
           console.log(response)
-          this.grades = response.data;
+          this.grades = response.data
+          // Calculate the score and display it on the spider map
+          for (let i = 0; i < this.grades.length; i++) {
+            if (this.grades[i].exam_type === 1 && this.grades[i].exam_result > 5) {
+              this.$store.commit('changeGrades', 0)
+              this.$store.commit('changeGrades', 3)
+              this.$store.commit('changeGrades', 2)
+              this.$store.commit('changeGrades', 6)
+              this.$store.commit('changeGrades', 7)
+              this.$store.commit('changeGrades', 8)
+            } else if (this.grades[i].exam_type === 2 && this.grades[i].exam_result > 5){
+              this.$store.commit('changeGrades', 0)
+              this.$store.commit('changeGrades', 3)
+              this.$store.commit('changeGrades', 2)
+              this.$store.commit('changeGrades', 5)
+              this.$store.commit('changeGrades', 6)
+              this.$store.commit('changeGrades', 8)
+              this.$store.commit('changeGrades', 9)
+            }else if (this.grades[i].exam_type === 3 && this.grades[i].exam_result > 5){
+              this.$store.commit('changeGrades', 0)
+              this.$store.commit('changeGrades', 2)
+              this.$store.commit('changeGrades', 1)
+              this.$store.commit('changeGrades', 4)
+              this.$store.commit('changeGrades', 5)
+            }
+
+          }
         })
         .catch(error => {
           console.log(error)

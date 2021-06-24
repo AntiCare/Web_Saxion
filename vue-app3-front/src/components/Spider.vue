@@ -29,7 +29,9 @@ import ApexCharts from 'apexcharts'
 
 export default {
   name: "Spider",
-
+  data: () => ({
+    grade: []
+  }),
   methods: {
     loadChart() {
 
@@ -98,7 +100,7 @@ export default {
         },
         series: [{
           name: 'Level',
-          data: [8, 5, 3, 4, 10, 4, 5, 6, 9, 5],
+          data: this.$store.state.grades
         }],
         xaxis: {
           categories: ['English', 'Dutch', 'Presentation', 'ICT', 'Creative Technology', 'Communication', 'Onderhandelen', 'Conflict hank', 'Team Work', 'Kr. D']
@@ -118,14 +120,23 @@ export default {
 
       }
 
-      var chart = new ApexCharts(document.querySelector("#chart"), options);
+      var chart = new ApexCharts(document.querySelector('#chart'), options);
 
       chart.render();
     }
   },
   mounted: function () {
-    this.loadChart();
-
+    this.loadChart()
+    this.grade = this.$store.state.grades
+    console.log(this.grade)
+  },
+  watch: {
+    '$store.state.grades': {
+      deep: true,
+      handler: function () {
+        this.grade = this.$store.state.grades
+      }
+    }
   }
 
 }
