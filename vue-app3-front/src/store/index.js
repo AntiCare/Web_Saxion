@@ -20,8 +20,10 @@ const store = new Vuex.Store({
 
       video: {
         tasks: []
+      },
+      instruction: {
+        instructions: []
       }
-
     }
   },
   mutations: {
@@ -52,6 +54,9 @@ const store = new Vuex.Store({
     },
     SET_VIDEO (state, tasks) {
       state.course.video.tasks = tasks
+    },
+    SET_INSTRUCTIONS (state, instructions) {
+      state.course.instruction.instructions = instructions
     }
   },
   getters: {
@@ -95,6 +100,13 @@ const store = new Vuex.Store({
         .get('http://localhost:3000/api/video')
         .then(response => {
           commit('SET_VIDEO', response.data)
+        })
+    },
+    fetchInstructions ({ commit }) {
+      axios
+        .get('http://localhost:3000/api/instructions')
+        .then(response => {
+          commit('SET_INSTRUCTIONS', response.data)
         })
     }
   },
