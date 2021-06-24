@@ -11,7 +11,8 @@ const store = new Vuex.Store({
     course: {
       peerStudy : {
         finishedPeerStudy: 0,
-        assignments: []
+        assignments: [],
+        submittedAssignments: []
       },
       moduleAssignment: {
         assignments: []
@@ -33,7 +34,17 @@ const store = new Vuex.Store({
     },
     SET_MODULE_ASSIGNMENTS (state, assignments) {
       state.course.moduleAssignment.assignments = assignments
-    }
+    },
+    SET_PEER_STUDY_SUBMITTED_ASSIGNMENTS(state, submittedAssignments) {
+      state.course.peerStudy.submittedAssignments = submittedAssignments;
+      console.log(`SET_PEER_STUDY_SUBMITTED_ASSIGNMENTS ${JSON.stringify(state.course.peerStudy.submittedAssignments)}`)
+    },
+    UPDATE_PEER_STUDY_SUBMITTED_ASSIGNMENTS(state, {submittedAssignment, idx}) {
+      console.log(`state1 ${submittedAssignment} idx ${idx}`)
+
+      state.course.peerStudy.submittedAssignments[idx].downloaded = true;
+      console.log(`stateee ${JSON.stringify(state.course.peerStudy.submittedAssignments)}`)
+    },
   },
   getters: {
     allowedToDoQuiz: state => {
@@ -49,6 +60,19 @@ const store = new Vuex.Store({
         .get('http://localhost:3000/api/peer-study')
         .then(response => {
           commit('SET_PEER_STUDY_ASSIGNMENTS', response.data);
+        })
+    },
+    fetchPeerStudySubmittedAssignments ({ commit }, { peerStudyId }) {
+      console.log(peerStudyId)
+
+      axios
+        .get('http://localhost:3000/api/peer-study-submitted-assignments', { params: { peerStudyId } })
+        .then(response => {
+
+          // console.log(response.data)
+          commit('SET_PEER_STUDY_SUBMITTED_ASSIGNMENTS', response.data);
+          // console.log(`SET_PEER_STUDY_SUBMITTED_ASSIGNMENTS ${JSON.stringify(state.course.peerStudy.submittedAssignments)}`)
+
         })
     },
     fetchModuleAssignments ({ commit }) {
