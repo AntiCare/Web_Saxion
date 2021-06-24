@@ -58,34 +58,39 @@
 
 <script>
 export default {
-  name: "Lectures",
-  data() {
+  name: 'Lectures',
+  data () {
     return {
       // Online lectures page.
       lectures: [
         {
           submenu: 'Lectures',
           icon: 'mdi-play',
-          tasks: [
-            { title: 'Week 3', text: '6/18/21, 11:45 AM - 6/18/21, 2:00 PM' },
-            { title: 'Exam preparation', text: '6/21/21, 12:45 AM - 6/21/21, 2:00 PM', disabled : true },
-            { title: 'Exam review', text: '6/27/21, 11:45 AM - 6/27/21, 2:00 PM', disabled : true }
-          ]
+          tasks: this.$store.state.course.lectures.lecture
         },
         {
           submenu: 'Archive',
           icon: 'mdi-archive',
           archive: true,
-          tasks: [
-            { title: 'Week 1', image: '', text: '6/1/21, 11:45 AM - 6/1/21, 2:00 PM', duration: '1h 43m' },
-            { title: 'Week 2', text: '6/14/21, 11:45 AM - 6/14/21, 2:00 PM', duration: '46m' },
-          ]
+          tasks: this.$store.state.course.lectures.archive
         }
-      ],
+      ]
+    }
+  },
+  mounted () {
+    this.$store.dispatch('fetchLectures_lecture')
+    this.$store.dispatch('fetchLectures_archive')
+  },
+  computed: {
+    lecture () {
+      return this.$store.state.course.lectures.lecture
+    },
+    archive () {
+      return this.$store.state.course.lectures.archive
     }
   }
 
-  }
+}
 </script>
 
 <style scoped>

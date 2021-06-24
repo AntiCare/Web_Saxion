@@ -134,6 +134,31 @@ let abb = (async () => {
         "insert into module_assignment (id, assignment_id, title, subtitle, rating, text, image) values (3, 1 , 'assignment 3', 'level 3', 3, 'Write a program that prompts the user for an answer of a calculation. You may hard-code the values used in the question.', 'assignment3.png');\n"
     )
 
+
+    //lectures-lectures
+    await db.exec("DROP TABLE IF EXISTS lectures_lecture; CREATE TABLE IF NOT EXISTS lectures_lecture (\n" +
+        "\tid INT,\n" +
+        "\tlecture_id INT,\n" +
+        "\ttitle VARCHAR(50),\n" +
+        "\ttext VARCHAR(50),\n" +
+        "\tdisable BOOLEAN\n"+
+        ");\n" +
+        "insert into lectures_lecture (id, lecture_id, title,  text, disable) values (1, 1 , 'Week 1', '6/18/21, 11:45 AM - 6/18/21, 2:00 PM', false );\n" +
+        "insert into lectures_lecture (id, lecture_id, title,  text, disable) values (2, 1 , 'Exam preparation', '6/21/21, 12:45 AM - 6/21/21, 2:00 PM', true );\n" +
+        "insert into lectures_lecture (id, lecture_id, title,  text, disable) values (3, 1 , 'Exam review', '6/27/21, 11:45 AM - 6/27/21, 2:00 PM', true);\n"
+    )
+    //lectures-Archive
+    await db.exec("DROP TABLE IF EXISTS lectures_Archive; CREATE TABLE IF NOT EXISTS lectures_Archive (\n" +
+        "\tid INT,\n" +
+        "\tlecture_id INT,\n" +
+        "\ttitle VARCHAR(50),\n" +
+        "\ttext VARCHAR(50),\n" +
+        "\tduration VARCHAR(50)\n"+
+        ");\n" +
+        "insert into lectures_Archive (id, lecture_id, title,  text, duration) values (1, 1 , 'Week 1', '6/1/21, 11:45 AM - 6/1/21, 2:00 PM', '1h 43m');\n" +
+        "insert into lectures_Archive (id, lecture_id, title,  text, duration) values (2, 1 , 'Week 2', '6/14/21, 11:45 AM - 6/14/21, 2:00 PM', '46m');\n"
+     )
+
     //video
     await db.exec("DROP TABLE IF EXISTS video; CREATE TABLE IF NOT EXISTS video (\n" +
         "\tid INT,\n" +
@@ -370,6 +395,33 @@ router.get("/api/peer-study-submitted-assignments", async function (req, res, ne
         res.json(e);
     }
 });
+
+// lectures-lecture
+router.get("/api/lectures-lecture", async function (req, res, next) {
+    try {
+        setTimeout(async function () {
+            let result = await db.all("SELECT * FROM lectures_lecture");
+            res.json(result);
+        }, 500);
+    } catch (e) {
+        res.json(e);
+    }
+});
+
+// lectures-archive
+router.get("/api/lectures-archive", async function (req, res, next) {
+    try {
+        setTimeout(async function () {
+            let result = await db.all("SELECT * FROM lectures_Archive");
+            res.json(result);
+        }, 500);
+    } catch (e) {
+        res.json(e);
+    }
+});
+
+
+
 
 router.get('/api/products', function (req, res, next) {
     data.returnAllProducts(res, next);
