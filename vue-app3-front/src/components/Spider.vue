@@ -103,7 +103,7 @@ export default {
           data: this.$store.state.grades
         }],
         xaxis: {
-          categories: ['English', 'Dutch', 'Presentation', 'ICT', 'Creative Technology', 'Communication', 'Onderhandelen', 'Conflict hank', 'Team Work', 'Kr. D']
+          categories: ['English', 'Dutch', 'Presentation', 'Hardware Interfacing', 'Creative Technology', 'Communication', 'Infrastructure', 'Conflict handling', 'Team Work', 'Organisational Processes']
           ,
           labels: {
             style: {
