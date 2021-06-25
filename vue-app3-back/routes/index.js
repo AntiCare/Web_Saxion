@@ -258,12 +258,19 @@ router.post('/api/login', async function (req, res) {
     //get email & password
     const email = req.param('email');
     const password = req.param('password');
-    var result = await db.all("Select email from account ");
-    var a =  JSON.stringify(result)
-    if (a.search(email.toString())!==-1){
+    var result = await db.all("Select * from account ");
+    var confirm =false;
+    for (var i in result) {
+        console.log(JSON.stringify(result[i].email))
+        console.log(email)
+        if(JSON.stringify(result[i].email).search(email.toString())!==-1 && JSON.stringify(result[i].password).search(password.toString())!==-1){
+            confirm=true;
+        }
+    }
+    if(confirm){
         res.send("200");
     }else {
-        res.send("406");
+        res.send("500");
     }
 });
 
