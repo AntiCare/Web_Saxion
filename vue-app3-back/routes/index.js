@@ -98,17 +98,18 @@ let abb = (async () => {
     await db.exec("DROP TABLE IF EXISTS exam_score; CREATE TABLE IF NOT EXISTS exam_score (\n" +
         "\tid INT,\n" +
         "\texam_name VARCHAR(50),\n" +
+        "\texam_type INT,\n" +
         "\texam_result INT\n" +
         ");\n" +
-        "insert into EXAM_SCORE (id, exam_name, exam_result) values (1, 'Dev tools', 9);\n" +
-        "insert into EXAM_SCORE (id, exam_name, exam_result) values (5, 'Hello World', 10);\n"+
-        "insert into EXAM_SCORE (id, exam_name, exam_result) values (2, 'Web applications', 8);\n" +
-        "insert into EXAM_SCORE (id, exam_name, exam_result) values (3, 'C++', 10);\n" +
-        "insert into EXAM_SCORE (id, exam_name, exam_result) values (4, 'Algorithms 2', 8);\n" +
-        "insert into EXAM_SCORE (id, exam_name, exam_result) values (5, 'Concurrency', 9);\n" +
-        "insert into EXAM_SCORE (id, exam_name, exam_result) values (5, 'Web Technology', 10);\n" +
-        "insert into EXAM_SCORE (id, exam_name, exam_result) values (5, 'Curiosity', 9);\n"+
-        "insert into EXAM_SCORE (id, exam_name, exam_result) values (5, 'Organisation and IT', 9);\n"
+        "insert into EXAM_SCORE (id, exam_name, exam_type, exam_result) values (1, 'Dev tools',1, 9);\n" +
+        "insert into EXAM_SCORE (id, exam_name, exam_type, exam_result) values (5, 'Hello World',2, 10);\n"+
+        "insert into EXAM_SCORE (id, exam_name, exam_type, exam_result) values (2, 'Web applications',3, 8);\n" +
+        "insert into EXAM_SCORE (id, exam_name, exam_type, exam_result) values (3, 'C++',1, 10);\n" +
+        "insert into EXAM_SCORE (id, exam_name, exam_type, exam_result) values (4, 'Algorithms 2',2, 8);\n" +
+        "insert into EXAM_SCORE (id, exam_name, exam_type, exam_result) values (5, 'Concurrency',3, 9);\n" +
+        "insert into EXAM_SCORE (id, exam_name, exam_type, exam_result) values (5, 'Web Technology',1, 10);\n" +
+        "insert into EXAM_SCORE (id, exam_name, exam_type, exam_result) values (5, 'Curiosity',2, 9);\n"+
+        "insert into EXAM_SCORE (id, exam_name, exam_type, exam_result) values (5, 'Organisation and IT',3, 9);\n"
     )
 
     //subject

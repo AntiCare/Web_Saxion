@@ -8,10 +8,11 @@ const store = new Vuex.Store({
   strict: true,
   state: {
     weekFinish: 0,
+    grades: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     course: {
       introArticles: [],
       submitAssignments: [],
-      peerStudy : {
+      peerStudy: {
         finishedPeerStudy: 0,
         assignments: [],
         submittedAssignments: []
@@ -32,21 +33,24 @@ const store = new Vuex.Store({
     }
   },
   mutations: {
-    SET_INTRO_ARTICLES(state, introArticles) {
-      state.course.introArticles = introArticles;
+    SET_INTRO_ARTICLES (state, introArticles) {
+      state.course.introArticles = introArticles
       console.log(`SET_INTRO_ARTICLES ${JSON.stringify(state.course.introArticles)}`)
     },
     changeWeekStatus (state) {
       state.weekFinish += 10
     },
+    changeGrades (state, idx) {
+      state.grades[idx] += 1
+    },
     updatePeerStudyAssignmentAmount (state, amount) {
       state.course.peerStudiesAmount = amount
     },
     finishedPeerStudyAssignment (state) {
-      state.course.peerStudy.finishedPeerStudy++;
+      state.course.peerStudy.finishedPeerStudy++
     },
-    SET_PEER_STUDY_ASSIGNMENTS(state, assignments) {
-      state.course.peerStudy.assignments = assignments;
+    SET_PEER_STUDY_ASSIGNMENTS (state, assignments) {
+      state.course.peerStudy.assignments = assignments
     },
     SET_MODULE_ASSIGNMENTS (state, assignments) {
       state.course.moduleAssignment.assignments = assignments
@@ -54,14 +58,14 @@ const store = new Vuex.Store({
     SET_SUBMIT_ASSIGNMENTS (state, submitAssignments) {
       state.course.submitAssignments = submitAssignments
     },
-    SET_PEER_STUDY_SUBMITTED_ASSIGNMENTS(state, submittedAssignments) {
-      state.course.peerStudy.submittedAssignments = submittedAssignments;
+    SET_PEER_STUDY_SUBMITTED_ASSIGNMENTS (state, submittedAssignments) {
+      state.course.peerStudy.submittedAssignments = submittedAssignments
       console.log(`SET_PEER_STUDY_SUBMITTED_ASSIGNMENTS ${JSON.stringify(state.course.peerStudy.submittedAssignments)}`)
     },
-    UPDATE_PEER_STUDY_SUBMITTED_ASSIGNMENTS(state, {submittedAssignment, idx}) {
+    UPDATE_PEER_STUDY_SUBMITTED_ASSIGNMENTS (state, { submittedAssignment, idx }) {
       console.log(`state1 ${submittedAssignment} idx ${idx}`)
 
-      state.course.peerStudy.submittedAssignments[idx].downloaded = true;
+      state.course.peerStudy.submittedAssignments[idx].downloaded = true
       console.log(`stateee ${JSON.stringify(state.course.peerStudy.submittedAssignments)}`)
     },
     SET_VIDEO (state, tasks) {
@@ -79,10 +83,10 @@ const store = new Vuex.Store({
   },
   getters: {
     allowedToDoQuiz: state => {
-      return state.course.peerStudy.assignments.length <= state.course.peerStudy.finishedPeerStudy;
+      return state.course.peerStudy.assignments.length <= state.course.peerStudy.finishedPeerStudy
     },
     allowedToDoAssignment: state => (assignmentNumber) => {
-      return !(assignmentNumber <= state.course.peerStudy.finishedPeerStudy);
+      return !(assignmentNumber <= state.course.peerStudy.finishedPeerStudy)
     }
   },
   actions: {
@@ -97,14 +101,14 @@ const store = new Vuex.Store({
       axios
         .get('http://localhost:3000/api/intro-page', { params: { courseId } })
         .then(response => {
-          commit('SET_INTRO_ARTICLES', response.data);
+          commit('SET_INTRO_ARTICLES', response.data)
         })
     },
     fetchPeerStudyAssignments ({ commit }) {
       axios
         .get('http://localhost:3000/api/peer-study')
         .then(response => {
-          commit('SET_PEER_STUDY_ASSIGNMENTS', response.data);
+          commit('SET_PEER_STUDY_ASSIGNMENTS', response.data)
         })
     },
     fetchPeerStudySubmittedAssignments ({ commit }, { peerStudyId }) {
@@ -113,7 +117,7 @@ const store = new Vuex.Store({
       axios
         .get('http://localhost:3000/api/peer-study-submitted-assignments', { params: { peerStudyId } })
         .then(response => {
-          commit('SET_PEER_STUDY_SUBMITTED_ASSIGNMENTS', response.data);
+          commit('SET_PEER_STUDY_SUBMITTED_ASSIGNMENTS', response.data)
         })
     },
     fetchModuleAssignments ({ commit }) {
