@@ -18,7 +18,7 @@
         v-for="item in subjects"
         class="find-item"
       >
-          <a class="grade" href="/assignment2"> {{ item.subject_name }}</a>
+          <a class="grade" href="/course"> {{ item.subject_name }}</a>
       </div>
     </section>
     </div>
