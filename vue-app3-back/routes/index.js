@@ -159,6 +159,13 @@ let abb = (async () => {
         "insert into module_assignment (id, assignment_id, title, subtitle, rating, text, image) values (3, 1 , 'assignment 3', 'level 3', 3, 'Write a program that prompts the user for an answer of a calculation. You may hard-code the values used in the question.', 'assignment3.png');\n"
     )
 
+    // User
+    await db.exec("DROP TABLE IF EXISTS account; CREATE TABLE IF NOT EXISTS account (\n" +
+        "\temail VARCHAR(50),\n" +
+        "\tpassword VARCHAR(50)\n" +
+        ");\n" +
+        "insert into account (email,password) values ('1234@gmail.com', '1234');\n"
+    )
 
     //lectures-lectures
     await db.exec("DROP TABLE IF EXISTS lectures_lecture; CREATE TABLE IF NOT EXISTS lectures_lecture (\n" +
@@ -230,6 +237,7 @@ let abb = (async () => {
     console.log( await db.all("SELECT * FROM peer_study_assignments_submitted"))
     console.log( await db.all("SELECT * FROM course_intro"))
     console.log( await db.all("SELECT * FROM submit_assigment"))
+    console.log( await db.all("Select email from account"))
 
 })()
 
@@ -244,24 +252,28 @@ router.get('/test', function (req, res, next) {
 });
 
 
+
 //get user login data.
-router.post('/api/login', function (req, res) {
+router.post('/api/login', async function (req, res) {
     //get email & password
     const email = req.param('email');
     const password = req.param('password');
-    //test
-    console.log(email.toString());
-    console.log(password.toString());
-    //return rep to frontend.
-    res.send("200");
+    var result = await db.all("Select email from account ");
+    var a =  JSON.stringify(result)
+    if (a.search(email.toString())!==-1){
+        res.send("200");
+    }else {
+        res.send("406");
+    }
 });
 
 
 //get user register data.
-router.post('/api/register', function (req, res) {
+router.post('/api/register', async function (req, res) {
     //get email & password
     const email = req.param('email');
     const password = req.param('password');
+    let result = await db.run('INSERT INTO account (email,password) VALUES (?,?)',[email,password]);
     //test
     console.log(email.toString());
     console.log(password.toString());

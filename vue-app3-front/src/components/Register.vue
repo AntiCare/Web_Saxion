@@ -45,7 +45,11 @@ export default {
           // if status code:200.
           // jump to home page
           console.log(data)
-          // window.location.href='/login';
+          if (data === 200) {
+            window.location.href = '/login'
+          } else {
+            alert('error, please try again')
+          }
         })
     }
   }

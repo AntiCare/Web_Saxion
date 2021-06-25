@@ -1,6 +1,6 @@
 <template>
   <div class = "loginBox" id="loginBox">
-    <h2>MySaxion</h2>
+    <h1>MySaxion</h1>
     <form method="post" ref="mForm" name="mForm" action="/home"  @submit.prevent="checkLoginFormat">
       <p>Email</p>
       <input name="email" ref="email"   type="text" id="UserEmail"   placeholder="Enter Email" required>
@@ -46,7 +46,13 @@ export default {
           // if status code:200.
           // jump to home page
           console.log(data)
-          window.location.href = '/'
+          if(data===200){
+            window.location.href = '/'
+          }else {
+            alert("\n" +
+              "Wrong username and password, please try again")
+          }
+
         })
     }
   }
@@ -75,11 +81,11 @@ body
   border-radius: 10px;
 }
 
-h2
+h1
 {
   margin: 0px;
   padding: 0 0 20px;
-  color:#efed40;
+  color:#fff;
   text-align: center;
 }
 .loginBox p
@@ -116,13 +122,13 @@ h2
   height: 40px;
   color:#ffffff;
   font-size: 16px;
-  background: #ff267e;
+  background: #15A563;
   cursor:pointer;
   border-radius: 20px;
 }
 .loginBox input[type="submit"]:hover
 {
-  background: #efed40;
+  background: #fff;
   color: #262626;
 }
 .loginBox a
