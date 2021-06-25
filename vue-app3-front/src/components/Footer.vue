@@ -14,8 +14,8 @@
         <v-spacer></v-spacer>
 
         <v-btn
-          v-for="icon in icons"
-          :key="icon"
+          v-for="(icon, idx) in icons"
+          :key="'icon' + idx"
           class="mx-4"
           dark
           icon
