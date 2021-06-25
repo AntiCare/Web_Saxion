@@ -78,8 +78,12 @@ export default {
     }
   },
   mounted () {
-    this.$store.dispatch('fetchLectures_lecture')
-    this.$store.dispatch('fetchLectures_archive')
+    this.$store.dispatch('fetchLectures_lecture', {
+      courseId: 1
+    })
+    this.$store.dispatch('fetchLectures_archive', {
+      courseId: 1
+    })
   },
   computed: {
     lecture () {

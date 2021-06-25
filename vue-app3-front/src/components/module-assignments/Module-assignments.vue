@@ -33,7 +33,9 @@
 export default {
   name: 'Module-assignments',
   mounted () {
-    this.$store.dispatch('fetchModuleAssignments')
+    this.$store.dispatch('fetchModuleAssignments', {
+      weekId: 1
+    })
   },
   computed: {
     ASSIGNMENTS () {
