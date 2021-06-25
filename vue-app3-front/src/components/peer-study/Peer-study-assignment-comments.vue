@@ -44,24 +44,9 @@ export default {
           text: "Good job!"
         },
         {
-          publisher: "Mykhailo",
+          publisher: "Yang",
           time: "05.01.2021",
-          text: "Good job!"
-        },
-        {
-          publisher: "Mykhailo",
-          time: "05.01.2021",
-          text: "Good job!"
-        },
-        {
-          publisher: "Mykhailo",
-          time: "05.01.2021",
-          text: "Good job!"
-        },
-        {
-          publisher: "Mykhailo",
-          time: "05.01.2021",
-          text: "Good job!"
+          text: "Well done!"
         },
 
       ]

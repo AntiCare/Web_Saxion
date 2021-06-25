@@ -62,8 +62,7 @@ let abb = (async () => {
         ");\n" +
         "insert into peer_study_assignments_submitted (id, peer_study_id, publisher, exam_time) values (1, 23 , 'Yang', '1623266926');\n" +
         "insert into peer_study_assignments_submitted (id, peer_study_id, publisher, exam_time) values (2, 23 , 'Mykhailo', '1623266926');\n" +
-        "insert into peer_study_assignments_submitted (id, peer_study_id, publisher, exam_time) values (3, 23 , 'Mykhailo', '1623266926');\n" +
-        "insert into peer_study_assignments_submitted (id, peer_study_id, publisher, exam_time) values (4, 23 , 'Yang', '1623266926');\n"
+        "insert into peer_study_assignments_submitted (id, peer_study_id, publisher, exam_time) values (3, 23 , 'Mykhailo', '1623266926');\n"
     )
 
     //exam schedule
