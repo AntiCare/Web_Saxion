@@ -147,16 +147,16 @@ let abb = (async () => {
      //Assignment
     await db.exec("DROP TABLE IF EXISTS module_assignment; CREATE TABLE IF NOT EXISTS module_assignment (\n" +
         "\tid INT,\n" +
-        "\tassignment_id INT,\n" +
+        "\tweek_id INT,\n" +
         "\ttitle VARCHAR(50),\n" +
         "\tsubtitle VARCHAR(50),\n" +
         "\trating INT,\n" +
         "\ttext VARCHAR(50),\n" +
         "\timage VARCHAR(50)\n"+
         ");\n" +
-        "insert into module_assignment (id, assignment_id, title, subtitle, rating, text, image) values (1, 1 , 'assignment 1', 'level 1', 1, 'Write a program, that greets you whenever you run it.For example: ', 'assignment1.png');\n" +
-        "insert into module_assignment (id, assignment_id, title, subtitle, rating, text, image) values (2, 1 , 'assignment 2', 'level 2', 2, 'Write a program that prompts the user for a name. Then greet the person with that name. For example: ', 'assignment2.png');\n" +
-        "insert into module_assignment (id, assignment_id, title, subtitle, rating, text, image) values (3, 1 , 'assignment 3', 'level 3', 3, 'Write a program that prompts the user for an answer of a calculation. You may hard-code the values used in the question.', 'assignment3.png');\n"
+        "insert into module_assignment (id, week_id, title, subtitle, rating, text, image) values (1, 1 , 'assignment 1', 'level 1', 1, 'Write a program, that greets you whenever you run it.For example: ', 'assignment1.png');\n" +
+        "insert into module_assignment (id, week_id, title, subtitle, rating, text, image) values (2, 1 , 'assignment 2', 'level 2', 2, 'Write a program that prompts the user for a name. Then greet the person with that name. For example: ', 'assignment2.png');\n" +
+        "insert into module_assignment (id, week_id, title, subtitle, rating, text, image) values (3, 1 , 'assignment 3', 'level 3', 3, 'Write a program that prompts the user for an answer of a calculation. You may hard-code the values used in the question.', 'assignment3.png');\n"
     )
 
     // User
@@ -170,49 +170,49 @@ let abb = (async () => {
     //lectures-lectures
     await db.exec("DROP TABLE IF EXISTS lectures_lecture; CREATE TABLE IF NOT EXISTS lectures_lecture (\n" +
         "\tid INT,\n" +
-        "\tlecture_id INT,\n" +
+        "\tcourse_id INT,\n" +
         "\ttitle VARCHAR(50),\n" +
         "\ttext VARCHAR(50),\n" +
         "\tdisable BOOLEAN\n"+
         ");\n" +
-        "insert into lectures_lecture (id, lecture_id, title,  text, disable) values (1, 1 , 'Week 1', '6/18/21, 11:45 AM - 6/18/21, 2:00 PM', false );\n" +
-        "insert into lectures_lecture (id, lecture_id, title,  text, disable) values (2, 1 , 'Exam preparation', '6/21/21, 12:45 AM - 6/21/21, 2:00 PM', true );\n" +
-        "insert into lectures_lecture (id, lecture_id, title,  text, disable) values (3, 1 , 'Exam review', '6/27/21, 11:45 AM - 6/27/21, 2:00 PM', true);\n"
+        "insert into lectures_lecture (id, course_id, title,  text, disable) values (1, 1 , 'Week 1', '6/18/21, 11:45 AM - 6/18/21, 2:00 PM', false );\n" +
+        "insert into lectures_lecture (id, course_id, title,  text, disable) values (2, 1 , 'Exam preparation', '6/21/21, 12:45 AM - 6/21/21, 2:00 PM', true );\n" +
+        "insert into lectures_lecture (id, course_id, title,  text, disable) values (3, 1 , 'Exam review', '6/27/21, 11:45 AM - 6/27/21, 2:00 PM', true);\n"
     )
     //lectures-Archive
     await db.exec("DROP TABLE IF EXISTS lectures_Archive; CREATE TABLE IF NOT EXISTS lectures_Archive (\n" +
         "\tid INT,\n" +
-        "\tlecture_id INT,\n" +
+        "\tcourse_id INT,\n" +
         "\ttitle VARCHAR(50),\n" +
         "\ttext VARCHAR(50),\n" +
         "\tduration VARCHAR(50)\n"+
         ");\n" +
-        "insert into lectures_Archive (id, lecture_id, title,  text, duration) values (1, 1 , 'Week 1', '6/1/21, 11:45 AM - 6/1/21, 2:00 PM', '1h 43m');\n" +
-        "insert into lectures_Archive (id, lecture_id, title,  text, duration) values (2, 1 , 'Week 2', '6/14/21, 11:45 AM - 6/14/21, 2:00 PM', '46m');\n"
+        "insert into lectures_Archive (id, course_id, title,  text, duration) values (1, 1 , 'Week 1', '6/1/21, 11:45 AM - 6/1/21, 2:00 PM', '1h 43m');\n" +
+        "insert into lectures_Archive (id, course_id, title,  text, duration) values (2, 1 , 'Week 2', '6/14/21, 11:45 AM - 6/14/21, 2:00 PM', '46m');\n"
      )
 
     //video
     await db.exec("DROP TABLE IF EXISTS video; CREATE TABLE IF NOT EXISTS video (\n" +
         "\tid INT,\n" +
-        "\tvideo_id INT,\n" +
+        "\tweek_id INT,\n" +
         "\ttitle VARCHAR(50),\n" +
         "\tsubtitle VARCHAR(50)\n" +
         ");\n" +
-        "insert into video (id, video_id, title, subtitle) values (1, 1 , 'Loop(while)', 'How to use while loop in Java');\n" +
-        "insert into video (id, video_id, title, subtitle) values (2, 1 , 'Loop(for)', 'How to use for loop in Java');\n"
+        "insert into video (id, week_id, title, subtitle) values (1, 1 , 'Loop(while)', 'How to use while loop in Java');\n" +
+        "insert into video (id, week_id, title, subtitle) values (2, 1 , 'Loop(for)', 'How to use for loop in Java');\n"
     )
 
     //instructions
     await db.exec("DROP TABLE IF EXISTS instructions; CREATE TABLE IF NOT EXISTS instructions (\n" +
         "\tid INT,\n" +
-        "\tinstruction_id INT,\n" +
+        "\tweek_id INT,\n" +
         "\ttitle VARCHAR(50),\n" +
         "\tsubtitle VARCHAR(50),\n" +
         "\ttext VARCHAR(50)\n" +
         ");\n" +
-        "insert into instructions (id, instruction_id, title, subtitle, text) values (1, 1 , 'Discord', 'Hello students,','To assist you on your journey on learning how to program, we have created some additional help for you in the form of a Discord server. Please log in to this server to ask for assistance. So if you have questions, feel free to post them on the server. Usually there should be someone online to help out...');\n" +
-        "insert into instructions (id, instruction_id, title, subtitle, text) values (2, 1 , 'How to install the Java Development Kit and IntelliJ IDEA Community Edition', 'How to use for loop in Java Set up system','During the first lecture we will install the required software together, but in case you are wondering we have created a step-by-step guide on how to install the software needed for this course.Head over to https://www.oracle.com/nl/java/technologies/javase-downloads.htmland go download the JavaSE 11 (LTS) installer for your specific operating system.You will need to create an Oracle account and sign in to be able to download the installer.Head over to https://www.jetbrains.com/idea/download and get IntelliJ IDEA Community Edition for your specific operating system. Unfortunately, there is no easy way to check whether or not the installation was a success. If theinstaller exitedwithout errors, you should assume everything is up and running. If your installer crashes, please contact your teacher.Install IntelliJ IDEA Community Edition downloaded from step 2.Download the DemoProject.zip file (below) and extract it to somewhere you can easily find it.Open IntelliJ and select open and select the folder you extracted from the zipfile as discussed in step 5. Head over to 1: Project(top left), open upDemo1,open upsrcbefore double-clicking on Application.  You might need to wait before IntelliJ has indexed the Java Development Kit. If you see a progressbar in  the bottom, wait a moment! Be patient.  If everything worked out correctly, you should a green triangle that you can now click to run your  program. If you can do so, your installation was succesful!  Just to help out, we have created a video that shows all these steps and explains a little about what happens. Have a look at https://youtu.be/8Dp9jP56b4U.');\n" +
-        "insert into instructions (id, instruction_id, title, subtitle, text) values (3, 1 , 'Sandbox project', 'Download the Sandbox project here','Download the Sandbox project here. A Sandbox project does not contain exercises, but should be considered a playground for you to experiment upon!');\n"
+        "insert into instructions (id, week_id, title, subtitle, text) values (1, 1 , 'Discord', 'Hello students,','To assist you on your journey on learning how to program, we have created some additional help for you in the form of a Discord server. Please log in to this server to ask for assistance. So if you have questions, feel free to post them on the server. Usually there should be someone online to help out...');\n" +
+        "insert into instructions (id, week_id, title, subtitle, text) values (2, 1 , 'How to install the Java Development Kit and IntelliJ IDEA Community Edition', 'How to use for loop in Java Set up system','During the first lecture we will install the required software together, but in case you are wondering we have created a step-by-step guide on how to install the software needed for this course.Head over to https://www.oracle.com/nl/java/technologies/javase-downloads.htmland go download the JavaSE 11 (LTS) installer for your specific operating system.You will need to create an Oracle account and sign in to be able to download the installer.Head over to https://www.jetbrains.com/idea/download and get IntelliJ IDEA Community Edition for your specific operating system. Unfortunately, there is no easy way to check whether or not the installation was a success. If theinstaller exitedwithout errors, you should assume everything is up and running. If your installer crashes, please contact your teacher.Install IntelliJ IDEA Community Edition downloaded from step 2.Download the DemoProject.zip file (below) and extract it to somewhere you can easily find it.Open IntelliJ and select open and select the folder you extracted from the zipfile as discussed in step 5. Head over to 1: Project(top left), open upDemo1,open upsrcbefore double-clicking on Application.  You might need to wait before IntelliJ has indexed the Java Development Kit. If you see a progressbar in  the bottom, wait a moment! Be patient.  If everything worked out correctly, you should a green triangle that you can now click to run your  program. If you can do so, your installation was succesful!  Just to help out, we have created a video that shows all these steps and explains a little about what happens. Have a look at https://youtu.be/8Dp9jP56b4U.');\n" +
+        "insert into instructions (id, week_id, title, subtitle, text) values (3, 1 , 'Sandbox project', 'Download the Sandbox project here','Download the Sandbox project here. A Sandbox project does not contain exercises, but should be considered a playground for you to experiment upon!');\n"
     )
 
     // teachers
@@ -385,41 +385,6 @@ router.post("/api/download", async function (req, res, next) {
     }
 });
 
-// assignment
-router.get("/api/assignment", async function (req, res, next) {
-    try {
-        setTimeout(async function () {
-            let result = await db.all("SELECT * FROM module_assignment");
-            res.json(result);
-        }, 500);
-    } catch (e) {
-        res.json(e);
-    }
-});
-
-// video
-router.get("/api/video", async function (req, res, next) {
-    try {
-        setTimeout(async function () {
-            let result = await db.all("SELECT * FROM video");
-            res.json(result);
-        }, 500);
-    } catch (e) {
-        res.json(e);
-    }
-});
-
-// instructions
-router.get("/api/instructions", async function (req, res, next) {
-    try {
-        setTimeout(async function () {
-            let result = await db.all("SELECT * FROM instructions");
-            res.json(result);
-        }, 500);
-    } catch (e) {
-        res.json(e);
-    }
-});
 
 //show schedule data
 router.get("/api/schedule", async function (req, res, next) {
@@ -489,11 +454,55 @@ router.get("/api/submit-point", async function (req, res, next) {
     }
 });
 
+// video
+router.get("/api/video", async function (req, res, next) {
+    try {
+        let weekId = req.query.weekId;
+        if (!weekId) return res.json([])
+        setTimeout(async function () {
+            let result = await db.all(`SELECT * FROM video WHERE week_id = ?`, weekId);
+            res.json(result);
+        }, 500);
+    } catch (e) {
+        res.json(e);
+    }
+});
+
+// instructions
+router.get("/api/instructions", async function (req, res, next) {
+    try {
+        let weekId = req.query.weekId;
+        if (!weekId) return res.json([])
+        setTimeout(async function () {
+            let result = await db.all(`SELECT * FROM instructions WHERE week_id = ?`, weekId);
+            res.json(result);
+        }, 500);
+    } catch (e) {
+        res.json(e);
+    }
+});
+
+// assignment
+router.get("/api/assignment", async function (req, res, next) {
+    try {
+        let weekId = req.query.weekId;
+        if (!weekId) return res.json([])
+        setTimeout(async function () {
+            let result = await db.all(`SELECT * FROM module_assignment WHERE week_id = ?`, weekId);
+            res.json(result);
+        }, 500);
+    } catch (e) {
+        res.json(e);
+    }
+});
+
 // lectures-lecture
 router.get("/api/lectures-lecture", async function (req, res, next) {
     try {
         setTimeout(async function () {
-            let result = await db.all("SELECT * FROM lectures_lecture");
+            let courseId = req.query.courseId;
+            if (!courseId) return res.json([])
+            let result = await db.all(`SELECT * FROM lectures_lecture WHERE course_id = ?`, courseId);
             res.json(result);
         }, 500);
     } catch (e) {
@@ -505,7 +514,9 @@ router.get("/api/lectures-lecture", async function (req, res, next) {
 router.get("/api/lectures-archive", async function (req, res, next) {
     try {
         setTimeout(async function () {
-            let result = await db.all("SELECT * FROM lectures_Archive");
+            let courseId = req.query.courseId;
+            if (!courseId) return res.json([])
+            let result = await db.all(`SELECT * FROM lectures_Archive WHERE course_id = ?`, courseId);
             res.json(result);
         }, 500);
     } catch (e) {

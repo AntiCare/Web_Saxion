@@ -48,7 +48,9 @@ export default {
     }
   }),
   mounted () {
-    this.$store.dispatch('fetchVideo')
+    this.$store.dispatch('fetchVideo', {
+      weekId: 1
+    })
   },
   computed: {
     VIDEO () {

@@ -18,7 +18,9 @@
 export default {
   name: 'Instructions',
   mounted () {
-    this.$store.dispatch('fetchInstructions')
+    this.$store.dispatch('fetchInstructions', {
+      weekId: 1
+    })
   },
   computed: {
     INSTRUCTIONS () {

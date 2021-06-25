@@ -120,37 +120,37 @@ const store = new Vuex.Store({
           commit('SET_PEER_STUDY_SUBMITTED_ASSIGNMENTS', response.data)
         })
     },
-    fetchModuleAssignments ({ commit }) {
+    fetchModuleAssignments ({ commit }, { weekId }) {
       axios
-        .get('http://localhost:3000/api/assignment')
+        .get('http://localhost:3000/api/assignment', { params: { weekId } })
         .then(response => {
           commit('SET_MODULE_ASSIGNMENTS', response.data)
         })
     },
-    fetchVideo ({ commit }) {
+    fetchVideo ({ commit }, { weekId }) {
       axios
-        .get('http://localhost:3000/api/video')
+        .get('http://localhost:3000/api/video', { params: { weekId } })
         .then(response => {
           commit('SET_VIDEO', response.data)
         })
     },
-    fetchInstructions ({ commit }) {
+    fetchInstructions ({ commit }, { weekId }) {
       axios
-        .get('http://localhost:3000/api/instructions')
+        .get('http://localhost:3000/api/instructions', { params: { weekId } })
         .then(response => {
           commit('SET_INSTRUCTIONS', response.data)
         })
     },
-    fetchLectures_lecture ({ commit }) {
+    fetchLectures_lecture ({ commit }, { courseId }) {
       axios
-        .get('http://localhost:3000/api/lectures-lecture')
+        .get('http://localhost:3000/api/lectures-lecture', { params: { courseId } })
         .then(response => {
           commit('SET_LECTURES_LECTURE', response.data)
         })
     },
-    fetchLectures_archive ({ commit }) {
+    fetchLectures_archive ({ commit }, { courseId }) {
       axios
-        .get('http://localhost:3000/api/lectures-archive')
+        .get('http://localhost:3000/api/lectures-archive', { params: { courseId } })
         .then(response => {
           commit('SET_LECTURES_ARCHIVE', response.data)
         })
