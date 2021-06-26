@@ -55,12 +55,12 @@
         >
           <div class="card__post"  >
             <div class="post-text " > {{ item.news_title }}</div>
-          <a class="post__btn" :href="'news/'+item.id">Read Article</a>
+          <a class="post__btn" href="#">Read Article</a>
           </div>
         </div>
       </section>
     </div>
-    <a href="/news/list" class="card__btn">See all news</a>
+    <a href="#" class="card__btn">See all news</a>
   </div>
 </template>
 

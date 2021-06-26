@@ -49,10 +49,7 @@
         </v-list-item>
       </v-list>
     </v-menu>
-
-
   </v-app-bar>
-
 </template>
 
 <script>

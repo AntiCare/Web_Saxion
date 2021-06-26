@@ -1,9 +1,6 @@
 <template>
-
   <div>
-    <v-card
-
-    >
+    <v-card>
       <v-tabs
         v-model="tab"
         align-with-title

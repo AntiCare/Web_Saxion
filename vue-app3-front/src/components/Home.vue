@@ -1,20 +1,5 @@
 <template>
   <div id="home">
-
-    <!--    <nav class="menu">-->
-    <!--      <div class="container">-->
-    <!--        <div class="menu__inner">-->
-    <!--          <a href="#" class="menu__logo">LOGO</a>-->
-    <!--          <div class="menu__buttons">-->
-    <!--            <a href="#" class="menu__button menu__button&#45;&#45;active">Home</a>-->
-    <!--            <a href="#" class="menu__button">Tab 1</a>-->
-    <!--            <a href="#" class="menu__button">Tab 2</a>-->
-    <!--            <a href="#" class="menu__button">Tab 3</a>-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </nav>-->
-
     <section class="home-content">
       <div class="container">
         <div class="home-content__inner">
