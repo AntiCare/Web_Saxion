@@ -3,37 +3,37 @@
   <v-tab-item>
     <v-card>
       <v-tabs vertical>
-        <v-tab v-for="(lecture, idx) in lectures " :key="idx" class="vertical-tab">
+        <v-tab v-for="(tab, idx) in lectureTabs " :key="idx" class="vertical-tab">
           <v-icon left>
-            {{ lecture.icon }}
+            {{ tab.icon }}
           </v-icon>
-          {{ lecture.submenu }}
+          {{ tab.submenu }}
         </v-tab>
 
-        <v-tab-item v-for="(lecture, idx) in lectures" :key="idx">
+        <v-tab-item v-for="(tab, idx) in lectureTabs" :key="idx">
           <v-card
             class="pa-2 mb-4"
             outlined
             elevation="2"
             shaped
-            color="" v-for="(task, idx) in lecture.tasks" :key="'t' + idx"
-            :disabled="task.disabled"
+            color="" v-for="(lecture, idx) in LECTURES" :key="'t' + idx"
+            :disabled="lecture.disabled"
           >
-            <v-card-title>{{ task.title }}</v-card-title>
+            <v-card-title>{{ lecture.title }}</v-card-title>
             <v-card-text>
-              {{ task.text }}
+              {{ lecture.text }}
             </v-card-text>
-            <v-card-text v-if="task.duration" class="font-weight-bold">
-              Duration: {{ task.duration }}
+            <v-card-text v-if="lecture.duration" class="font-weight-bold">
+              Duration: {{ lecture.duration }}
             </v-card-text>
             <v-card-actions>
               <v-btn
                 color="primary"
                 text
-                v-if="!lecture.archive"
+                v-if="!tab.archive"
               >
                 <v-icon left>
-                  {{ lecture.icon }}
+                  {{ tab.icon }}
                 </v-icon>
                 JOIN
               </v-btn>
@@ -62,17 +62,15 @@ export default {
   data () {
     return {
       // Online lectures page.
-      lectures: [
+      lectureTabs: [
         {
           submenu: 'Lectures',
           icon: 'mdi-play',
-          tasks: this.$store.state.course.lectures.lecture
         },
         {
           submenu: 'Archive',
           icon: 'mdi-archive',
           archive: true,
-          tasks: this.$store.state.course.lectures.archive
         }
       ]
     }
@@ -86,10 +84,10 @@ export default {
     })
   },
   computed: {
-    lecture () {
+    LECTURES () {
       return this.$store.state.course.lectures.lecture
     },
-    archive () {
+    ARCHIVES () {
       return this.$store.state.course.lectures.archive
     }
   }
