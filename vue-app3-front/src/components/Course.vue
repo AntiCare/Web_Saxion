@@ -28,21 +28,21 @@
          <Discussion></Discussion>
         <!--week page week1-3-->
         <v-tab-item
-          v-for="(weekPage, idx) in weekPages"
+          v-for="(weekPage, idx) in WEEK_PAGES"
           :key="idx"
           class="elevation-0"
         >
           <v-card
             class="elevation-0">
             <v-tabs vertical>
-              <v-tab v-for="(weekPage, idx) in weekPages" :key="'W' + idx" class="vertical-tab">
+              <v-tab v-for="(weekPage, idx) in WEEK_PAGES" :key="'W' + idx" class="vertical-tab">
                 <v-icon left>
                   {{ weekPage.icon }}
                 </v-icon>
                 {{ weekPage.submenu }}
               </v-tab>
 
-              <v-tab-item v-for="(weekPage, idx) in weekPages" :key="'W2' + idx">
+              <v-tab-item v-for="(weekPage, idx) in WEEK_PAGES" :key="'W2' + idx">
                 <!--Peer study-->
                 <div class="text-left"
                      v-if="weekPage.submenu === 'Peer study'">
@@ -108,47 +108,21 @@ export default {
       weeks: [
         'Intro', 'Online lectures', 'Discussion', 'Week 1', 'Week 2', 'Week 3', 'Extra'
       ],
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-
-      // weekPage data.
-      weekPages: [
-        // Instruction
-        {
-          submenu: 'Instruction',
-          icon: 'mdi-book-open-blank-variant'
-        },
-        // Assignment
-        {
-          submenu: 'Assignment',
-          icon: 'mdi-briefcase'
-        },
-        // peer study
-        {
-          submenu: 'Peer study',
-          icon: 'mdi-forum'
-        },
-        // Video
-        {
-          submenu: 'Video',
-          icon: 'mdi-video-box'
-        },
-        // Submit
-        {
-          submenu: 'Submit',
-          icon: 'mdi-bookmark'
-        },
-        // Quiz
-        {
-          submenu: 'Quiz',
-          icon: 'mdi-book-open-blank-variant'
-        }
-      ],
-
       links: [
         {title: 'Dashboard', icon: 'mdi-view-dashboard'},
         {title: 'Account', icon: 'mdi-account-box'},
         {title: 'Admin', icon: 'mdi-laptop'}
       ]
+    }
+  },
+  mounted () {
+    this.$store.dispatch('fetchWeekPage', {
+      weekId: 1
+    })
+  },
+  computed: {
+    WEEK_PAGES () {
+      return this.$store.state.course.weekPages
     }
   },
   methods: {

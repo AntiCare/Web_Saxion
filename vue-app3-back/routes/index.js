@@ -202,6 +202,21 @@ let abb = (async () => {
         "insert into video (id, week_id, title, subtitle) values (2, 1 , 'Loop(for)', 'How to use for loop in Java');\n"
     )
 
+    //week pages
+    await db.exec("DROP TABLE IF EXISTS weekPage; CREATE TABLE IF NOT EXISTS weekPage (\n" +
+        "\tid INT,\n" +
+        "\tweek_id INT,\n" +
+        "\tsubmenu VARCHAR(50),\n" +
+        "\ticon VARCHAR(50)\n" +
+        ");\n" +
+        "insert into weekPage (id, week_id, submenu, icon) values (1, 1 , 'Instruction', 'mdi-book-open-blank-variant');\n" +
+        "insert into weekPage (id, week_id, submenu, icon) values (2, 1 , 'Assignment', 'mdi-briefcase');\n"+
+        "insert into weekPage (id, week_id, submenu, icon) values (3, 1 , 'Peer study', 'mdi-forum');\n"+
+        "insert into weekPage (id, week_id, submenu, icon) values (4, 1 , 'Video', 'mdi-video-box');\n"+
+        "insert into weekPage (id, week_id, submenu, icon) values (5, 1 , 'Submit', 'mdi-bookmark');\n"+
+        "insert into weekPage (id, week_id, submenu, icon) values (6, 1 , 'Quiz', 'mdi-book-open-blank-variant');\n"
+    )
+
     //instructions
     await db.exec("DROP TABLE IF EXISTS instructions; CREATE TABLE IF NOT EXISTS instructions (\n" +
         "\tid INT,\n" +
@@ -258,12 +273,19 @@ router.post('/api/login', async function (req, res) {
     //get email & password
     const email = req.param('email');
     const password = req.param('password');
-    var result = await db.all("Select email from account ");
-    var a =  JSON.stringify(result)
-    if (a.search(email.toString())!==-1){
+    var result = await db.all("Select * from account ");
+    var confirm =false;
+    for (var i in result) {
+        console.log(JSON.stringify(result[i].email))
+        console.log(email)
+        if(JSON.stringify(result[i].email).search(email.toString())!==-1 && JSON.stringify(result[i].password).search(password.toString())!==-1){
+            confirm=true;
+        }
+    }
+    if(confirm){
         res.send("200");
     }else {
-        res.send("406");
+        res.send("500");
     }
 });
 
@@ -461,6 +483,20 @@ router.get("/api/video", async function (req, res, next) {
         if (!weekId) return res.json([])
         setTimeout(async function () {
             let result = await db.all(`SELECT * FROM video WHERE week_id = ?`, weekId);
+            res.json(result);
+        }, 500);
+    } catch (e) {
+        res.json(e);
+    }
+});
+
+// week_page(course)
+router.get("/api/week-page", async function (req, res, next) {
+    try {
+        let weekId = req.query.weekId;
+        if (!weekId) return res.json([])
+        setTimeout(async function () {
+            let result = await db.all(`SELECT * FROM weekPage WHERE week_id = ?`, weekId);
             res.json(result);
         }, 500);
     } catch (e) {

@@ -29,7 +29,8 @@ const store = new Vuex.Store({
       lectures: {
         lecture: [],
         archive: []
-      }
+      },
+      weekPages: []
     }
   },
   mutations: {
@@ -79,6 +80,9 @@ const store = new Vuex.Store({
     },
     SET_LECTURES_ARCHIVE (state, archive) {
       state.course.lectures.archive = archive
+    },
+    SET_WEEK_PAGE (state, weekPages) {
+      state.course.weekPages = weekPages
     }
   },
   getters: {
@@ -94,7 +98,7 @@ const store = new Vuex.Store({
       axios
         .get('http://localhost:3000/api/submit-point', { params: { weekId } })
         .then(response => {
-          commit('SET_SUBMIT_ASSIGNMENTS', response.data);
+          commit('SET_SUBMIT_ASSIGNMENTS', response.data)
         })
     },
     fetchIntroArticles ({ commit }, { courseId }) {
@@ -153,6 +157,13 @@ const store = new Vuex.Store({
         .get('http://localhost:3000/api/lectures-archive', { params: { courseId } })
         .then(response => {
           commit('SET_LECTURES_ARCHIVE', response.data)
+        })
+    },
+    fetchWeekPage ({ commit }, { weekId }) {
+      axios
+        .get('http://localhost:3000/api/week-page', { params: { weekId } })
+        .then(response => {
+          commit('SET_WEEK_PAGE', response.data)
         })
     }
   },
