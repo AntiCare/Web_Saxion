@@ -6,16 +6,17 @@
     dark
   >
     <div class="d-flex align-center">
-
-      <v-img
-        alt="Vuetify Name"
-        class="shrink mt-1 hidden-sm-and-down"
-        contain
-        min-width="100"
-        src="@/assets/saxion-logo.png"
-        transition="scale-transition"
-        width="100"
-      />
+      <a href="/">
+        <v-img
+          alt="Vuetify Name"
+          class="shrink mt-1 hidden-sm-and-down"
+          contain
+          min-width="100"
+          src="@/assets/saxion-logo.png"
+          transition="scale-transition"
+          width="100"
+        />
+      </a>
     </div>
 
     <v-spacer></v-spacer>
@@ -44,6 +45,7 @@
         <v-list-item
           v-for="(item, index) in items"
           :key="index"
+          :to="item.route"
         >
           <v-list-item-title>{{ item.title }}</v-list-item-title>
         </v-list-item>
@@ -57,8 +59,7 @@ export default {
   name: "Header",
   data: () => ({
     items: [
-      {title: 'Settings'},
-      {title: 'Log out'},
+      {title: 'Log out', route: '/login'},
     ],
   }),
 
