@@ -210,7 +210,7 @@ export default {
             'A: String', 'B: char', 'C: Student', 'D: int'
           ],
           answer: [],
-          correct: '2,3'
+          correct: '0,2'
         },
         {
           question: 'In the Java interface, the valid method declaration in the following options is _______.(multiple choice)',
@@ -219,13 +219,13 @@ export default {
             'A: public void aMethod();', 'B: void aMethod();', 'C: protected void aMethod();', 'D: private void aMethod();'
           ],
           answer: [],
-          correct: '2,3'
+          correct: '0,1'
         },
         {
           question: 'Initialize an array of type int, which contains 5 elements.',
           type: 'text',
           answer: [],
-          correct: 'cnm'
+          correct: 'int[] array = new int[5]'
         },
         {
           question: 'i is an int type, it can be changed to a string type through i.toString()',
@@ -235,7 +235,7 @@ export default {
         }
       ],
       tasks: [
-        {title: 'Week 1 quize', subtitle: 'level :easy'}
+        { title: 'Week 1 quize', subtitle: 'level :easy' }
       ]
     }
   },
